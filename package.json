@@ -1,5 +1,5 @@
 {
-  "name": "brt-lib",
+  "name": "@brtnetwork/brt-lib",
   "version": "1.9.1",
   "license": "ISC",
   "description": "A TypeScript/JavaScript API for interacting with the XRP Ledger in Node.js and the browser",
@@ -27,10 +27,10 @@
     "jsonschema": "1.2.2",
     "lodash": "^4.17.4",
     "lodash.isequal": "^4.5.0",
-    "brt-address-codec": "^4.1.1",
-    "brt-binary-codec": "^1.1.0",
-    "brt-keypairs": "^1.0.3",
-    "brt-lib-transactionparser": "0.8.2",
+    "@brtnetwork/brt-address-codec": "^4.1.1",
+    "@brtnetwork/brt-binary-codec": "^1.1.0",
+    "@brtnetwork/brt-keypairs": "^1.0.3",
+    "@brtnetwork/brt-lib-transactionparser": "0.8.2",
     "ws": "^7.2.0"
   },
   "resolutions": {
