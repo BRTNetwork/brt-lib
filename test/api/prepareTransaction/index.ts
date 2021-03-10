@@ -43,7 +43,7 @@ export default <TestSuite>{
   'does not overwrite Fee in Instructions': async (api, address) => {
     const localInstructions = {
       ...instructionsWithMaxLedgerVersionOffset,
-      fee: '0.000014' // CAUTION: This `fee` is specified in XRP, not drops.
+      fee: '0.000014' // CAUTION: This `fee` is specified in BRT, not drops.
     }
     const txJSON = {
       TransactionType: 'DepositPreauth',
@@ -750,7 +750,7 @@ export default <TestSuite>{
   'AccountDelete': async (api, address) => {
     const localInstructions = {
       ...instructionsWithMaxLedgerVersionOffset,
-      maxFee: '5.0' // 5 XRP fee for AccountDelete
+      maxFee: '5.0' // 5 BRT fee for AccountDelete
     }
 
     const txJSON = {
@@ -813,7 +813,7 @@ export default <TestSuite>{
       Account: address,
       Destination: 'rpZc4mVfWUif9CRoHRKKcmhu1nx2xktxBo',
 
-      // Max amount to send. Use 100 billion XRP to
+      // Max amount to send. Use 100 billion BRT to
       // ensure that we send the full SendMax amount.
       Amount: '100000000000000000',
 
@@ -829,7 +829,7 @@ export default <TestSuite>{
     const response = await api.prepareTransaction(txJSON, localInstructions)
     assertResultMatch(
       response,
-      responses.preparePayment.minAmountXRP,
+      responses.preparePayment.minAmountBRT,
       'prepare'
     )
   },
@@ -849,7 +849,7 @@ export default <TestSuite>{
 
     assertResultMatch(
       response,
-      responses.preparePayment.minAmountXRPXRP,
+      responses.preparePayment.minAmountBRTBRT,
       'prepare'
     )
   },
@@ -887,7 +887,7 @@ export default <TestSuite>{
     assertResultMatch(response, responses.preparePayment.allOptions, 'prepare')
   },
 
-  'fee is capped at default maxFee of 2 XRP (using txJSON.LastLedgerSequence)': async (
+  'fee is capped at default maxFee of 2 BRT (using txJSON.LastLedgerSequence)': async (
     api,
     address
   ) => {
@@ -924,7 +924,7 @@ export default <TestSuite>{
     assertResultMatch(response, expectedResponse, 'prepare')
   },
 
-  'fee is capped at default maxFee of 2 XRP (using instructions.maxLedgerVersion)': async (
+  'fee is capped at default maxFee of 2 BRT (using instructions.maxLedgerVersion)': async (
     api,
     address
   ) => {
@@ -966,14 +966,14 @@ export default <TestSuite>{
   },
 
   // prepareTransaction - Payment
-  'fee is capped to custom maxFeeXRP when maxFee exceeds maxFeeXRP': async (
+  'fee is capped to custom maxFeeBRT when maxFee exceeds maxFeeBRT': async (
     api,
     address
   ) => {
     api._feeCushion = 1000000
-    api._maxFeeXRP = '3'
+    api._maxFeeBRT = '3'
     const localInstructions = {
-      maxFee: '4' // We are testing that this does not matter; fee is still capped to maxFeeXRP
+      maxFee: '4' // We are testing that this does not matter; fee is still capped to maxFeeBRT
     }
 
     const txJSON = {
@@ -1011,9 +1011,9 @@ export default <TestSuite>{
   // prepareTransaction - Payment
   'fee is capped to maxFee': async (api, address) => {
     api._feeCushion = 1000000
-    api._maxFeeXRP = '5'
+    api._maxFeeBRT = '5'
     const localInstructions = {
-      maxFee: '4' // maxFeeXRP does not matter if maxFee is lower than maxFeeXRP
+      maxFee: '4' // maxFeeBRT does not matter if maxFee is lower than maxFeeBRT
     }
 
     const txJSON = {
@@ -1084,7 +1084,7 @@ export default <TestSuite>{
       {
         Account: address,
         TransactionType: 'PaymentChannelCreate',
-        Amount: '1000000', // 1 XRP in drops. Use a string-encoded integer.
+        Amount: '1000000', // 1 BRT in drops. Use a string-encoded integer.
         Destination: 'rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW',
         SettleDelay: 86400,
         PublicKey:

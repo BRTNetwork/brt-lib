@@ -111,14 +111,14 @@
 
 # Introduction
 
-RippleAPI (brt-lib) is the official client library to the XRP Ledger. Currently, RippleAPI is only available in JavaScript/TypeScript.
+RippleAPI (brt-lib) is the official client library to the BRT Ledger. Currently, RippleAPI is only available in JavaScript/TypeScript.
 
 Using RippleAPI, you can:
 
-* [Query transactions from the XRP Ledger history](#gettransaction)
+* [Query transactions from the BRT Ledger history](#gettransaction)
 * [Sign](#sign) transactions securely without connecting to any server
-* [Submit](#submit) transactions to the XRP Ledger, including [Payments](#payment), [Orders](#order), [Settings changes](#settings), and [other types](#transaction-types)
-* [Generate a new XRP Ledger Address](#generateaddress)
+* [Submit](#submit) transactions to the BRT Ledger, including [Payments](#payment), [Orders](#order), [Settings changes](#settings), and [other types](#transaction-types)
+* [Generate a new BRT Ledger Address](#generateaddress)
 * ... and [much more](#api-methods).
 
 This page contains documentation for brt-lib. To use brt-lib with npm/yarn, begin with the [Getting Started](https://github.com/BRTNetwork/js-brt-lib#getting-started) steps.
@@ -180,7 +180,7 @@ certificate | string | *Optional* A string containing the certificate key of the
 connectionTimeout | integer | *Optional* Connection timeout, in milliseconds, before considering connect() to have failed.
 feeCushion | number | *Optional* Factor to multiply estimated fee by to provide a cushion in case the required fee rises during submission of a transaction. Defaults to `1.2`.
 key | string | *Optional* A string containing the private key of the client in PEM format. (Can be an array of keys).
-maxFeeXRP | string | *Optional* Maximum fee to use with transactions, in XRP. Must be a string-encoded number. Defaults to `'2'`.
+maxFeeBRT | string | *Optional* Maximum fee to use with transactions, in BRT. Must be a string-encoded number. Defaults to `'2'`.
 passphrase | string | *Optional* The passphrase for the private key of the client.
 proxy | uri string | *Optional* URI for HTTP/HTTPS proxy to use to connect to the rippled server.
 proxyAuthorization | string | *Optional* Username and password for HTTP basic authentication to the proxy in the format **username:password**.
@@ -215,7 +215,7 @@ const api = new RippleAPI();
 /* insert code here */
 ```
 
-Methods that depend on the state of the XRP Ledger are unavailable in offline mode. To prepare transactions offline, you **must** specify  the `fee`, `sequence`, and `maxLedgerVersion` parameters in the [transaction instructions](#transaction-instructions). You can use the following methods while offline:
+Methods that depend on the state of the BRT Ledger are unavailable in offline mode. To prepare transactions offline, you **must** specify  the `fee`, `sequence`, and `maxLedgerVersion` parameters in the [transaction instructions](#transaction-instructions). You can use the following methods while offline:
 
 * [preparePayment](#preparepayment)
 * [prepareTrustline](#preparetrustline)
@@ -242,7 +242,7 @@ Methods that depend on the state of the XRP Ledger are unavailable in offline mo
 "X7AcgcsBL6XDcUb289X4mJ8djcdyKaB5hJDWMArnXr61cqZ"
 ```
 
-An *address* refers to a specific XRP Ledger account. It is a base-58 encoding of a hash of the account's public key. There are two kinds of addresses in common use:
+An *address* refers to a specific BRT Ledger account. It is a base-58 encoding of a hash of the account's public key. There are two kinds of addresses in common use:
 
 ### Classic Address
 
@@ -250,22 +250,22 @@ A *classic address* encodes a hash of the account's public key and a checksum. I
 
 ### X-address
 
-An *X-address* encodes a hash of the account's public key, a tag, and a checksum. This kind of address starts with the uppercase letter `X` if it is intended for use on the production XRP Ledger (mainnet). It starts with the uppercase letter `T` if it is intended for use on a test network such as Testnet or Devnet.
+An *X-address* encodes a hash of the account's public key, a tag, and a checksum. This kind of address starts with the uppercase letter `X` if it is intended for use on the production BRT Ledger (mainnet). It starts with the uppercase letter `T` if it is intended for use on a test network such as Testnet or Devnet.
 
 ## Account Sequence Number
 
-Every XRP Ledger account has a *sequence number* that is used to keep transactions in order. Every transaction must have a sequence or a ticketSequence number. A transaction can only be executed if it has the next sequence number in order, of the account sending it, or uses a previously generated ticketSequence number. This prevents one transaction from executing twice and transactions executing out of order. The sequence number starts at `1` and increments for each transaction that the account makes.
+Every BRT Ledger account has a *sequence number* that is used to keep transactions in order. Every transaction must have a sequence or a ticketSequence number. A transaction can only be executed if it has the next sequence number in order, of the account sending it, or uses a previously generated ticketSequence number. This prevents one transaction from executing twice and transactions executing out of order. The sequence number starts at `1` and increments for each transaction that the account makes.
 
 ## Currency
 
-Currencies are represented as either 3-character currency codes or 40-character uppercase hexadecimal strings. We recommend using uppercase [ISO 4217 Currency Codes](http://www.xe.com/iso4217.php) only. The string "XRP" is disallowed on trustlines because it is reserved for the XRP Ledger's native currency. The following characters are permitted: all uppercase and lowercase letters, digits, as well as the symbols `?`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `*`, `<`, `>`, `(`, `)`, `{`, `}`, `[`, `]`, and `|`.
+Currencies are represented as either 3-character currency codes or 40-character uppercase hexadecimal strings. We recommend using uppercase [ISO 4217 Currency Codes](http://www.xe.com/iso4217.php) only. The string "BRT" is disallowed on trustlines because it is reserved for the BRT Ledger's native currency. The following characters are permitted: all uppercase and lowercase letters, digits, as well as the symbols `?`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `*`, `<`, `>`, `(`, `)`, `{`, `}`, `[`, `]`, and `|`.
 
 ## Value
-A *value* is a quantity of a currency represented as a decimal string. Be careful: JavaScript's native number format does not have sufficient precision to represent all values. XRP has different precision from other currencies.
+A *value* is a quantity of a currency represented as a decimal string. Be careful: JavaScript's native number format does not have sufficient precision to represent all values. BRT has different precision from other currencies.
 
-**XRP** has 6 significant digits past the decimal point. In other words, XRP cannot be divided into positive values smaller than `0.000001` (1e-6). This smallest unit is called a "drop". XRP has a maximum value of `100000000000` (1e11). Some RippleAPI methods accept XRP in order to maintain compatibility with older versions of the API. For consistency with the `rippled` APIs, we recommend formally specifying XRP values in *drops* in all API requests, and converting them to XRP for display. This is similar to Bitcoin's *satoshis* and Ethereum's *wei*. 1 XRP = 1,000,000 drops.
+**BRT** has 6 significant digits past the decimal point. In other words, BRT cannot be divided into positive values smaller than `0.000001` (1e-6). This smallest unit is called a "drop". BRT has a maximum value of `100000000000` (1e11). Some RippleAPI methods accept BRT in order to maintain compatibility with older versions of the API. For consistency with the `rippled` APIs, we recommend formally specifying BRT values in *drops* in all API requests, and converting them to BRT for display. This is similar to Bitcoin's *satoshis* and Ethereum's *wei*. 1 BRT = 1,000,000 drops.
 
-**Non-XRP values** have 16 decimal digits of precision, with a maximum value of `9999999999999999e80`. The smallest positive non-XRP value is `1e-81`.
+**Non-BRT values** have 16 decimal digits of precision, with a maximum value of `9999999999999999e80`. The smallest positive non-BRT value is `1e-81`.
 
 ## Amount
 
@@ -279,7 +279,7 @@ Example 100.00 USD amount:
 }
 ```
 
-Example 3.0 XRP amount, in drops:
+Example 3.0 BRT amount, in drops:
 ```json
 {
   "currency": "drops",
@@ -288,7 +288,7 @@ Example 3.0 XRP amount, in drops:
 ```
 (Requires `brt-lib` version 1.0.0 or higher.)
 
-An *amount* is an object specifying a currency, a quantity of that currency, and the counterparty (issuer) on the trustline that holds the value. For XRP, there is no counterparty.
+An *amount* is an object specifying a currency, a quantity of that currency, and the counterparty (issuer) on the trustline that holds the value. For BRT, there is no counterparty.
 
 A *lax amount* allows the counterparty to be omitted for all currencies. If the counterparty is not specified in an amount within a transaction specification, then any counterparty may be used for that amount.
 
@@ -298,8 +298,8 @@ A *balance* is an amount than can have a negative value.
 
 Name | Type | Description
 ---- | ---- | -----------
-currency | [currency](#currency) | The three-character code or hexadecimal string used to denote currencies, or "drops" for the smallest unit of XRP.
-counterparty | [address](#address) | *Optional* The XRP Ledger address of the account that owes or is owed the funds (omitted if `currency` is "XRP" or "drops")
+currency | [currency](#currency) | The three-character code or hexadecimal string used to denote currencies, or "drops" for the smallest unit of BRT.
+counterparty | [address](#address) | *Optional* The BRT Ledger address of the account that owes or is owed the funds (omitted if `currency` is "BRT" or "drops")
 value | [value](#value) | *Optional* The quantity of the currency, denoted as a string to retain floating point precision
 
 # Transaction Overview
@@ -311,19 +311,19 @@ A transaction type is specified by the strings in the first column in the table 
 Type | Description
 ---- | -----------
 [payment](#payment) | A `payment` transaction represents a transfer of value from one account to another. Depending on the [path](https://ripple.com/build/paths/) taken, additional exchanges of value may occur atomically to facilitate the payment.
-[order](#order) | An `order` transaction creates a limit order. It defines an intent to exchange currencies, and creates an order in the XRP Ledger's order book if not completely fulfilled when placed. Orders can be partially fulfilled.
-[orderCancellation](#order-cancellation) | An `orderCancellation` transaction cancels an order in the XRP Ledger's order book.
+[order](#order) | An `order` transaction creates a limit order. It defines an intent to exchange currencies, and creates an order in the BRT Ledger's order book if not completely fulfilled when placed. Orders can be partially fulfilled.
+[orderCancellation](#order-cancellation) | An `orderCancellation` transaction cancels an order in the BRT Ledger's order book.
 [trustline](#trustline) | A `trustline` transaction creates or modifies a trust line between two accounts.
-[settings](#settings) | A `settings` transaction modifies the settings of an account in the XRP Ledger.
-[escrowCreation](#escrow-creation) | An `escrowCreation` transaction creates an escrow on the ledger, which locks XRP until a cryptographic condition is met or it expires. It is like an escrow service where the XRP Ledger acts as the escrow agent.
+[settings](#settings) | A `settings` transaction modifies the settings of an account in the BRT Ledger.
+[escrowCreation](#escrow-creation) | An `escrowCreation` transaction creates an escrow on the ledger, which locks BRT until a cryptographic condition is met or it expires. It is like an escrow service where the BRT Ledger acts as the escrow agent.
 [escrowCancellation](#escrow-cancellation) | An `escrowCancellation` transaction unlocks the funds in an escrow and sends them back to the creator of the escrow, but it will only work after the escrow expires.
 [escrowExecution](#escrow-execution) | An `escrowExecution` transaction unlocks the funds in an escrow and sends them to the destination of the escrow, but it will only work if the cryptographic condition is provided.
 [checkCreate](#check-create) | A `checkCreate` transaction creates a check on the ledger, which is a deferred payment that can be cashed by its intended destination.
 [checkCancel](#check-cancel) | A `checkCancel` transaction cancels an unredeemed Check, removing it from the ledger without sending any money.
 [checkCash](#check-cash) | A `checkCash` transaction redeems a Check to receive up to the amount authorized by the corresponding `checkCreate` transaction. Only the `destination` address of a Check can cash it.
-[paymentChannelCreate](#payment-channel-create) | A `paymentChannelCreate` transaction opens a payment channel between two addresses with XRP set aside for asynchronous payments.
-[paymentChannelFund](#payment-channel-fund) | A `paymentChannelFund` transaction adds XRP to a payment channel and optionally sets a new expiration for the channel.
-[paymentChannelClaim](#payment-channel-claim) | A `paymentChannelClaim` transaction withdraws XRP from a channel and optionally requests to close it.
+[paymentChannelCreate](#payment-channel-create) | A `paymentChannelCreate` transaction opens a payment channel between two addresses with BRT set aside for asynchronous payments.
+[paymentChannelFund](#payment-channel-fund) | A `paymentChannelFund` transaction adds BRT to a payment channel and optionally sets a new expiration for the channel.
+[paymentChannelClaim](#payment-channel-claim) | A `paymentChannelClaim` transaction withdraws BRT from a channel and optionally requests to close it.
 [ticketCreate](#ticket-create) | A successful `ticketCreate` transaction adds a Ticket in the directory of the owning account.
 
 ## Transaction Flow
@@ -349,7 +349,7 @@ Executing a transaction with `RippleAPI` requires the following four steps:
 
 ## Transaction Fees
 
-Every transaction must destroy a small amount of XRP as a cost to apply the transaction to the ledger. This is also called a *transaction fee*. The transaction cost is designed to increase along with the load on the XRP Ledger, making it very expensive to deliberately or inadvertently overload the peer-to-peer network that powers the XRP Ledger.
+Every transaction must destroy a small amount of BRT as a cost to apply the transaction to the ledger. This is also called a *transaction fee*. The transaction cost is designed to increase along with the load on the BRT Ledger, making it very expensive to deliberately or inadvertently overload the peer-to-peer network that powers the BRT Ledger.
 
 You can choose the size of the fee you want to pay or let a default be used. You can get an estimate of the fee required to be included in the next ledger closing with the [getFee](#getfee) method.
 
@@ -362,7 +362,7 @@ Transaction instructions indicate how to execute a transaction, complementary wi
 Name | Type | Description
 ---- | ---- | -----------
 fee | [value](#value) | *Optional* An exact fee to pay for the transaction, before multiplying for multi-signed transactions. See [Transaction Fees](#transaction-fees) for more information.
-maxFee | [value](#value) | *Optional* Deprecated: Use `maxFeeXRP` in the RippleAPI constructor instead. The maximum fee to pay for this transaction. If this exceeds `maxFeeXRP`, `maxFeeXRP` will be used instead. See [Transaction Fees](#transaction-fees) for more information.
+maxFee | [value](#value) | *Optional* Deprecated: Use `maxFeeBRT` in the RippleAPI constructor instead. The maximum fee to pay for this transaction. If this exceeds `maxFeeBRT`, `maxFeeBRT` will be used instead. See [Transaction Fees](#transaction-fees) for more information.
 maxLedgerVersion | integer,null | *Optional* The highest ledger version that the transaction can be included in. If this option and `maxLedgerVersionOffset` are both omitted, the `maxLedgerVersion` option will default to 3 greater than the current validated ledger version (equivalent to `maxLedgerVersionOffset=3`). Use `null` to not set a maximum ledger version. If not null, this must be an integer greater than 0, or one of the following strings: 'validated', 'closed', 'current'.
 maxLedgerVersion | string,null | *Optional* The highest ledger version that the transaction can be included in. If this option and `maxLedgerVersionOffset` are both omitted, the `maxLedgerVersion` option will default to 3 greater than the current validated ledger version (equivalent to `maxLedgerVersionOffset=3`). Use `null` to not set a maximum ledger version. If not null, this must be an integer greater than 0, or one of the following strings: 'validated', 'closed', 'current'.
 maxLedgerVersionOffset | integer | *Optional* Offset from current validated ledger version to highest ledger version that the transaction can be included in.
@@ -370,7 +370,7 @@ sequence | [sequence](#account-sequence-number) | *Optional* The initiating acco
 signersCount | integer | *Optional* Number of signers that will be signing this transaction.
 ticketSequence | [ticket-sequence](#account-sequence-number) | *Optional* The ticket sequence to be used for this transaction. `sequence` and `ticketSequence` are mutually exclusive, only one of them can be set.
 
-We recommend that you specify a `maxLedgerVersion` so that you can quickly determine that a failed transaction will never succeed in the future. It is impossible for a transaction to succeed after the XRP Ledger's consensus-validated ledger version exceeds the transaction's `maxLedgerVersion`. If you omit `maxLedgerVersion`, the "prepare\*" method automatically supplies a `maxLedgerVersion` equal to the current ledger plus 3, which it includes in the return value from the "prepare\*" method.
+We recommend that you specify a `maxLedgerVersion` so that you can quickly determine that a failed transaction will never succeed in the future. It is impossible for a transaction to succeed after the BRT Ledger's consensus-validated ledger version exceeds the transaction's `maxLedgerVersion`. If you omit `maxLedgerVersion`, the "prepare\*" method automatically supplies a `maxLedgerVersion` equal to the current ledger plus 3, which it includes in the return value from the "prepare\*" method.
 
 ## Transaction ID
 
@@ -394,17 +394,17 @@ type | string | *Optional* Conventionally, a unique relation (according to [RFC 
 
 # Transaction Specifications
 
-A *transaction specification* specifies what a transaction should do. Each [Transaction Type](#transaction-types) has its own type of specification, which corresponds to the [native XRP Ledger transaction types](https://xrpl.org/transaction-types.html).
+A *transaction specification* specifies what a transaction should do. Each [Transaction Type](#transaction-types) has its own type of specification, which corresponds to the [native BRT Ledger transaction types](https://xrpl.org/transaction-types.html).
 
 ## Account Delete
 
-Delete your account and send the remaining XRP elsewhere. (Native transaction type: [AccountDelete](https://xrpl.org/accountdelete.html))
+Delete your account and send the remaining BRT elsewhere. (Native transaction type: [AccountDelete](https://xrpl.org/accountdelete.html))
 
 Name | Type | Description
 ---- | ---- | -----------
-destination | [address](#address) | *Optional* Address of an account to receive any leftover XRP after deleting the sending account. Must be a funded account in the ledger, and must not be the sending account.
-destinationTag | integer | *Optional* (Optional) Arbitrary destination tag that identifies a hosted recipient or other information for the recipient of the deleted account's leftover XRP.
-destinationXAddress | [address](#address) | *Optional* X-address of an account to receive any leftover XRP after deleting the sending account. Must be a funded account in the ledger, and must not be the sending account.
+destination | [address](#address) | *Optional* Address of an account to receive any leftover BRT after deleting the sending account. Must be a funded account in the ledger, and must not be the sending account.
+destinationTag | integer | *Optional* (Optional) Arbitrary destination tag that identifies a hosted recipient or other information for the recipient of the deleted account's leftover BRT.
+destinationXAddress | [address](#address) | *Optional* X-address of an account to receive any leftover BRT after deleting the sending account. Must be a funded account in the ledger, and must not be the sending account.
 
 > **Note:** To prepare an Account Delete transaction, use [`prepareTransaction()`](#preparetransaction) with the [native transaction format](https://xrpl.org/accountdelete.html).
 
@@ -459,7 +459,7 @@ Create a Check, a deferred payment that can be redeemed by the destination. (Nat
 Name | Type | Description
 ---- | ---- | -----------
 destination | [address](#address) | Address of the account that can cash the check.
-sendMax | [laxAmount](#amount) | Amount of source currency the check is allowed to debit the sender, including transfer fees on non-XRP currencies.
+sendMax | [laxAmount](#amount) | Amount of source currency the check is allowed to debit the sender, including transfer fees on non-BRT currencies.
 destinationTag | integer | *Optional* Destination tag that identifies the reason for the check, or a hosted recipient to pay.
 expiration | date-time string | *Optional* Time after which the check is no longer valid.
 invoiceID | string | *Optional* 256-bit hash, as a 64-character hexadecimal string, representing a specific reason or identifier for this check.
@@ -515,12 +515,12 @@ memos | [memos](#transaction-memos) | *Optional* Array of memos to attach to the
 
 ## Escrow Creation
 
-Create an Escrow that locks up XRP until a given time or condition is met. (Native transaction type: []())
+Create an Escrow that locks up BRT until a given time or condition is met. (Native transaction type: []())
 
 Name | Type | Description
 ---- | ---- | -----------
-amount | [value](#value) | Amount of XRP for sender to escrow.
-destination | [address](#address) | Address to receive escrowed XRP.
+amount | [value](#value) | Amount of BRT for sender to escrow.
+destination | [address](#address) | Address to receive escrowed BRT.
 allowCancelAfter | date-time string | *Optional* If present, the escrow may be cancelled after this time.
 allowExecuteAfter | date-time string | *Optional* If present, the escrow can not be executed before this time.
 condition | string | *Optional* A hex value representing a [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1). If present, `fulfillment` is required upon execution.
@@ -544,7 +544,7 @@ sourceTag | integer | *Optional* Source tag.
 
 ## Escrow Execution
 
-Deliver XRP from an Escrow after its conditions have been met. (Native transaction type: []())
+Deliver BRT from an Escrow after its conditions have been met. (Native transaction type: []())
 
 Name | Type | Description
 ---- | ---- | -----------
@@ -648,7 +648,7 @@ allowPartialPayment | boolean | *Optional* If true, this payment should proceed 
 invoiceID | string | *Optional* A 256-bit hash that can be used to identify a particular payment.
 limitQuality | boolean | *Optional* Only take paths where all the conversions have an input:output ratio that is equal or better than the ratio of destination.amount:source.maxAmount.
 memos | [memos](#transaction-memos) | *Optional* Array of memos to attach to the transaction.
-noDirectRipple | boolean | *Optional* If true and paths are specified, the sender would like the XRP Ledger to disregard any direct paths from the source account to the destination account. This may be used to take advantage of an arbitrage opportunity or by gateways wishing to issue balances from a hot wallet to a user who has mistakenly set a trustline directly to the hot wallet.
+noDirectRipple | boolean | *Optional* If true and paths are specified, the sender would like the BRT Ledger to disregard any direct paths from the source account to the destination account. This may be used to take advantage of an arbitrage opportunity or by gateways wishing to issue balances from a hot wallet to a user who has mistakenly set a trustline directly to the hot wallet.
 paths | string | *Optional* The paths of trustlines and orders to use in executing the payment.
 
 #### Example
@@ -679,17 +679,17 @@ paths | string | *Optional* The paths of trustlines and orders to use in executi
 
 ## Payment Channel Claim
 
-Redeem XRP from a Payment Channel. (Native transaction type: [PaymentChannelClaim](https://xrpl.org/paymentchannelclaim.html))
+Redeem BRT from a Payment Channel. (Native transaction type: [PaymentChannelClaim](https://xrpl.org/paymentchannelclaim.html))
 
 Name | Type | Description
 ---- | ---- | -----------
 channel | string | 256-bit hexadecimal channel identifier.
-amount | [value](#value) | *Optional* Amount of XRP authorized by this signature.
-balance | [value](#value) | *Optional* Total XRP balance delivered by this channel after claim is processed.
-close | boolean | *Optional* Request to close the channel. If the channel has no XRP remaining or the destination address requests it, closes the channel immediately (returning unclaimed XRP to the source address). Otherwise, sets the channel to expire after settleDelay seconds have passed.
+amount | [value](#value) | *Optional* Amount of BRT authorized by this signature.
+balance | [value](#value) | *Optional* Total BRT balance delivered by this channel after claim is processed.
+close | boolean | *Optional* Request to close the channel. If the channel has no BRT remaining or the destination address requests it, closes the channel immediately (returning unclaimed BRT to the source address). Otherwise, sets the channel to expire after settleDelay seconds have passed.
 publicKey | string | *Optional* Public key of the channel. (For verifying the signature.)
 renew | boolean | *Optional* Clear the channel's expiration time.
-signature | string | *Optional* Signed claim authorizing withdrawal of XRP from the channel. (Required except from the channel's source address.)
+signature | string | *Optional* Signed claim authorizing withdrawal of BRT from the channel. (Required except from the channel's source address.)
 
 #### Example
 
@@ -704,13 +704,13 @@ signature | string | *Optional* Signed claim authorizing withdrawal of XRP from 
 
 ## Payment Channel Create
 
-Create a Payment Channel with XRP set aside for asynchronous payments. (Native transaction type: [PaymentChannelCreate](https://xrpl.org/paymentchannelcreate.html))
+Create a Payment Channel with BRT set aside for asynchronous payments. (Native transaction type: [PaymentChannelCreate](https://xrpl.org/paymentchannelcreate.html))
 
 Name | Type | Description
 ---- | ---- | -----------
-amount | [value](#value) | Amount of XRP for sender to set aside in this channel.
-destination | [address](#address) | Address to receive XRP claims against this channel.
-settleDelay | number | Amount of seconds the source address must wait before closing the channel if it has unclaimed XRP.
+amount | [value](#value) | Amount of BRT for sender to set aside in this channel.
+destination | [address](#address) | Address to receive BRT claims against this channel.
+settleDelay | number | Amount of seconds the source address must wait before closing the channel if it has unclaimed BRT.
 publicKey | string | Public key of the key pair the source may use to sign claims against this channel.
 cancelAfter | date-time string | *Optional* Time when this channel expires. This expiration cannot be changed after creating the channel.
 destinationTag | integer | *Optional* Destination tag.
@@ -732,11 +732,11 @@ sourceTag | integer | *Optional* Source tag.
 
 ## Payment Channel Fund
 
-Add XRP to a Payment Channel. (Native transaction type: [PaymentChannelFund](https://xrpl.org/paymentchannelfund.html))
+Add BRT to a Payment Channel. (Native transaction type: [PaymentChannelFund](https://xrpl.org/paymentchannelfund.html))
 
 Name | Type | Description
 ---- | ---- | -----------
-amount | [value](#value) | Amount of XRP to fund the channel with.
+amount | [value](#value) | Amount of BRT to fund the channel with.
 channel | string | 256-bit hexadecimal channel identifier.
 expiration | date-time string | *Optional* New expiration for this channel. (This does not change the cancelAfter expiration, if the channel has one.) Cannot move the expiration sooner than settleDelay seconds from time of the request.
 
@@ -762,7 +762,7 @@ Name | Type | Description
 defaultRipple | boolean | *Optional* Enable [rippling](https://ripple.com/build/understanding-the-nobrt-flag/) on this account’s trust lines by default. (New in [rippled 0.27.3](https://github.com/ripple/rippled/releases/tag/0.27.3))
 depositAuth | boolean | *Optional* Enable [Deposit Authorization](https://ripple.com/build/deposit-authorization/) on this account. If set, transactions cannot send value of any kind to this account unless the sender of those transactions is the account itself. (Requires the [DepositAuth amendment](https://ripple.com/build/known-amendments/#depositauth))
 disableMasterKey | boolean | *Optional* Disallows use of the master key to sign transactions for this account. To disable the master key, you must authorize the transaction by signing it with the master key pair. You cannot use a regular key pair or a multi-signature. You can re-enable the master key pair using a regular key pair or multi-signature. See [AccountSet](https://developers.ripple.com/accountset.html).
-disallowIncomingXRP | boolean | *Optional* Indicates that client applications should not send XRP to this account. Not enforced by rippled.
+disallowIncomingBRT | boolean | *Optional* Indicates that client applications should not send BRT to this account. Not enforced by rippled.
 domain | string | *Optional* The domain that owns this account, as a hexadecimal string representing the ASCII for the domain in lowercase.
 emailHash | string,null | *Optional* Hash of an email address to be used for generating an avatar image. Conventionally, clients use Gravatar to display this image. Use `null` to clear.
 enableTransactionIDTracking | boolean | *Optional* Track the ID of this account’s most recent transaction.
@@ -778,7 +778,7 @@ signers | object | *Optional* Settings that determine what sets of accounts can 
 *signers.* threshold | integer | A target number for the signer weights. A multi-signature from this list is valid only if the sum weights of the signatures provided is equal or greater than this value. To delete the signers setting, use the value `0`.
 *signers.* weights | array | *Optional* Weights of signatures for each signer.
 *signers.* weights[] | object | An association of an address and a weight.
-*signers.weights[].* address | [address](#address) | An account address on the XRP Ledger
+*signers.weights[].* address | [address](#address) | An account address on the BRT Ledger
 *signers.weights[].* weight | integer | The weight that the signature of this account counts as towards the threshold.
 tickSize | string | *Optional* Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are 3 to 15 inclusive, or 0 to disable.
 transferRate | number,null | *Optional* The fee to charge when users transfer this account’s issuances, as the decimal amount that must be sent to deliver 1 unit. Has precision up to 9 digits beyond the decimal point. Use `null` to set no fee.
@@ -806,7 +806,7 @@ walletLocator | string,null | *Optional* Transaction hash or any other 64 charac
 
 Set aside account Sequence numbers as Tickets to be used by later transactions.
 
-> **Caution:** As of 2021-01-22, Tickets are not yet available on the XRP Ledger.
+> **Caution:** As of 2021-01-22, Tickets are not yet available on the BRT Ledger.
 
 > **Note:** To prepare a Ticket Create transaction, use [`prepareTransaction()`](#preparetransaction) with the native transaction format. <!-- Future link: https://xrpl.org/ticketcreate.html -->
 
@@ -860,7 +860,7 @@ brt-lib relies on [rippled APIs](https://ripple.com/build/rippled-apis/) for onl
 
 When using rippled APIs:
 
-* [Specify XRP amounts in drops](https://developers.ripple.com/basic-data-types.html#specifying-currency-amounts).
+* [Specify BRT amounts in drops](https://developers.ripple.com/basic-data-types.html#specifying-currency-amounts).
 * [Specify timestamps as the number of seconds since the "Ripple Epoch"](https://developers.ripple.com/basic-data-types.html#specifying-time).
 * Instead of `counterparty`, use `issuer`.
 
@@ -928,7 +928,7 @@ For full details, see [rippled Subscriptions](https://ripple.com/build/rippled-a
 
 Returns the response from invoking the specified command, with the specified options, on the connected rippled server.
 
-Refer to [rippled APIs](https://ripple.com/build/rippled-apis/) for commands and options. All XRP amounts must be specified in drops. One drop is equal to 0.000001 XRP. See [Specifying Currency Amounts](https://ripple.com/build/rippled-apis/#specifying-currency-amounts).
+Refer to [rippled APIs](https://ripple.com/build/rippled-apis/) for commands and options. All BRT amounts must be specified in drops. One drop is equal to 0.000001 BRT. See [Specifying Currency Amounts](https://ripple.com/build/rippled-apis/#specifying-currency-amounts).
 
 Most commands return data for the `current` (in-progress, open) ledger by default. Do not rely on this. Always specify a ledger version in your request. In the example below, the 'validated' ledger is requested, which is the most recent ledger that has been validated by the whole network. See [Specifying Ledgers](https://xrpl.org/basic-data-types.html#specifying-ledgers).
 
@@ -1037,7 +1037,7 @@ return api.request(command, params).then(response => {
 
 # Static Methods
 
-brt-lib features a number of static methods that you can access directly on the `RippleAPI` object. The most commonly-used one is `computeBinaryTransactionHash`, described below. For the full list, see the [XRP Ledger Hashes README](https://github.com/BRTNetwork/js-brt-lib/blob/develop/src/common/hashes/README.md).
+brt-lib features a number of static methods that you can access directly on the `RippleAPI` object. The most commonly-used one is `computeBinaryTransactionHash`, described below. For the full list, see the [BRT Ledger Hashes README](https://github.com/BRTNetwork/js-brt-lib/blob/develop/src/common/hashes/README.md).
 
 ## computeBinaryTransactionHash
 
@@ -1479,10 +1479,10 @@ pubkeyNode | string | Public key used to verify this node for internal communica
 serverState | string | A string indicating to what extent the server is participating in the network. See [Possible Server States](https://developers.ripple.com/rippled-server-states.html) for more details.
 validatedLedger | object | Information about the fully-validated ledger with the highest sequence number (the most recent).
 *validatedLedger.* age | integer | The time since the ledger was closed, in seconds.
-*validatedLedger.* baseFeeXRP | [value](#value) | Base fee, in XRP. This may be represented in scientific notation such as 1e-05 for 0.00005.
+*validatedLedger.* baseFeeBRT | [value](#value) | Base fee, in BRT. This may be represented in scientific notation such as 1e-05 for 0.00005.
 *validatedLedger.* hash | string | Unique hash for the ledger, as an uppercase hexadecimal string.
-*validatedLedger.* reserveBaseXRP | [value](#value) | Minimum amount of XRP necessary for every account to keep in reserve.
-*validatedLedger.* reserveIncrementXRP | [value](#value) | Amount of XRP added to the account reserve for each object an account is responsible for in the ledger.
+*validatedLedger.* reserveBaseBRT | [value](#value) | Minimum amount of BRT necessary for every account to keep in reserve.
+*validatedLedger.* reserveIncrementBRT | [value](#value) | Amount of BRT added to the account reserve for each object an account is responsible for in the ledger.
 *validatedLedger.* ledgerVersion | integer | Identifying sequence number of this ledger version.
 validationQuorum | number | Minimum number of trusted validations required in order to validate a ledger version. Some circumstances may cause the server to require more validations.
 load | object | *Optional* *(Admin only)* Detailed information about the current load state of the server.
@@ -1513,10 +1513,10 @@ return api.getServerInfo().then(info => {/* ... */});
   "serverState": "full",
   "validatedLedger": {
     "age": 5,
-    "baseFeeXRP": "0.00001",
+    "baseFeeBRT": "0.00001",
     "hash": "4482DEE5362332F54A4036ED57EE1767C9F33CF7CE5A6670355C16CECE381D46",
-    "reserveBaseXRP": "20",
-    "reserveIncrementXRP": "5",
+    "reserveBaseBRT": "20",
+    "reserveIncrementBRT": "5",
     "ledgerVersion": 6595042
   },
   "validationQuorum": 3
@@ -1540,7 +1540,7 @@ cushion | number | *Optional* The fee is the product of the base fee, the `load_
 
 ### Return Value
 
-This method returns a promise that resolves with a string-encoded floating point value representing the estimated fee to submit a transaction, expressed in XRP.
+This method returns a promise that resolves with a string-encoded floating point value representing the estimated fee to submit a transaction, expressed in BRT.
 
 ### Example
 
@@ -1610,9 +1610,9 @@ type | [transactionType](#transaction-types) | The type of the transaction.
 specification | object | A specification that would produce the same outcome as this transaction. *Exception:* For payment transactions, this omits the `destination.amount` field, to prevent misunderstanding. The structure of the specification depends on the value of the `type` field (see [Transaction Types](#transaction-types) for details). *Note:* This is **not** necessarily the same as the original specification.
 outcome | object | The outcome of the transaction (what effects it had).
 *outcome.* result | string | Result code returned by rippled. See [Transaction Results](https://developers.ripple.com/transaction-results.html) for a complete list.
-*outcome.* fee | [value](#value) | The XRP fee that was charged for the transaction.
-*outcome.balanceChanges.* \* | array\<[balance](#amount)\> | Key is the XRP Ledger address; value is an array of signed amounts representing changes of balances for that address.
-*outcome.orderbookChanges.* \* | array | Key is the maker's XRP Ledger address; value is an array of changes
+*outcome.* fee | [value](#value) | The BRT fee that was charged for the transaction.
+*outcome.balanceChanges.* \* | array\<[balance](#amount)\> | Key is the BRT Ledger address; value is an array of signed amounts representing changes of balances for that address.
+*outcome.orderbookChanges.* \* | array | Key is the maker's BRT Ledger address; value is an array of changes
 *outcome.orderbookChanges.* \*[] | object | A change to an order.
 *outcome.orderbookChanges.\*[].* direction | string | Equal to "buy" for buy orders and "sell" for sell orders.
 *outcome.orderbookChanges.\*[].* quantity | [amount](#amount) | The amount to be bought or sold by the maker.
@@ -1649,7 +1649,7 @@ return api.getTransaction(id).then(transaction => {
     "source": {
       "address": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
       "maxAmount": {
-        "currency": "XRP",
+        "currency": "BRT",
         "value": "1.112209"
       }
     },
@@ -1689,13 +1689,13 @@ return api.getTransaction(id).then(transaction => {
       ],
       "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59": [
         {
-          "currency": "XRP",
+          "currency": "BRT",
           "value": "-1.101208"
         }
       ],
       "r9tGqzZgKxVFvzKFdUqXAqTzazWBUia8Qr": [
         {
-          "currency": "XRP",
+          "currency": "BRT",
           "value": "1.101198"
         },
         {
@@ -1710,7 +1710,7 @@ return api.getTransaction(id).then(transaction => {
         {
           "direction": "buy",
           "quantity": {
-            "currency": "XRP",
+            "currency": "BRT",
             "value": "1.101198"
           },
           "totalPrice": {
@@ -1788,7 +1788,7 @@ return api.getTransactions(address).then(transaction => {
       "source": {
         "address": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
         "maxAmount": {
-          "currency": "XRP",
+          "currency": "BRT",
           "value": "1.112209"
         }
       },
@@ -1828,13 +1828,13 @@ return api.getTransactions(address).then(transaction => {
         ],
         "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59": [
           {
-            "currency": "XRP",
+            "currency": "BRT",
             "value": "-1.101208"
           }
         ],
         "r9tGqzZgKxVFvzKFdUqXAqTzazWBUia8Qr": [
           {
-            "currency": "XRP",
+            "currency": "BRT",
             "value": "1.101198"
           },
           {
@@ -1849,7 +1849,7 @@ return api.getTransactions(address).then(transaction => {
           {
             "direction": "buy",
             "quantity": {
-              "currency": "XRP",
+              "currency": "BRT",
               "value": "1.101198"
             },
             "totalPrice": {
@@ -1882,7 +1882,7 @@ return api.getTransactions(address).then(transaction => {
       "source": {
         "address": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
         "maxAmount": {
-          "currency": "XRP",
+          "currency": "BRT",
           "value": "1.112209"
         }
       },
@@ -1922,13 +1922,13 @@ return api.getTransactions(address).then(transaction => {
         ],
         "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59": [
           {
-            "currency": "XRP",
+            "currency": "BRT",
             "value": "-1.101208"
           }
         ],
         "r9tGqzZgKxVFvzKFdUqXAqTzazWBUia8Qr": [
           {
-            "currency": "XRP",
+            "currency": "BRT",
             "value": "1.101198"
           },
           {
@@ -1943,7 +1943,7 @@ return api.getTransactions(address).then(transaction => {
           {
             "direction": "buy",
             "quantity": {
-              "currency": "XRP",
+              "currency": "BRT",
               "value": "1.101198"
             },
             "totalPrice": {
@@ -2136,7 +2136,7 @@ Name | Type | Description
 ---- | ---- | -----------
 currency | [currency](#currency) | The three-character code or hexadecimal string used to denote currencies
 value | [signedValue](#value) | The balance on the trustline
-counterparty | [address](#address) | *Optional* The XRP Ledger address of the account that owes or is owed the funds.
+counterparty | [address](#address) | *Optional* The BRT Ledger address of the account that owes or is owed the funds.
 
 ### Example
 
@@ -2151,7 +2151,7 @@ return api.getBalances(address).then(balances =>
 [
   {
     "value": "922.913243",
-    "currency": "XRP"
+    "currency": "BRT"
   },
   {
     "value": "0",
@@ -2287,7 +2287,7 @@ Returns aggregate balances by currency plus a breakdown of assets and obligation
 
 Name | Type | Description
 ---- | ---- | -----------
-address | [address](#address) | The XRP Ledger address of the account to get the balance sheet of.
+address | [address](#address) | The BRT Ledger address of the account to get the balance sheet of.
 options | object | *Optional* Options to determine how the balances will be calculated.
 *options.* excludeAddresses | array\<[address](#address)\> | *Optional* Addresses to exclude from the balance totals.
 *options.* ledgerVersion | integer | *Optional* Get the balance sheet as of this historical ledger version.
@@ -2385,7 +2385,7 @@ Name | Type | Description
 ---- | ---- | -----------
 pathfind | object | Specification of a pathfind request.
 *pathfind.* source | object | Properties of the source of funds.
-*pathfind.source.* address | [address](#address) | The XRP Ledger address of the account where funds will come from.
+*pathfind.source.* address | [address](#address) | The BRT Ledger address of the account where funds will come from.
 *pathfind.source.* amount | [laxAmount](#amount) | *Optional* The amount of funds to send.
 *pathfind.source.* currencies | array | *Optional* An array of currencies (with optional counterparty) that may be used in the payment paths.
 *pathfind.source.* currencies[] | object | A currency with optional counterparty.
@@ -2452,7 +2452,7 @@ return api.getPaths(pathfind)
         "value": "100"
       }
     },
-    "paths": "[[{\"account\":\"rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6\"},{\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"account\":\"rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6\"},{\"currency\":\"XRP\"},{\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"account\":\"rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6\"},{\"currency\":\"XRP\"},{\"currency\":\"USD\",\"issuer\":\"rpHgehzdpfWRXKvSv6duKvVuo1aZVimdaT\"},{\"account\":\"rpHgehzdpfWRXKvSv6duKvVuo1aZVimdaT\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"account\":\"rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6\"},{\"currency\":\"XRP\"},{\"currency\":\"USD\",\"issuer\":\"rHHa9t2kLQyXRbdLkSzEgkzwf9unmFgZs9\"},{\"account\":\"rHHa9t2kLQyXRbdLkSzEgkzwf9unmFgZs9\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}]]"
+    "paths": "[[{\"account\":\"rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6\"},{\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"account\":\"rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6\"},{\"currency\":\"BRT\"},{\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"account\":\"rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6\"},{\"currency\":\"BRT\"},{\"currency\":\"USD\",\"issuer\":\"rpHgehzdpfWRXKvSv6duKvVuo1aZVimdaT\"},{\"account\":\"rpHgehzdpfWRXKvSv6duKvVuo1aZVimdaT\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"account\":\"rMAz5ZnK73nyNUL4foAvaxdreczCkG3vA6\"},{\"currency\":\"BRT\"},{\"currency\":\"USD\",\"issuer\":\"rHHa9t2kLQyXRbdLkSzEgkzwf9unmFgZs9\"},{\"account\":\"rHHa9t2kLQyXRbdLkSzEgkzwf9unmFgZs9\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}]]"
   },
   {
     "source": {
@@ -2470,13 +2470,13 @@ return api.getPaths(pathfind)
         "value": "100"
       }
     },
-    "paths": "[[{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\"},{\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\"},{\"currency\":\"XRP\"},{\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\"},{\"currency\":\"XRP\"},{\"currency\":\"USD\",\"issuer\":\"rpHgehzdpfWRXKvSv6duKvVuo1aZVimdaT\"},{\"account\":\"rpHgehzdpfWRXKvSv6duKvVuo1aZVimdaT\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}]]"
+    "paths": "[[{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\"},{\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\"},{\"currency\":\"BRT\"},{\"currency\":\"USD\",\"issuer\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}],[{\"account\":\"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q\"},{\"currency\":\"BRT\"},{\"currency\":\"USD\",\"issuer\":\"rpHgehzdpfWRXKvSv6duKvVuo1aZVimdaT\"},{\"account\":\"rpHgehzdpfWRXKvSv6duKvVuo1aZVimdaT\"},{\"account\":\"rMH4UxPrbuMa1spCBR98hLLyNJp4d8p4tM\"}]]"
   },
   {
     "source": {
       "address": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
       "maxAmount": {
-        "currency": "XRP",
+        "currency": "BRT",
         "value": "0.207669"
       }
     },
@@ -2504,7 +2504,7 @@ Returns open orders for the specified account. Open orders are orders that have 
 
 Name | Type | Description
 ---- | ---- | -----------
-address | [address](#address) | The XRP Ledger address of the account to get open orders for.
+address | [address](#address) | The BRT Ledger address of the account to get open orders for.
 options | object | *Optional* Options that determine what orders will be returned.
 *options.* ledgerVersion | integer | *Optional* Return orders as of this historical ledger version.
 *options.* ledgerVersion | string | *Optional* Return orders as of this historical ledger version.
@@ -2737,7 +2737,7 @@ return api.getOrders(address).then(orders =>
     "specification": {
       "direction": "buy",
       "quantity": {
-        "currency": "XRP",
+        "currency": "BRT",
         "value": "115760.19"
       },
       "totalPrice": {
@@ -2841,7 +2841,7 @@ return api.getOrders(address).then(orders =>
         "counterparty": "r9Dr5xwkeLegBeXq6ujinjSBLQzQ1zQGjH"
       },
       "totalPrice": {
-        "currency": "XRP",
+        "currency": "BRT",
         "value": "2229.229447"
       }
     },
@@ -2891,8 +2891,8 @@ Name | Type | Description
 ---- | ---- | -----------
 address | [address](#address) | Address of an account to use as point-of-view. (This affects which unfunded offers are returned.)
 orderbook | object | The order book to get.
-*orderbook.* base | object | A currency-counterparty pair, or just currency if it's XRP
-*orderbook.* counter | object | A currency-counterparty pair, or just currency if it's XRP
+*orderbook.* base | object | A currency-counterparty pair, or just currency if it's BRT
+*orderbook.* counter | object | A currency-counterparty pair, or just currency if it's BRT
 options | object | *Optional* Options to determine what to return.
 *options.* ledgerVersion | integer | *Optional* Return the order book as of this historical ledger version.
 *options.* ledgerVersion | string | *Optional* Return the order book as of this historical ledger version.
@@ -4005,7 +4005,7 @@ Name | Type | Description
 defaultRipple | boolean | *Optional* Enable [rippling](https://ripple.com/build/understanding-the-nobrt-flag/) on this account’s trust lines by default. (New in [rippled 0.27.3](https://github.com/ripple/rippled/releases/tag/0.27.3))
 depositAuth | boolean | *Optional* Enable [Deposit Authorization](https://ripple.com/build/deposit-authorization/) on this account. If set, transactions cannot send value of any kind to this account unless the sender of those transactions is the account itself. (Requires the [DepositAuth amendment](https://ripple.com/build/known-amendments/#depositauth))
 disableMasterKey | boolean | *Optional* Disallows use of the master key to sign transactions for this account. To disable the master key, you must authorize the transaction by signing it with the master key pair. You cannot use a regular key pair or a multi-signature. You can re-enable the master key pair using a regular key pair or multi-signature. See [AccountSet](https://developers.ripple.com/accountset.html).
-disallowIncomingXRP | boolean | *Optional* Indicates that client applications should not send XRP to this account. Not enforced by rippled.
+disallowIncomingBRT | boolean | *Optional* Indicates that client applications should not send BRT to this account. Not enforced by rippled.
 domain | string | *Optional* The domain that owns this account, as a hexadecimal string representing the ASCII for the domain in lowercase.
 emailHash | string,null | *Optional* Hash of an email address to be used for generating an avatar image. Conventionally, clients use Gravatar to display this image. Use `null` to clear.
 enableTransactionIDTracking | boolean | *Optional* Track the ID of this account’s most recent transaction.
@@ -4021,7 +4021,7 @@ signers | object | *Optional* Settings that determine what sets of accounts can 
 *signers.* threshold | integer | A target number for the signer weights. A multi-signature from this list is valid only if the sum weights of the signatures provided is equal or greater than this value. To delete the signers setting, use the value `0`.
 *signers.* weights | array | *Optional* Weights of signatures for each signer.
 *signers.* weights[] | object | An association of an address and a weight.
-*signers.weights[].* address | [address](#address) | An account address on the XRP Ledger
+*signers.weights[].* address | [address](#address) | An account address on the BRT Ledger
 *signers.weights[].* weight | integer | The weight that the signature of this account counts as towards the threshold.
 tickSize | string | *Optional* Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are 3 to 15 inclusive, or 0 to disable.
 transferRate | number,null | *Optional* The fee to charge when users transfer this account’s issuances, as the decimal amount that must be sent to deliver 1 unit. Has precision up to 9 digits beyond the decimal point. Use `null` to set no fee.
@@ -4039,7 +4039,7 @@ return api.getSettings(address).then(settings =>
 ```json
 {
   "requireDestinationTag": true,
-  "disallowIncomingXRP": true,
+  "disallowIncomingBRT": true,
   "emailHash": "23463B99B62A72F26ED677CC556C44E8",
   "walletLocator": "00000000000000000000000000000000000000000000000000000000DEADBEEF",
   "domain": "example.com",
@@ -4086,7 +4086,7 @@ This method returns a promise that resolves with an object with the following st
 Name | Type | Description
 ---- | ---- | -----------
 sequence | [sequence](#account-sequence-number) | The next (smallest unused) sequence number for this account.
-xrpBalance | [value](#value) | The XRP balance owned by the account.
+xrpBalance | [value](#value) | The BRT balance owned by the account.
 ownerCount | integer | Number of other ledger entries (specifically, trust lines and offers) attributed to this account. This is used to calculate the total reserve required to use the account.
 previousAffectingTransactionID | string | Hash value representing the most recent transaction that affected this account node directly. **Note:** This does not include changes to the account’s trust lines and offers.
 previousAffectingTransactionLedgerVersion | integer | The ledger version that the transaction identified by the `previousAffectingTransactionID` was validated in.
@@ -4457,10 +4457,10 @@ This method returns a promise that resolves with an object with the following st
 Name | Type | Description
 ---- | ---- | -----------
 account | [address](#address) | Address that created the payment channel.
-destination | [address](#address) | Address to receive XRP claims against this channel.
-amount | [value](#value) | The total amount of XRP funded in this channel.
-balance | [value](#value) | The total amount of XRP delivered by this channel.
-settleDelay | number | Amount of seconds the source address must wait before closing the channel if it has unclaimed XRP.
+destination | [address](#address) | Address to receive BRT claims against this channel.
+amount | [value](#value) | The total amount of BRT funded in this channel.
+balance | [value](#value) | The total amount of BRT delivered by this channel.
+settleDelay | number | Amount of seconds the source address must wait before closing the channel if it has unclaimed BRT.
 previousAffectingTransactionID | string | Hash value representing the most recent transaction that affected this payment channel.
 previousAffectingTransactionLedgerVersion | integer | The ledger version that the transaction identified by the `previousAffectingTransactionID` was validated in.
 previousAffectingTransactionLedgerVersion | string | The ledger version that the transaction identified by the `previousAffectingTransactionID` was validated in.
@@ -4527,7 +4527,7 @@ ledgerVersion | integer | The ledger version of this ledger.
 ledgerVersion | string | The ledger version of this ledger.
 parentLedgerHash | string | Unique identifying hash of the ledger that came immediately before this one.
 parentCloseTime | date-time string | The previous ledger's recorded close time.
-totalDrops | [value](#value) | Total number of drops (1/1,000,000th of an XRP) in the network, as a quoted integer. (This decreases as transaction fees cause XRP to be destroyed.)
+totalDrops | [value](#value) | Total number of drops (1/1,000,000th of an BRT) in the network, as a quoted integer. (This decreases as transaction fees cause BRT to be destroyed.)
 transactionHash | string | Hash of the transaction information included in this ledger.
 rawState | string | *Optional* A JSON string containing all state data for this ledger in rippled JSON format.
 stateHashes | array\<string\> | *Optional* An array of hashes of all state data in this ledger.
@@ -4586,7 +4586,7 @@ console.log(JSON.stringify(flags, null, 2))
   "requireDestinationTag": false,
   "requireAuthorization": false,
   "depositAuth": true,
-  "disallowIncomingXRP": false,
+  "disallowIncomingBRT": false,
   "disableMasterKey": false,
   "noFreeze": false,
   "globalFreeze": false,
@@ -4833,7 +4833,7 @@ instructions | object | The instructions for how to execute the transaction afte
 ```javascript
 const address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
 
-// Buy 10.10 USD (of the specified issuer) for 2.0 XRP (2000000 drops), fill or kill.
+// Buy 10.10 USD (of the specified issuer) for 2.0 BRT (2000000 drops), fill or kill.
 const order = {
   "direction": "buy",
   "quantity": {
@@ -5580,7 +5580,7 @@ sign(txJSON: string, keypair: object, options: object): {signedTransaction: stri
 
 Sign a prepared transaction. The signed transaction must subsequently be [submitted](#submit).
 
-This method can sign any of [the transaction types supported by brt-binary-codec](https://github.com/ripple/brt-binary-codec/blob/cfcde79c19c359e9a0466d7bc3dc9a3aef47bb99/src/enums/definitions.json#L1637). When a new transaction type is added to the XRP Ledger, it will be unrecognized until `brt-binary-codec` is updated. If you try to sign an unrecognized transaction type, this method throws an error similar to the following:
+This method can sign any of [the transaction types supported by brt-binary-codec](https://github.com/ripple/brt-binary-codec/blob/cfcde79c19c359e9a0466d7bc3dc9a3aef47bb99/src/enums/definitions.json#L1637). When a new transaction type is added to the BRT Ledger, it will be unrecognized until `brt-binary-codec` is updated. If you try to sign an unrecognized transaction type, this method throws an error similar to the following:
 
 `Error: [TRANSACTION_TYPE] is not a valid name or ordinal for TransactionType`
 
@@ -5783,7 +5783,7 @@ When successful, this method returns an object containing the following fields:
 | `account_sequence_available` | Number | The next [Sequence Number](https://xrpl.org/basic-data-types.html#account-sequence) available for the sending account after all pending and [queued](https://xrpl.org/transaction-queue.html) transactions. [New in: rippled 1.5.0] |
 | `account_sequence_next` | number  | The next [Sequence Number](https://xrpl.org/basic-data-types.html#account-sequence) for the sending account after all transactions that have been provisionally applied, but not transactions in the [queue](https://xrpl.org/transaction-queue.html). [New in: rippled 1.5.0] |
 | `applied`               | Boolean | The value `true` indicates that this transaction was applied to the open ledger. In this case, the transaction is likely, but not guaranteed, to be validated in the next ledger version. [New in: rippled 1.5.0] |
-| `broadcast`             | Boolean | The value `true` indicates this transaction was broadcast to peer servers in the peer-to-peer XRP Ledger network. (Note: if the server has no peers, such as in [stand-alone mode](https://xrpl.org/rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode), the server uses the value `true` for cases where it _would_ have broadcast the transaction.) The value `false` indicates the transaction was not broadcast to any other servers. [New in: rippled 1.5.0] |
+| `broadcast`             | Boolean | The value `true` indicates this transaction was broadcast to peer servers in the peer-to-peer BRT Ledger network. (Note: if the server has no peers, such as in [stand-alone mode](https://xrpl.org/rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode), the server uses the value `true` for cases where it _would_ have broadcast the transaction.) The value `false` indicates the transaction was not broadcast to any other servers. [New in: rippled 1.5.0] |
 | `kept`                  | Boolean | The value `true` indicates that the transaction was kept to be retried later. [New in: rippled 1.5.0] |
 | `queued`                | Boolean | The value `true` indicates the transaction was put in the [Transaction Queue](https://xrpl.org/transaction-queue.html), which means it is likely to be included in a future ledger version. [New in: rippled 1.5.0] |
 | `open_ledger_cost`      | String  | The current [open ledger cost](https://xrpl.org/transaction-cost.html#open-ledger-cost) before processing this transaction. Transactions with a lower cost are likely to be [queued](https://xrpl.org/transaction-queue.html). [New in: rippled 1.5.0] |
@@ -5839,7 +5839,7 @@ const result = await api.request('submit', {
 
 `generateXAddress(options?: object): {address: string, secret: string}`
 
-Generate a new XRP Ledger address and corresponding secret.
+Generate a new BRT Ledger address and corresponding secret.
 
 ### Parameters
 
@@ -5857,7 +5857,7 @@ This method returns an object with the following structure:
 
 Name | Type | Description
 ---- | ---- | -----------
-xAddress | [xAddress](#x-address) | A randomly generated XRP Ledger address in X-address format.
+xAddress | [xAddress](#x-address) | A randomly generated BRT Ledger address in X-address format.
 secret | secret string | The secret corresponding to the address.
 
 ### Example
@@ -5881,7 +5881,7 @@ return api.generateXAddress();
 
 Deprecated: This method returns a classic address. If you do not need the classic address, use `generateXAddress` instead.
 
-Generate a new XRP Ledger address and corresponding secret.
+Generate a new BRT Ledger address and corresponding secret.
 
 ### Parameters
 
@@ -5899,8 +5899,8 @@ This method returns an object with the following structure:
 
 Name | Type | Description
 ---- | ---- | -----------
-xAddress | [xAddress](#x-address) | A randomly generated XRP Ledger address in X-address format.
-classicAddress | [classicAddress](#classic-address) | A randomly generated XRP Ledger Account ID (classic address).
+xAddress | [xAddress](#x-address) | A randomly generated BRT Ledger address in X-address format.
+classicAddress | [classicAddress](#classic-address) | A randomly generated BRT Ledger Account ID (classic address).
 address | [classicAddress](#classic-address) | Deprecated: Use `classicAddress` instead.
 secret | secret string | The secret corresponding to the address.
 
@@ -5987,7 +5987,7 @@ var private_key = keypair.privateKey;
 
 `deriveAddress(publicKey: string): string`
 
-Derive an XRP Ledger address from a public key.
+Derive an BRT Ledger address from a public key.
 
 ### Parameters
 
@@ -6014,7 +6014,7 @@ Sign a payment channel claim. The signature can be submitted in a subsequent [Pa
 Name | Type | Description
 ---- | ---- | -----------
 channel | string | 256-bit hexadecimal channel identifier.
-amount | [value](#value) | Amount of XRP authorized by the claim.
+amount | [value](#value) | Amount of BRT authorized by the claim.
 privateKey | string | The private key to sign the payment channel claim.
 
 ### Return Value
@@ -6053,7 +6053,7 @@ Verify a payment channel claim signature.
 Name | Type | Description
 ---- | ---- | -----------
 channel | string | 256-bit hexadecimal channel identifier.
-amount | [value](#value) | Amount of XRP authorized by the claim.
+amount | [value](#value) | Amount of BRT authorized by the claim.
 signature | string | Signature of this claim.
 publicKey | string | Public key of the channel's sender
 
@@ -6105,7 +6105,7 @@ ledger | object | The ledger header to hash.
 *ledger.* ledgerVersion | string | The ledger version of this ledger.
 *ledger.* parentLedgerHash | string | Unique identifying hash of the ledger that came immediately before this one.
 *ledger.* parentCloseTime | date-time string | The previous ledger's recorded close time.
-*ledger.* totalDrops | [value](#value) | Total number of drops (1/1,000,000th of an XRP) in the network, as a quoted integer. (This decreases as transaction fees cause XRP to be destroyed.)
+*ledger.* totalDrops | [value](#value) | Total number of drops (1/1,000,000th of an BRT) in the network, as a quoted integer. (This decreases as transaction fees cause BRT to be destroyed.)
 *ledger.* transactionHash | string | Hash of the transaction information included in this ledger.
 *ledger.* rawState | string | *Optional* A JSON string containing all state data for this ledger in rippled JSON format.
 *ledger.* stateHashes | array\<string\> | *Optional* An array of hashes of all state data in this ledger.
@@ -6141,11 +6141,11 @@ return api.computeLedgerHash(ledger);
 
 `xrpToDrops(xrp: string | BigNumber): string`
 
-Converts an XRP amount to drops. 1 XRP = 1,000,000 drops, so 1 drop = 0.000001 XRP. This method is useful when converting amounts for use with the rippled API, which requires XRP amounts to be specified in drops.
+Converts an BRT amount to drops. 1 BRT = 1,000,000 drops, so 1 drop = 0.000001 BRT. This method is useful when converting amounts for use with the rippled API, which requires BRT amounts to be specified in drops.
 
 ### Parameters
 
-`xrp`: A string or BigNumber representing an amount of XRP. If `xrp` is a string, it may start with `-`, must contain at least one number, and may contain up to one `.`. This method throws a `ValidationError` for invalid input.
+`xrp`: A string or BigNumber representing an amount of BRT. If `xrp` is a string, it may start with `-`, must contain at least one number, and may contain up to one `.`. This method throws a `ValidationError` for invalid input.
 
 ### Return Value
 
@@ -6165,7 +6165,7 @@ return api.xrpToDrops('1');
 
 `dropsToXrp(drops: string | BigNumber): string`
 
-Converts an amount of drops to XRP. 1 drop = 0.000001 XRP, so 1 XRP = 1,000,000 drops. This method is useful when converting amounts from the rippled API, which describes XRP amounts in drops.
+Converts an amount of drops to BRT. 1 drop = 0.000001 BRT, so 1 BRT = 1,000,000 drops. This method is useful when converting amounts from the rippled API, which describes BRT amounts in drops.
 
 ### Parameters
 
@@ -6173,7 +6173,7 @@ Converts an amount of drops to XRP. 1 drop = 0.000001 XRP, so 1 XRP = 1,000,000 
 
 ### Return Value
 
-A string representing an equivalent amount of XRP.
+A string representing an equivalent amount of BRT.
 
 ### Example
 
@@ -6285,7 +6285,7 @@ Applies globally to all transactions.
 
 `txFlags.TrustSet.ClearNoRipple`: Clears the No-[Rippling](https://developers.ripple.com/rippling.html) flag.
 
-`txFlags.TrustSet.SetFreeze`: Freeze the trustline. A non-XRP currency can be frozen by the exchange or gateway that issued it. XRP cannot be frozen.
+`txFlags.TrustSet.SetFreeze`: Freeze the trustline. A non-BRT currency can be frozen by the exchange or gateway that issued it. BRT cannot be frozen.
 
 `txFlags.TrustSet.ClearFreeze`: Unfreeze the trustline.
 
@@ -6301,14 +6301,14 @@ The AccountSet transaction type has some transaction flags, but their use is dis
 * `txFlags.AccountSet.OptionalDestTag`
 * `txFlags.AccountSet.RequireAuth`
 * `txFlags.AccountSet.OptionalAuth`
-* `txFlags.AccountSet.DisallowXRP`
-* `txFlags.AccountSet.AllowXRP`
+* `txFlags.AccountSet.DisallowBRT`
+* `txFlags.AccountSet.AllowBRT`
 
 ### PaymentChannelClaim Flags
 
 `txFlags.PaymentChannelClaim.Renew`: Clear the channel's Expiration time. (Expiration is different from the channel's immutable CancelAfter time.) Only the source address of the payment channel can use this flag.
 
-`txFlags.PaymentChannelClaim.Close`: Request to close the channel. Only the channel source and destination addresses can use this flag. This flag closes the channel immediately if it has no more XRP allocated to it after processing the current claim, or if the destination address uses it. If the source address uses this flag when the channel still holds XRP, this schedules the channel to close after SettleDelay seconds have passed. (Specifically, this sets the Expiration of the channel to the close time of the previous ledger plus the channel's SettleDelay time, unless the channel already has an earlier Expiration time.) If the destination address uses this flag when the channel still holds XRP, any XRP that remains after processing the claim is returned to the source address.
+`txFlags.PaymentChannelClaim.Close`: Request to close the channel. Only the channel source and destination addresses can use this flag. This flag closes the channel immediately if it has no more BRT allocated to it after processing the current claim, or if the destination address uses it. If the source address uses this flag when the channel still holds BRT, this schedules the channel to close after SettleDelay seconds have passed. (Specifically, this sets the Expiration of the channel to the close time of the previous ledger plus the channel's SettleDelay time, unless the channel already has an earlier Expiration time.) If the destination address uses this flag when the channel still holds BRT, any BRT that remains after processing the claim is returned to the source address.
 
 ### Other Transaction Types
 
@@ -6369,11 +6369,11 @@ This event is emitted whenever a new ledger version is validated on the connecte
 
 Name | Type | Description
 ---- | ---- | -----------
-baseFeeXRP | [value](#value) | Base fee, in XRP.
+baseFeeBRT | [value](#value) | Base fee, in BRT.
 ledgerHash | string | Unique hash of the ledger that was closed, as hex.
 ledgerTimestamp | date-time string | The time at which this ledger closed.
-reserveBaseXRP | [value](#value) | The minimum reserve, in XRP, that is required for an account.
-reserveIncrementXRP | [value](#value) | The increase in account reserve that is added for each item the account owns, such as offers or trust lines.
+reserveBaseBRT | [value](#value) | The minimum reserve, in BRT, that is required for an account.
+reserveIncrementBRT | [value](#value) | The increase in account reserve that is added for each item the account owns, such as offers or trust lines.
 transactionCount | integer | Number of new transactions included in this ledger.
 ledgerVersion | integer | Ledger version of the ledger that closed.
 ledgerVersion | string | Ledger version of the ledger that closed.
@@ -6390,12 +6390,12 @@ api.on('ledger', ledger => {
 
 ```json
 {
-  "baseFeeXRP": "0.00001",
+  "baseFeeBRT": "0.00001",
   "ledgerVersion": 14804627,
   "ledgerHash": "9141FA171F2C0CE63E609466AF728FF66C12F7ACD4B4B50B0947A7F3409D593A",
   "ledgerTimestamp": "2015-07-23T05:50:40.000Z",
-  "reserveBaseXRP": "20",
-  "reserveIncrementXRP": "5",
+  "reserveBaseBRT": "20",
+  "reserveIncrementBRT": "5",
   "transactionCount": 19,
   "validatedLedgerVersions": "13983423-14804627"
 }

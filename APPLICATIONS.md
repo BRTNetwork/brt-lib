@@ -14,53 +14,53 @@ Warning: Use at your own risk.
 
 - **[The World Exchange](https://www.theworldexchange.net/)**
 
-  Trade, issue, and send directly on the XRP Ledger. A user interface for the XRPL's decentralized exchange.
+  Trade, issue, and send directly on the BRT Ledger. A user interface for the BRTL's decentralized exchange.
 
 - **[Bitso](https://bitso.com/)**
 
-  Exchange allowing clients to buy and sell XRP, based in Mexico.
+  Exchange allowing clients to buy and sell BRT, based in Mexico.
 
 ## Data and visualizations
 
-- **[xrpintel - XRP Intelligence](https://xrpintel.com/)**
+- **[xrpintel - BRT Intelligence](https://xrpintel.com/)**
 
-  Monitor the XRP Network in real time and explore historical statistics.
+  Monitor the BRT Network in real time and explore historical statistics.
 
-- **[XRP Charts](https://xrpcharts.ripple.com/)** (xrpcharts.ripple.com)
+- **[BRT Charts](https://xrpcharts.ripple.com/)** (xrpcharts.ripple.com)
 
-  XRP Charts provides information based on public data, including trade volume, top markets, metrics, transactions, and more.
+  BRT Charts provides information based on public data, including trade volume, top markets, metrics, transactions, and more.
 
 - **[Ripple Live](https://gatehub.net/live)** (gatehub.net/live)
 
-  Visualize XRP network transactions.
+  Visualize BRT network transactions.
 
-- **[XRPL Dev. Dashboard](https://xrp.fans/)** (xrp.fans)
+- **[BRTL Dev. Dashboard](https://xrp.fans/)** (xrp.fans)
 
   Debugging dashboard for `rippled-ws-client-pool`, transaction and query explorer, and transaction signing and submission tool.
 
-- **[XRP Value](http://xrpvalue.com/)**
+- **[BRT Value](http://xrpvalue.com/)**
 
-  Real-time XRP price, trades, and orderbook data from the XRP Ledger.
+  Real-time BRT price, trades, and orderbook data from the BRT Ledger.
 
-- **[Bithomp - XRP Explorer](https://bithomp.com/explorer/)**
+- **[Bithomp - BRT Explorer](https://bithomp.com/explorer/)**
 
   Look up information by entering an address, transaction hash, username, or PayID.
 
-- **[Bithomp - XRPL validators](https://bithomp.com/validators)**
+- **[Bithomp - BRTL validators](https://bithomp.com/validators)**
 
-  List of XRPL validators, nodes, and testnet validators.
+  List of BRTL validators, nodes, and testnet validators.
 
-- **[XRP Scan - XRP Ledger explorer](https://xrpscan.com)**
+- **[BRT Scan - BRT Ledger explorer](https://xrpscan.com)**
 
-  XRP Ledger explorer, metrics and analytics.
+  BRT Ledger explorer, metrics and analytics.
   
 - **[xrplorer](https://xrplorer.com)**
 
-  XRP Ledger explorer, API, metrics, and analytics using a graph database that is synchronized live with the XRPL.
+  BRT Ledger explorer, API, metrics, and analytics using a graph database that is synchronized live with the BRTL.
 
 - **[zerptracker](https://zerptracker.com)**
 
-  Monitor the XRPL using powerful JSONPath expressions, and receive notifications via email, SMS, webhooks, and more.
+  Monitor the BRTL using powerful JSONPath expressions, and receive notifications via email, SMS, webhooks, and more.
 
 ## Wallets and wallet tools
 
@@ -70,57 +70,57 @@ Warning: Use at your own risk.
 
 - **[Xpring Wallet](https://xpring.io)** (uses `brt-keypairs`)
 
-  Non-custodial XRP wallet.
+  Non-custodial BRT wallet.
 
-- **[XRP Toolkit](https://www.xrptoolkit.com)**
+- **[BRT Toolkit](https://www.xrptoolkit.com)**
 
-  A web interface to the XRP Ledger, supporting both hardware and software wallets.
+  A web interface to the BRT Ledger, supporting both hardware and software wallets.
 
 - **[Toast Wallet](https://toastwallet.com/)**
 
-  A free, open source XRP Wallet for iOS, Android, Windows, Mac and Linux.
+  A free, open source BRT Wallet for iOS, Android, Windows, Mac and Linux.
 
 - **[Toastify Ledger](https://github.com/WietseWind/toastify-ledger)** (uses `brt-keypairs`)
 
-  Add a Regular Key to a mnemonic XRP Wallet (e.g. Ledger Nano S) to use the account with a Family Seed (secret).
+  Add a Regular Key to a mnemonic BRT Wallet (e.g. Ledger Nano S) to use the account with a Family Seed (secret).
 
 - **[Bithomp-submit](https://github.com/Bithomp/bithomp-submit)** (GitHub)
 
-  A tool to submit an offline-signed XRPL transaction.
+  A tool to submit an offline-signed BRTL transaction.
 
 - **[Kyte](https://kyteapp.co/)** (kyteapp.co) ([Source](https://github.com/WietseWind/Zerp-Wallet)) (Deprecated)
 
-  Web-based XRP wallet.
+  Web-based BRT wallet.
 
-- **[XRP Vanity Address Generator](https://github.com/WietseWind/xrp-vanity-generator)** (Node.js)
+- **[BRT Vanity Address Generator](https://github.com/WietseWind/xrp-vanity-generator)** (Node.js)
 
   A vanity address is a wallet address containing a few characters you like at the beginning or the end of the wallet address.
 
-- **[XRP Account Mnemonic Recovery](https://github.com/WietseWind/xrp-mnemonic-recovery)** (uses `brt-keypairs`)
+- **[BRT Account Mnemonic Recovery](https://github.com/WietseWind/xrp-mnemonic-recovery)** (uses `brt-keypairs`)
 
   Recover a 24 word mnemonic if one word is wrong or one word is missing.
 
 ## Send and request payments
 
-- **[XRP Tip Bot](https://www.xrptipbot.com/)**
+- **[BRT Tip Bot](https://www.xrptipbot.com/)**
 
-  A bot that enables users on reddit, Twitter and Discord to send XRP to each other through reddit comments and Twitter tweets.
+  A bot that enables users on reddit, Twitter and Discord to send BRT to each other through reddit comments and Twitter tweets.
 
-- **[XRP Text](https://xrptext.com/)**
+- **[BRT Text](https://xrptext.com/)**
 
-  Send XRP using SMS text messages.
+  Send BRT using SMS text messages.
 
-- **[XRParrot](https://xrparrot.com/)** (uses `brt-address-codec`)
+- **[BRTarrot](https://xrparrot.com/)** (uses `brt-address-codec`)
 
-  Easy EUR (SEPA) to XRP transfer (currency conversion).
+  Easy EUR (SEPA) to BRT transfer (currency conversion).
 
-- **[XRP Payment](https://xrpayments.co/)** (xrpayments.co)
+- **[BRT Payment](https://xrpayments.co/)** (xrpayments.co)
 
-  Tool for generating a XRP payment request URI in a QR code, with currency converter.
+  Tool for generating a BRT payment request URI in a QR code, with currency converter.
 
 ## Development tools
 
-- **[XRP Faucets for Testnet and Devnet](https://xrpl.org/xrp-testnet-faucet.html)**
+- **[BRT Faucets for Testnet and Devnet](https://xrpl.org/xrp-testnet-faucet.html)**
 
   Get some test funds for development on the test network. The faucet uses `brt-lib`.
 
@@ -128,15 +128,15 @@ Warning: Use at your own risk.
 
 - **[ilp-plugin-xrp-paychan](https://github.com/interledgerjs/ilp-plugin-xrp-paychan)**
 
-  Send ILP payments using XRP and payment channels (PayChan).
+  Send ILP payments using BRT and payment channels (PayChan).
 
 - **[RunKit: WietseWind](https://runkit.com/wietsewind/)**
 
-  XRP Ledger code samples for Node.js.
+  BRT Ledger code samples for Node.js.
 
 - **[GitHub Gist: WietseWind](https://gist.github.com/WietseWind)**
 
-  XRP Ledger code samples for Node.js and the web (mostly).
+  BRT Ledger code samples for Node.js and the web (mostly).
 
 - **[rippled-ws-client-sign](https://github.com/WietseWind/rippled-ws-client-sign)**
 
@@ -148,10 +148,10 @@ Warning: Use at your own risk.
 
 ## Related apps that do not appear to use brt-lib
 
-- **[XRP Stats](https://ledger.exposed/)** (ledger.exposed)
+- **[BRT Stats](https://ledger.exposed/)** (ledger.exposed)
 
-  Rich list, live ledger stats and XRP distribution. Visualize escrows and flow of funds.
+  Rich list, live ledger stats and BRT distribution. Visualize escrows and flow of funds.
 
-- **[XRP Vanity](https://xrpvanity.com/)** (xrpvanity.com)
+- **[BRT Vanity](https://xrpvanity.com/)** (xrpvanity.com)
 
-  Custom XRP addresses for sale, delivered by SetRegularKey.
+  Custom BRT addresses for sale, delivered by SetRegularKey.

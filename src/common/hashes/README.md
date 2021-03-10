@@ -1,6 +1,6 @@
-# XRP Ledger Hashes
+# BRT Ledger Hashes
 
-Methods to hash XRP Ledger objects
+Methods to hash BRT Ledger objects
 
 ## Computing a transaction hash (ID)
 
@@ -14,7 +14,7 @@ Compute the hash of a transaction in txJSON format.
 
 ## [Hash Prefixes](https://xrpl.org/basic-data-types.html#hash-prefixes)
 
-In many cases, the XRP Ledger prefixes an object's binary data with a 4-byte code before calculating its hash, so that objects of different types have different hashes even if the binary data is the same. The existing 4-byte codes are structured as 3 alphabetic characters, encoded as ASCII, followed by a zero byte.
+In many cases, the BRT Ledger prefixes an object's binary data with a 4-byte code before calculating its hash, so that objects of different types have different hashes even if the binary data is the same. The existing 4-byte codes are structured as 3 alphabetic characters, encoded as ASCII, followed by a zero byte.
 
 Some types of hashes appear in API requests and responses. Others are only calculated as the first step of signing a certain type of data, or calculating a higher-level hash. Some of following methods internally use some of the 4-byte hash prefixes in order to calculate the appropriate hash.
 
@@ -22,7 +22,7 @@ Some types of hashes appear in API requests and responses. Others are only calcu
 
 In order to single-sign a transaction, you must perform these steps:
 
-1. Assuming the transaction is in JSON format (txJSON), `encode` the transaction in the XRP Ledger's binary format.
+1. Assuming the transaction is in JSON format (txJSON), `encode` the transaction in the BRT Ledger's binary format.
 2. Hash the data with the appropriate prefix (`0x53545800` if single-signing, or `0x534D5400` if multi-signing).
 3. After signing, you must re-serialize the transaction with the `TxnSignature` field included.
 

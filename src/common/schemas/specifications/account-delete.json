@@ -6,15 +6,15 @@
   "properties": {
     "destination": {
       "$ref": "address",
-      "description": "Address of an account to receive any leftover XRP after deleting the sending account. Must be a funded account in the ledger, and must not be the sending account."
+      "description": "Address of an account to receive any leftover BRT after deleting the sending account. Must be a funded account in the ledger, and must not be the sending account."
     },
     "destinationTag": {
       "$ref": "tag",
-      "description": "(Optional) Arbitrary destination tag that identifies a hosted recipient or other information for the recipient of the deleted account's leftover XRP."
+      "description": "(Optional) Arbitrary destination tag that identifies a hosted recipient or other information for the recipient of the deleted account's leftover BRT."
     },
     "destinationXAddress": {
       "$ref": "address",
-      "description": "X-address of an account to receive any leftover XRP after deleting the sending account. Must be a funded account in the ledger, and must not be the sending account."
+      "description": "X-address of an account to receive any leftover BRT after deleting the sending account. Must be a funded account in the ledger, and must not be the sending account."
     }
   },
   "anyOf": [

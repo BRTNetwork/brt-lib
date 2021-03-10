@@ -1,10 +1,10 @@
 # Transaction Specifications
 
-A *transaction specification* specifies what a transaction should do. Each [Transaction Type](#transaction-types) has its own type of specification, which corresponds to the [native XRP Ledger transaction types](https://xrpl.org/transaction-types.html).
+A *transaction specification* specifies what a transaction should do. Each [Transaction Type](#transaction-types) has its own type of specification, which corresponds to the [native BRT Ledger transaction types](https://xrpl.org/transaction-types.html).
 
 ## Account Delete
 
-Delete your account and send the remaining XRP elsewhere. (Native transaction type: [AccountDelete](https://xrpl.org/accountdelete.html))
+Delete your account and send the remaining BRT elsewhere. (Native transaction type: [AccountDelete](https://xrpl.org/accountdelete.html))
 
 <%- renderSchema('specifications/account-delete.json') %>
 
@@ -65,7 +65,7 @@ Cancel an Escrow that has passed its expiration. (Native transaction type: []())
 
 ## Escrow Creation
 
-Create an Escrow that locks up XRP until a given time or condition is met. (Native transaction type: []())
+Create an Escrow that locks up BRT until a given time or condition is met. (Native transaction type: []())
 
 <%- renderSchema('specifications/escrow-creation.json') %>
 
@@ -76,7 +76,7 @@ Create an Escrow that locks up XRP until a given time or condition is met. (Nati
 
 ## Escrow Execution
 
-Deliver XRP from an Escrow after its conditions have been met. (Native transaction type: []())
+Deliver BRT from an Escrow after its conditions have been met. (Native transaction type: []())
 
 <%- renderSchema('specifications/escrow-execution.json') %>
 
@@ -122,7 +122,7 @@ Send value from one account to another. (Native transaction type: [Payment](http
 
 ## Payment Channel Claim
 
-Redeem XRP from a Payment Channel. (Native transaction type: [PaymentChannelClaim](https://xrpl.org/paymentchannelclaim.html))
+Redeem BRT from a Payment Channel. (Native transaction type: [PaymentChannelClaim](https://xrpl.org/paymentchannelclaim.html))
 
 <%- renderSchema('specifications/payment-channel-claim.json') %>
 
@@ -133,7 +133,7 @@ Redeem XRP from a Payment Channel. (Native transaction type: [PaymentChannelClai
 
 ## Payment Channel Create
 
-Create a Payment Channel with XRP set aside for asynchronous payments. (Native transaction type: [PaymentChannelCreate](https://xrpl.org/paymentchannelcreate.html))
+Create a Payment Channel with BRT set aside for asynchronous payments. (Native transaction type: [PaymentChannelCreate](https://xrpl.org/paymentchannelcreate.html))
 
 <%- renderSchema('specifications/payment-channel-create.json') %>
 
@@ -144,7 +144,7 @@ Create a Payment Channel with XRP set aside for asynchronous payments. (Native t
 
 ## Payment Channel Fund
 
-Add XRP to a Payment Channel. (Native transaction type: [PaymentChannelFund](https://xrpl.org/paymentchannelfund.html))
+Add BRT to a Payment Channel. (Native transaction type: [PaymentChannelFund](https://xrpl.org/paymentchannelfund.html))
 
 <%- renderSchema('specifications/payment-channel-fund.json') %>
 
@@ -169,7 +169,7 @@ Change account settings. (Native transaction types: [AccountSet](https://xrpl.or
 
 Set aside account Sequence numbers as Tickets to be used by later transactions.
 
-> **Caution:** As of 2021-01-22, Tickets are not yet available on the XRP Ledger.
+> **Caution:** As of 2021-01-22, Tickets are not yet available on the BRT Ledger.
 
 > **Note:** To prepare a Ticket Create transaction, use [`prepareTransaction()`](#preparetransaction) with the native transaction format. <!-- Future link: https://xrpl.org/ticketcreate.html -->
 

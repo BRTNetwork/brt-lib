@@ -13,7 +13,7 @@ module.exports = {
   getBalanceSheet: require('./get-balance-sheet.json'),
   getOrderbook: {
     normal: require('./get-orderbook.json'),
-    withXRP: require('./get-orderbook-with-xrp.json')
+    withBRT: require('./get-orderbook-with-xrp.json')
   },
   getOrders: require('./get-orders.json'),
   getPaths: {
@@ -107,8 +107,8 @@ module.exports = {
   preparePayment: {
     normal: require('./prepare-payment.json'),
     ticket: require('./prepare-payment-ticket'),
-    minAmountXRP: require('./prepare-payment-min-amount-xrp.json'),
-    minAmountXRPXRP: require('./prepare-payment-min-amount-xrp-xrp.json'),
+    minAmountBRT: require('./prepare-payment-min-amount-xrp.json'),
+    minAmountBRTBRT: require('./prepare-payment-min-amount-xrp-xrp.json'),
     allOptions: require('./prepare-payment-all-options.json'),
     noCounterparty: require('./prepare-payment-no-counterparty.json'),
     minAmount: require('./prepare-payment-min-amount.json'),

@@ -1,6 +1,6 @@
 import BigNumber from 'bignumber.js'
 import parseAmount from './amount'
-import {parseTimestamp, adjustQualityForXRP} from './utils'
+import {parseTimestamp, adjustQualityForBRT} from './utils'
 import {removeUndefined} from '../../common'
 import {orderFlags} from './flags'
 import {FormattedOrderSpecification} from '../../common/types/objects'
@@ -44,7 +44,7 @@ export function parseAccountOrder(
   })
 
   const makerExchangeRate = order.quality
-    ? adjustQualityForXRP(
+    ? adjustQualityForBRT(
         order.quality.toString(),
         takerGetsAmount.currency,
         takerPaysAmount.currency

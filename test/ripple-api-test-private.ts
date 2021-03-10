@@ -142,12 +142,12 @@ describe('RippleAPI', function () {
 
   it('ledger utils - renameCounterpartyToIssuerInOrder', async () => {
     const order = {
-      taker_gets: {counterparty: '1', currency: 'XRP'},
-      taker_pays: {counterparty: '1', currency: 'XRP'}
+      taker_gets: {counterparty: '1', currency: 'BRT'},
+      taker_pays: {counterparty: '1', currency: 'BRT'}
     }
     const expected = {
-      taker_gets: {issuer: '1', currency: 'XRP'},
-      taker_pays: {issuer: '1', currency: 'XRP'}
+      taker_gets: {issuer: '1', currency: 'BRT'},
+      taker_pays: {issuer: '1', currency: 'BRT'}
     }
     assert.deepEqual(
       ledgerUtils.renameCounterpartyToIssuerInOrder(order),

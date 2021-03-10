@@ -98,7 +98,7 @@ describe('Connection', function () {
     )
     assert.strictEqual(await this.api.connection.getFeeBase(), 10)
     assert.strictEqual(await this.api.connection.getFeeRef(), 10)
-    assert.strictEqual(await this.api.connection.getReserveBase(), 20000000) // 20 XRP
+    assert.strictEqual(await this.api.connection.getReserveBase(), 20000000) // 20 BRT
   })
 
   it('with proxy', function (done) {

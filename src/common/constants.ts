@@ -18,10 +18,10 @@ const accountRootFlags = {
   // Disallows use of the master key.
   DisableMaster: 0x00100000,
 
-  // lsfDisallowXRP:
-  // Disallow sending XRP.
+  // lsfDisallowBRT:
+  // Disallow sending BRT.
   // Not enforced by rippled; client applications should check.
-  DisallowXRP: 0x00080000,
+  DisallowBRT: 0x00080000,
 
   // lsfGlobalFreeze:
   // Trustlines globally frozen.
@@ -51,7 +51,7 @@ const AccountFlags = {
   requireDestinationTag: accountRootFlags.RequireDestTag,
   requireAuthorization: accountRootFlags.RequireAuth,
   depositAuth: accountRootFlags.DepositAuth,
-  disallowIncomingXRP: accountRootFlags.DisallowXRP,
+  disallowIncomingBRT: accountRootFlags.DisallowBRT,
   disableMasterKey: accountRootFlags.DisableMaster,
   noFreeze: accountRootFlags.NoFreeze,
   globalFreeze: accountRootFlags.GlobalFreeze,
@@ -63,7 +63,7 @@ export interface Settings {
   requireDestinationTag?: boolean
   requireAuthorization?: boolean
   depositAuth?: boolean
-  disallowIncomingXRP?: boolean
+  disallowIncomingBRT?: boolean
   disableMasterKey?: boolean
   noFreeze?: boolean
   globalFreeze?: boolean
@@ -74,7 +74,7 @@ const AccountFlagIndices = {
   requireDestinationTag: txFlagIndices.AccountSet.asfRequireDest,
   requireAuthorization: txFlagIndices.AccountSet.asfRequireAuth,
   depositAuth: txFlagIndices.AccountSet.asfDepositAuth,
-  disallowIncomingXRP: txFlagIndices.AccountSet.asfDisallowXRP,
+  disallowIncomingBRT: txFlagIndices.AccountSet.asfDisallowBRT,
   disableMasterKey: txFlagIndices.AccountSet.asfDisableMaster,
   enableTransactionIDTracking: txFlagIndices.AccountSet.asfAccountTxnID,
   noFreeze: txFlagIndices.AccountSet.asfNoFreeze,

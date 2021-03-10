@@ -4,7 +4,7 @@
     "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
   },
   "taker_pays": {
-    "currency": "XRP"
+    "currency": "BRT"
   },
   "ledger_index": "validated",
   "limit": 400,

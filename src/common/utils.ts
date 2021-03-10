@@ -106,7 +106,7 @@ function xrpToDrops(xrp: BigNumber.Value): string {
 }
 
 function toRippledAmount(amount: Amount): RippledAmount {
-  if (amount.currency === 'XRP') {
+  if (amount.currency === 'BRT') {
     return xrpToDrops(amount.value)
   }
   if (amount.currency === 'drops') {

@@ -302,7 +302,7 @@ class RequestManager {
 
 /**
  * The main Connection class. Responsible for connecting to & managing
- * an active WebSocket connection to a XRPL node.
+ * an active WebSocket connection to a BRTL node.
  */
 export class Connection extends EventEmitter {
   private _url: string

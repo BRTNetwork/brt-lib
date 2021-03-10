@@ -49,7 +49,7 @@ function isMinAdjustment(
   return (destination as MinAdjustment).minAmount !== undefined
 }
 
-function isXRPToXRPPayment(payment: Payment): boolean {
+function isBRTToBRTPayment(payment: Payment): boolean {
   const {source, destination} = payment
   const sourceCurrency = isMaxAdjustment(source)
     ? source.maxAmount.currency
@@ -58,15 +58,15 @@ function isXRPToXRPPayment(payment: Payment): boolean {
     ? destination.minAmount.currency
     : destination.amount.currency
   return (
-    (sourceCurrency === 'XRP' || sourceCurrency === 'drops') &&
-    (destinationCurrency === 'XRP' || destinationCurrency === 'drops')
+    (sourceCurrency === 'BRT' || sourceCurrency === 'drops') &&
+    (destinationCurrency === 'BRT' || destinationCurrency === 'drops')
   )
 }
 
 function isIOUWithoutCounterparty(amount: Amount): boolean {
   return (
     amount &&
-    amount.currency !== 'XRP' &&
+    amount.currency !== 'BRT' &&
     amount.currency !== 'drops' &&
     amount.counterparty === undefined
   )
@@ -86,7 +86,7 @@ function applyAnyCounterpartyEncoding(payment: Payment): void {
 }
 
 function createMaximalAmount(amount: Amount): Amount {
-  const maxXRPValue = '100000000000'
+  const maxBRTValue = '100000000000'
 
   // Equivalent to '9999999999999999e80' but we cannot use that because sign()
   // now checks that the encoded representation exactly matches the transaction
@@ -95,10 +95,10 @@ function createMaximalAmount(amount: Amount): Amount {
     '999999999999999900000000000000000000000000000000000000000000000000000000000000000000000000000000'
 
   let maxValue
-  if (amount.currency === 'XRP') {
-    maxValue = maxXRPValue
+  if (amount.currency === 'BRT') {
+    maxValue = maxBRTValue
   } else if (amount.currency === 'drops') {
-    maxValue = xrpToDrops(maxXRPValue)
+    maxValue = xrpToDrops(maxBRTValue)
   } else {
     maxValue = maxIOUValue
   }
@@ -189,7 +189,7 @@ function createPaymentTransaction(
   // maximum possible amount. otherwise it's possible that the destination
   // cap could be hit before the source cap.
   const amount =
-    isMinAdjustment(payment.destination) && !isXRPToXRPPayment(payment)
+    isMinAdjustment(payment.destination) && !isBRTToBRTPayment(payment)
       ? createMaximalAmount(destinationAmount)
       : destinationAmount
 
@@ -219,8 +219,8 @@ function createPaymentTransaction(
   if (payment.limitQuality === true) {
     txJSON.Flags |= paymentFlags.LimitQuality
   }
-  if (!isXRPToXRPPayment(payment)) {
-    // Don't set SendMax for XRP->XRP payment
+  if (!isBRTToBRTPayment(payment)) {
+    // Don't set SendMax for BRT->BRT payment
     // temREDUNDANT_SEND_MAX removed in:
     // https://github.com/ripple/rippled/commit/
     //  c522ffa6db2648f1d8a987843e7feabf1a0b7de8/
@@ -238,7 +238,7 @@ function createPaymentTransaction(
       txJSON.Paths = JSON.parse(payment.paths)
     }
   } else if (payment.allowPartialPayment === true) {
-    throw new ValidationError('XRP to XRP payments cannot be partial payments')
+    throw new ValidationError('BRT to BRT payments cannot be partial payments')
   }
 
   return txJSON

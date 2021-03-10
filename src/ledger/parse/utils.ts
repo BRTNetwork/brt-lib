@@ -6,15 +6,15 @@ import parseAmount from './amount'
 
 import {Amount, Memo} from '../../common/types/objects'
 
-function adjustQualityForXRP(
+function adjustQualityForBRT(
   quality: string,
   takerGetsCurrency: string,
   takerPaysCurrency: string
 ) {
   // quality = takerPays.value/takerGets.value
-  // using drops (1e-6 XRP) for XRP values
-  const numeratorShift = takerPaysCurrency === 'XRP' ? -6 : 0
-  const denominatorShift = takerGetsCurrency === 'XRP' ? -6 : 0
+  // using drops (1e-6 BRT) for BRT values
+  const numeratorShift = takerPaysCurrency === 'BRT' ? -6 : 0
+  const denominatorShift = takerGetsCurrency === 'BRT' ? -6 : 0
   const shift = numeratorShift - denominatorShift
   return shift === 0
     ? quality
@@ -147,6 +147,6 @@ export {
   parseMemos,
   hexToString,
   parseTimestamp,
-  adjustQualityForXRP,
+  adjustQualityForBRT,
   isPartialPayment
 }

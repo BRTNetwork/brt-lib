@@ -196,7 +196,7 @@ The SHA-256 checksums for the browser version of this release can be found below
 * Fix Unhandled Promise Rejection Warning on message `_send`
   * Add an immediate catch to the `_send` promise passed to `_whenReady` in case there is rejection before async handlers are added (#1092) (thanks @nickewansmith)
 * Docs improvements
-  * Add XRP Toolkit reference (#1088)
+  * Add BRT Toolkit reference (#1088)
 * Internal improvements
   * Add a prettier config
   * Update Node.js Testing Versions (#1085)
@@ -326,8 +326,8 @@ After:
 
 * Sign method - verify accurate encoding (#1026)
   * In previous versions, the following could be encoded incorrectly:
-    * Amounts of XRP with more than 6 decimal places
-    * Amounts of XRP drops with any decimal places
+    * Amounts of BRT with more than 6 decimal places
+    * Amounts of BRT drops with any decimal places
   * In versions 1.2.5 and 1.3.0, amounts that are invalid in this way will throw an error
 * Expand `APIOptions` by extending `ConnectionOptions` (#1018, fixes #1017)
 * Fix docs for destination.address (#1011)
@@ -593,7 +593,7 @@ f28921f57a133678dcb3cb54c497626bd76b1f953d22d61f3ddca31c8947d552  brt-1.1.0-min.
 
 ## 1.0.2 (2018-10-16)
 
-+ Fix #954: Exclude SendMax from all XRP to XRP payments (thanks @jefftrudeau)
++ Fix #954: Exclude SendMax from all BRT to BRT payments (thanks @jefftrudeau)
 + TypeScript
   + book_offers returns offers type OfferLedgerEntry (#951)
   + Use `object` (#936)
@@ -613,7 +613,7 @@ c7286c517497d018d02d09257e81172b61d36c8b9885a077af68e8133c3b3b9b  brt-1.0.2.js
   + `isValidAddress(address: string) : boolean`: Checks if the specified string contains a valid address.
   + `isValidSecret(secret: string): boolean`: Checks if the specified string contains a valid secret.
   + `deriveKeypair(seed: string): {privateKey: string, publicKey: string}`: Derive a public and private key from a seed.
-  + `deriveAddress(publicKey: string): string`: Derive an XRP Ledger address from a public key.
+  + `deriveAddress(publicKey: string): string`: Derive an BRT Ledger address from a public key.
 + To derive an address from a secret:
   1. Derive the public key from the secret.
   2. Derive the address from the public key.
@@ -650,21 +650,21 @@ the last non-beta version.
 + [Add `request()`, `hasNextPage()`, and `requestNextPage()` for accessing `rippled`
   APIs](https://github.com/BRTNetwork/js-brt-lib/blob/09541dae86bc859bf5928ac65b2645dfaaf7f8b1/docs/index.md#rippled-apis).
 + Add `prepareTransaction()` for preparing raw `txJSON`.
-+ XRP amounts can be specified in drops. Also, `xrpToDrops()` and `dropsToXrp()`
++ BRT amounts can be specified in drops. Also, `xrpToDrops()` and `dropsToXrp()`
   are available to make conversions.
 + `getTransaction` responses can include a new `channelChanges` property that
   describes the details of a payment channel.
 
 ### Data Validation and Errors
 
-+ [Amounts in drops and XRP are checked for
++ [Amounts in drops and BRT are checked for
   validity](https://github.com/BRTNetwork/js-brt-lib/blob/develop/HISTORY.md#100-beta1-2018-05-24).
 + [A maximum fee is now
   imposed](https://github.com/BRTNetwork/js-brt-lib/blob/develop/HISTORY.md#100-beta2-2018-06-08). Exceeding it causes a `ValidationError` to be
   thrown.
 + Errors are improved and more data validation was added.
 + Bug fix: `getPaths` now filters paths correctly and works correctly when the
-  destination currency is XRP.
+  destination currency is BRT.
 
 ### Breaking Changes
 
@@ -728,21 +728,21 @@ cccfd24973c6b7990d9e933a589175dae26249825737fff4f2f73d8558a3f186  brt-1.0.0-beta
 
 ### Breaking Changes
 
-+ During transaction preparation, there is now a maximum fee. Also, when a transaction is signed, its fee is checked and an error is thrown if the fee exceeds the maximum. The default `maxFeeXRP` is `'2'` (2 XRP). Override this value in the RippleAPI constructor.
-+ Attempting to prepare a transaction with an exact `fee` higher than `maxFeeXRP` causes a `ValidationError` to be thrown.
-+ Attempting to sign a transaction with a fee higher than `maxFeeXRP` causes a `ValidationError` to be thrown.
-+ The value returned by `getFee()` is capped at `maxFeeXRP`.
++ During transaction preparation, there is now a maximum fee. Also, when a transaction is signed, its fee is checked and an error is thrown if the fee exceeds the maximum. The default `maxFeeBRT` is `'2'` (2 BRT). Override this value in the RippleAPI constructor.
++ Attempting to prepare a transaction with an exact `fee` higher than `maxFeeBRT` causes a `ValidationError` to be thrown.
++ Attempting to sign a transaction with a fee higher than `maxFeeBRT` causes a `ValidationError` to be thrown.
++ The value returned by `getFee()` is capped at `maxFeeBRT`.
 
 ### Other Changes
 
-+ In Transaction Instructions, the `maxFee` parameter is deprecated. Use the `maxFeeXRP` parameter in the RippleAPI constructor.
++ In Transaction Instructions, the `maxFee` parameter is deprecated. Use the `maxFeeBRT` parameter in the RippleAPI constructor.
 
 #### Overview of new fee limit
 
 Most users of brt-lib do not need to make any code changes to accommodate the new soft limit on fees. The limit is designed to protect against the most severe cases where an unintentionally high fee may be used.
 
-+ When having brt-lib provide the fee with a `prepare*` method, a maximum fee of `maxFeeXRP` (default 2 XRP) applies. You can prepare more economical transactions by setting a lower `maxFeeXRP`, or support high-priority transactions by setting a higher `maxFeeXRP` in the RippleAPI constructor.
-+ When using `sign` with a Fee higher than `maxFeeXRP`, a `ValidationError` is thrown.
++ When having brt-lib provide the fee with a `prepare*` method, a maximum fee of `maxFeeBRT` (default 2 BRT) applies. You can prepare more economical transactions by setting a lower `maxFeeBRT`, or support high-priority transactions by setting a higher `maxFeeBRT` in the RippleAPI constructor.
++ When using `sign` with a Fee higher than `maxFeeBRT`, a `ValidationError` is thrown.
 
 If you have any questions or concerns, please open an issue on GitHub.
 
@@ -759,11 +759,11 @@ fe5cc6e97c9b8a1470dacb34f16a64255cd639a25381abe9db1ba79e102456f2  brt-1.0.0-beta
 
 ### Breaking Changes
 
-+ Amounts in drops and XRP are checked for validity. Some
++ Amounts in drops and BRT are checked for validity. Some
   methods may now throw a `BigNumber Error` or `ValidationError` if the amount
   is invalid. This may include methods that previously did not throw.
-+ Note that 1 drop is equivalent to 0.000001 XRP and 1 XRP is equivalent to 1,000,000 drops.
-+ Using drops is recommended. All rippled APIs require XRP amounts to be
++ Note that 1 drop is equivalent to 0.000001 BRT and 1 BRT is equivalent to 1,000,000 drops.
++ Using drops is recommended. All rippled APIs require BRT amounts to be
   expressed in drops.
 
 ### Other Changes
@@ -791,7 +791,7 @@ a80ebb39e186640246306eadb2879147458c8271fd3c6cb32e6ef78d0b4b01a5  brt-1.0.0-beta
   + This provides support for all rippled APIs, including subscriptions.
 
 When using rippled APIs, you must:
-+ For all XRP amounts, use drops (1 drop = 0.000001 XRP).
++ For all BRT amounts, use drops (1 drop = 0.000001 BRT).
 + Instead of `counterparty`, use `issuer`.
 
 The SHA-256 checksums for the browser version of this release can be found
@@ -979,7 +979,7 @@ e6ad9a9c111ab696f5637bfa372d80999e5ae362  brt-0.17.9-min.js
 ## 0.16.0
 
 __BREAKING CHANGES__
-+ [Fix types of XRP values in `getServerInfo` response](https://github.com/BRTNetwork/js-brt-lib/commit/99d08065e4bda3dda6ae1f183adbd11abc70a9b7)
++ [Fix types of BRT values in `getServerInfo` response](https://github.com/BRTNetwork/js-brt-lib/commit/99d08065e4bda3dda6ae1f183adbd11abc70a9b7)
 + [Change error event format and fix crash due to error event on websocket](https://github.com/BRTNetwork/js-brt-lib/commit/9cd72595f0efc062d77b9d625695d6030c524cc6)
 
 __OTHER CHANGES__
@@ -1141,7 +1141,7 @@ __OTHER CHANGES__
 + [Fix taker_gets_funded exceeding offer.TakerGets](https://github.com/BRTNetwork/js-brt-lib/commit/b19ecb4482b589d575382b7a5d0480b963383bb1)
 + [Fix unsymmetric memo serializing](https://github.com/BRTNetwork/js-brt-lib/commit/1ed36fabdbd54f4d31078c2b0eaa3becc0fe2821)
 + [Fix IOU value passed to `Amount.from_json()`](https://github.com/BRTNetwork/js-brt-lib/commit/fd1b64393dffb3d1819cd40b8d43df43a4db042d)
-+ [Update transaction binary parsing to account for XRP delivered amounts](https://github.com/BRTNetwork/js-brt-lib/commit/35a346a674e6ee1e1e495db93700d55984efc7dd)
++ [Update transaction binary parsing to account for BRT delivered amounts](https://github.com/BRTNetwork/js-brt-lib/commit/35a346a674e6ee1e1e495db93700d55984efc7dd)
 + [Bumped dependencies](https://github.com/BRTNetwork/js-brt-lib/commit/f9bc7cc746b44b24b61bbe260ae2e9d9617286da)
 
 ## 0.11.0
@@ -1191,7 +1191,7 @@ are locally determined to have expired: `tejMaxLedger`.
 + [Add a "core" browser build of brt-lib which has a subset of features and smaller file size](https://github.com/BRTNetwork/js-brt-lib/pull/205)
 + [Update binformat with missing fields from rippled](https://github.com/BRTNetwork/js-brt-lib/commit/cae980788efb00191bfd0988ed836d60cdf7a9a2)
 + [Wait for transaction validation before returning `tec` error](https://github.com/BRTNetwork/js-brt-lib/commit/6bdd4b2670906588852fc4dda457607b4aac08e4)
-+ [Change default `max_fee` on `Remote` to `1 XRP`](https://github.com/BRTNetwork/js-brt-lib/commit/d6b1728c23ff85c3cc791bed6982a750641fd95f)
++ [Change default `max_fee` on `Remote` to `1 BRT`](https://github.com/BRTNetwork/js-brt-lib/commit/d6b1728c23ff85c3cc791bed6982a750641fd95f)
 + [Fix: Request ledger_accept should return the Remote](https://github.com/BRTNetwork/js-brt-lib/pull/209)
 
 ## 0.9.2
@@ -1292,7 +1292,7 @@ __OTHER CHANGES__
 
 + **Deprecations**
 
-    1. Removed humanistic amount detection in `transaction.payment`. Passing `1XRP` as the payment amount no longer works.
+    1. Removed humanistic amount detection in `transaction.payment`. Passing `1BRT` as the payment amount no longer works.
     2. `remote.setServer` uses full server URL rather than hostname. Example: `remote.setServer('wss://s`.ripple.com:443')`
     3. Removed constructors for deprecated transaction types from `transaction.js`.
     4. Removed `invoiceID` option from `transaction.payment`. Instead, use the `transaction.invoiceID` method.
@@ -1308,7 +1308,7 @@ __OTHER CHANGES__
         parseBinary: false
       }
     ```
-+ Added full currency name support, e.g. `Currency.from_json('XRP').to_human({full_name:'Ripples'})` will return `XRP - Ripples`
++ Added full currency name support, e.g. `Currency.from_json('BRT').to_human({full_name:'Ripples'})` will return `BRT - Ripples`
 + Improved interest bearing currency support, e.g. `Currency.from_human('USD - US Dollar (2.5%pa)')`
 + Improve test coverage
 + Added blob vault client.  The vault client facilitates interaction with ripple's namespace and blob vault or 3rd party blob vaults using ripple's blob vault software (https://github.com/ripple/brt-blobvault). A list of the available functions can be found at [docs/VAULTCLIENT.md](docs/VAULTCLIENT.md)

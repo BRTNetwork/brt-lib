@@ -89,14 +89,14 @@ export default <TestSuite>{
     })
   },
 
-  'with XRP': async (api, address) => {
+  'with BRT': async (api, address) => {
     const orderbookInfo = {
       base: {
         currency: 'USD',
         counterparty: 'rp8rJYTpodf8qbSCHVTNacf8nSW8mRakFw'
       },
       counter: {
-        currency: 'XRP'
+        currency: 'BRT'
       }
     }
 
@@ -128,15 +128,15 @@ export default <TestSuite>{
         ...directOffers,
         ...reverseOffers
       ])
-      assert.deepEqual(orderbook, responses.getOrderbook.withXRP)
+      assert.deepEqual(orderbook, responses.getOrderbook.withBRT)
     })
   },
 
-  'sample XRP/JPY book has orders sorted correctly': async (api, address) => {
+  'sample BRT/JPY book has orders sorted correctly': async (api, address) => {
     const orderbookInfo = {
       base: {
         // the first currency in pair
-        currency: 'XRP'
+        currency: 'BRT'
       },
       counter: {
         currency: 'JPY',
@@ -151,14 +151,14 @@ export default <TestSuite>{
         taker_gets: RippleAPI.renameCounterpartyToIssuer(orderbookInfo.base),
         taker_pays: RippleAPI.renameCounterpartyToIssuer(orderbookInfo.counter),
         ledger_index: 'validated',
-        limit: 400, // must match `test/fixtures/rippled/requests/1-taker_gets-XRP-taker_pays-JPY.json`
+        limit: 400, // must match `test/fixtures/rippled/requests/1-taker_gets-BRT-taker_pays-JPY.json`
         taker: myAddress
       }),
       api.request('book_offers', {
         taker_gets: RippleAPI.renameCounterpartyToIssuer(orderbookInfo.counter),
         taker_pays: RippleAPI.renameCounterpartyToIssuer(orderbookInfo.base),
         ledger_index: 'validated',
-        limit: 400, // must match `test/fixtures/rippled/requests/2-taker_gets-JPY-taker_pays-XRP.json`
+        limit: 400, // must match `test/fixtures/rippled/requests/2-taker_gets-JPY-taker_pays-BRT.json`
         taker: myAddress
       })
     ]).then(([directOfferResults, reverseOfferResults]) => {
@@ -179,9 +179,9 @@ export default <TestSuite>{
     })
   },
 
-  'sample USD/XRP book has orders sorted correctly': async (api, address) => {
+  'sample USD/BRT book has orders sorted correctly': async (api, address) => {
     const orderbookInfo = {
-      counter: {currency: 'XRP'},
+      counter: {currency: 'BRT'},
       base: {
         currency: 'USD',
         counterparty: 'rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
@@ -195,14 +195,14 @@ export default <TestSuite>{
         taker_gets: RippleAPI.renameCounterpartyToIssuer(orderbookInfo.base),
         taker_pays: RippleAPI.renameCounterpartyToIssuer(orderbookInfo.counter),
         ledger_index: 'validated',
-        limit: 400, // must match `test/fixtures/rippled/requests/1-taker_gets-XRP-taker_pays-JPY.json`
+        limit: 400, // must match `test/fixtures/rippled/requests/1-taker_gets-BRT-taker_pays-JPY.json`
         taker: myAddress
       }),
       api.request('book_offers', {
         taker_gets: RippleAPI.renameCounterpartyToIssuer(orderbookInfo.counter),
         taker_pays: RippleAPI.renameCounterpartyToIssuer(orderbookInfo.base),
         ledger_index: 'validated',
-        limit: 400, // must match `test/fixtures/rippled/requests/2-taker_gets-JPY-taker_pays-XRP.json`
+        limit: 400, // must match `test/fixtures/rippled/requests/2-taker_gets-JPY-taker_pays-BRT.json`
         taker: myAddress
       })
     ]).then(([directOfferResults, reverseOfferResults]) => {

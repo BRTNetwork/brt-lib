@@ -20,7 +20,7 @@ import https = require('https')
  *    - Listen for transaction status: scan all validated transactions to see if our transactions are among them
  * 3) What do we do when a transaction fails? It is possible to implement retry logic, but caution is advised. Note that there are a few ways for a transaction to fail:
  *    A) `tec`: The transaction was included in a ledger but only claimed the transaction fee
- *    B) `tesSUCCESS` but unexpected result: The transaction was successful but did not have the expected result. This generally does not occur for XRP-to-XRP payments
+ *    B) `tesSUCCESS` but unexpected result: The transaction was successful but did not have the expected result. This generally does not occur for BRT-to-BRT payments
  *    C) The transaction was not, and never will be, included in a validated ledger [3C]
  *
  * References:
@@ -36,7 +36,7 @@ import https = require('https')
  * 2) We will listen for notification that a new validated ledger has been found, and poll for transaction status at that time.
  *    Futhermore, as a precaution, we will wait until the server is 3 ledgers past the transaction's LastLedgerSequence
  *    (with the transaction nowhere to be seen) before deciding that it has definitively failed per [3C]
- * 3) Transactions will not be automatically retried. Transactions are limited to XRP-to-XRP payments and cannot "succeed" in an unexpected way.
+ * 3) Transactions will not be automatically retried. Transactions are limited to BRT-to-BRT payments and cannot "succeed" in an unexpected way.
  */
 reliableTransactionSubmissionExample()
 
@@ -44,7 +44,7 @@ async function reliableTransactionSubmissionExample() {
   /**
    * Array of payments to execute.
    *
-   * For brevity, these are XRP-to-XRP payments, taking a source, destination, and an amount in drops.
+   * For brevity, these are BRT-to-BRT payments, taking a source, destination, and an amount in drops.
    *
    * The script will attempt to make all of these payments as quickly as possible, and report the final status of each. Transactions that fail are NOT retried.
    */

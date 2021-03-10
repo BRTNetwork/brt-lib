@@ -256,7 +256,7 @@ function prepareTransaction(
     // instructions.fee is scaled (for multi-signed transactions) while txJSON.Fee is not.
     // Due to this difference, we do NOT allow both to be set, as the behavior would be complex and
     // potentially ambiguous.
-    // Furthermore, txJSON.Fee is in drops while instructions.fee is in XRP, which would just add to
+    // Furthermore, txJSON.Fee is in drops while instructions.fee is in BRT, which would just add to
     // the confusion. It is simpler to require that only one is used.
     if (newTxJSON.Fee && instructions.fee) {
       return Promise.reject(
@@ -275,12 +275,12 @@ function prepareTransaction(
         : instructions.signersCount + 1
     if (instructions.fee !== undefined) {
       const fee = new BigNumber(instructions.fee)
-      if (fee.isGreaterThan(api._maxFeeXRP)) {
+      if (fee.isGreaterThan(api._maxFeeBRT)) {
         return Promise.reject(
           new ValidationError(
-            `Fee of ${fee.toString(10)} XRP exceeds ` +
-              `max of ${api._maxFeeXRP} XRP. To use this fee, increase ` +
-              '`maxFeeXRP` in the RippleAPI constructor.'
+            `Fee of ${fee.toString(10)} BRT exceeds ` +
+              `max of ${api._maxFeeBRT} BRT. To use this fee, increase ` +
+              '`maxFeeBRT` in the RippleAPI constructor.'
           )
         )
       }
@@ -304,10 +304,10 @@ function prepareTransaction(
                   Buffer.from(newTxJSON.Fulfillment, 'hex').length / 16
                 ))
         const feeDrops = common.xrpToDrops(fee)
-        const maxFeeXRP = instructions.maxFee
-          ? BigNumber.min(api._maxFeeXRP, instructions.maxFee)
-          : api._maxFeeXRP
-        const maxFeeDrops = common.xrpToDrops(maxFeeXRP)
+        const maxFeeBRT = instructions.maxFee
+          ? BigNumber.min(api._maxFeeBRT, instructions.maxFee)
+          : api._maxFeeBRT
+        const maxFeeDrops = common.xrpToDrops(maxFeeBRT)
         const normalFee = scaleValue(feeDrops, multiplier, extraFee)
         newTxJSON.Fee = BigNumber.min(normalFee, maxFeeDrops).toString(10)
 

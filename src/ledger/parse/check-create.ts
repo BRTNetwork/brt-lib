@@ -9,7 +9,7 @@ export type FormattedCheckCreate = {
   destination: string
 
   // amount the check is allowed to debit the sender,
-  // including transfer fees on non-XRP currencies.
+  // including transfer fees on non-BRT currencies.
   sendMax: Amount
 
   // (Optional) identifies the reason for the check, or a hosted recipient.

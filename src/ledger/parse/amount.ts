@@ -4,7 +4,7 @@ import {Amount, RippledAmount} from '../../common/types/objects'
 function parseAmount(amount: RippledAmount): Amount {
   if (typeof amount === 'string') {
     return {
-      currency: 'XRP',
+      currency: 'BRT',
       value: common.dropsToXrp(amount)
     }
   }

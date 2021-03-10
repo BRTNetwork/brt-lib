@@ -1,6 +1,6 @@
 import * as _ from 'lodash'
 import BigNumber from 'bignumber.js'
-import {getXRPBalance, renameCounterpartyToIssuer} from './utils'
+import {getBRTBalance, renameCounterpartyToIssuer} from './utils'
 import {
   validate,
   toRippledAmount,
@@ -42,7 +42,7 @@ function requestPathFind(
     {
       // This is converted back to drops by toRippledAmount()
       value:
-        pathfind.destination.amount.currency === 'XRP' ? dropsToXrp('-1') : '-1'
+        pathfind.destination.amount.currency === 'BRT' ? dropsToXrp('-1') : '-1'
     },
     pathfind.destination.amount
   )
@@ -86,7 +86,7 @@ function addDirectXrpPath(
   paths: RippledPathsResponse,
   xrpBalance: string
 ): RippledPathsResponse {
-  // Add XRP "path" only if the source acct has enough XRP to make the payment
+  // Add BRT "path" only if the source acct has enough BRT to make the payment
   const destinationAmount = paths.destination_amount
   // @ts-ignore: destinationAmount can be a currency amount object! Fix!
   if (new BigNumber(xrpBalance).isGreaterThanOrEqualTo(destinationAmount)) {
@@ -99,24 +99,24 @@ function addDirectXrpPath(
 }
 
 function isRippledIOUAmount(amount: RippledAmount) {
-  // rippled XRP amounts are specified as decimal strings
+  // rippled BRT amounts are specified as decimal strings
   return (
-    typeof amount === 'object' && amount.currency && amount.currency !== 'XRP'
+    typeof amount === 'object' && amount.currency && amount.currency !== 'BRT'
   )
 }
 
-function conditionallyAddDirectXRPPath(
+function conditionallyAddDirectBRTPath(
   connection: Connection,
   address: string,
   paths: RippledPathsResponse
 ): Promise<RippledPathsResponse> {
   if (
     isRippledIOUAmount(paths.destination_amount) ||
-    !_.includes(paths.destination_currencies, 'XRP')
+    !_.includes(paths.destination_currencies, 'BRT')
   ) {
     return Promise.resolve(paths)
   }
-  return getXRPBalance(connection, address, undefined).then((xrpBalance) =>
+  return getBRTBalance(connection, address, undefined).then((xrpBalance) =>
     addDirectXrpPath(paths, xrpBalance)
   )
 }
@@ -135,7 +135,7 @@ function filterSourceFundsLowPaths(
         return false
       }
       const pathfindSourceAmountValue = new BigNumber(
-        pathfind.source.amount.currency === 'XRP'
+        pathfind.source.amount.currency === 'BRT'
           ? xrpToDrops(pathfind.source.amount.value)
           : pathfind.source.amount.value
       )
@@ -192,7 +192,7 @@ function getPaths(this: RippleAPI, pathfind: PathFind): Promise<GetPaths> {
   const address = pathfind.source.address
   return requestPathFind(this.connection, pathfind)
     .then((paths) =>
-      conditionallyAddDirectXRPPath(this.connection, address, paths)
+      conditionallyAddDirectBRTPath(this.connection, address, paths)
     )
     .then((paths) => filterSourceFundsLowPaths(pathfind, paths))
     .then((paths) => formatResponse(pathfind, paths))

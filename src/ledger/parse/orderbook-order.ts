@@ -1,5 +1,5 @@
 import * as _ from 'lodash'
-import {parseTimestamp, adjustQualityForXRP} from './utils'
+import {parseTimestamp, adjustQualityForBRT} from './utils'
 import {removeUndefined} from '../../common'
 
 import {orderFlags} from './flags'
@@ -41,7 +41,7 @@ export function parseOrderbookOrder(data: BookOffer): FormattedOrderbookOrder {
   const properties = {
     maker: data.Account,
     sequence: data.Sequence,
-    makerExchangeRate: adjustQualityForXRP(
+    makerExchangeRate: adjustQualityForBRT(
       data.quality,
       takerGetsAmount.currency,
       takerPaysAmount.currency

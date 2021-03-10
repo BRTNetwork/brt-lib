@@ -24,7 +24,7 @@
         "balanceChanges": {
           "rJXJEvVxWSG2xVp62AoE7rM3PKUF9S1GSR": [
             {
-              "currency": "XRP",
+              "currency": "BRT",
               "value": "-0.000015"
             }
           ]
@@ -34,7 +34,7 @@
             {
               "direction": "buy",
               "quantity": {
-                "currency": "XRP",
+                "currency": "BRT",
                 "value": "42843.541733"
               },
               "totalPrice": {
@@ -77,7 +77,7 @@
         "balanceChanges": {
           "rUp8CvtneUUL6qYaxfZwUHg2cwYuo5jugG": [
             {
-              "currency": "XRP",
+              "currency": "BRT",
               "value": "-0.01"
             }
           ]
@@ -148,7 +148,7 @@
         "balanceChanges": {
           "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw": [
             {
-              "currency": "XRP",
+              "currency": "BRT",
               "value": "-0.00003"
             }
           ]
@@ -204,7 +204,7 @@
         "balanceChanges": {
           "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw": [
             {
-              "currency": "XRP",
+              "currency": "BRT",
               "value": "-0.00003"
             }
           ]
@@ -277,7 +277,7 @@
         "balanceChanges": {
           "rGFuMiw48HdbnrUbkRYuitXTmfrDBNTCnX": [
             {
-              "currency": "XRP",
+              "currency": "BRT",
               "value": "-0.01"
             },
             {
@@ -341,7 +341,7 @@
         "balanceChanges": {
           "rMPJDVaiP1eY7QTy3qFKLyBJxry2vuD5Sp": [
             {
-              "currency": "XRP",
+              "currency": "BRT",
               "value": "-0.01"
             }
           ]

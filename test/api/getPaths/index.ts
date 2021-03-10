@@ -27,14 +27,14 @@ export default <TestSuite>{
     assertResultMatch(xrpOnlyResult, RESPONSE_FIXTURES.XrpToXrp, 'getPaths')
   },
   // @TODO
-  // need decide what to do with currencies/XRP:
-  // if add 'XRP' in currencies, then there will be exception in
+  // need decide what to do with currencies/BRT:
+  // if add 'BRT' in currencies, then there will be exception in
   // xrpToDrops function (called from toRippledAmount)
   'getPaths USD 2 USD': async (api) => {
     const response = await api.getPaths(REQUEST_FIXTURES.UsdToUsd)
     assertResultMatch(response, RESPONSE_FIXTURES.UsdToUsd, 'getPaths')
   },
-  'getPaths XRP 2 XRP': async (api) => {
+  'getPaths BRT 2 BRT': async (api) => {
     const response = await api.getPaths(REQUEST_FIXTURES.XrpToXrp)
     assertResultMatch(response, RESPONSE_FIXTURES.XrpToXrp, 'getPaths')
   },
@@ -44,7 +44,7 @@ export default <TestSuite>{
       api.errors.NotFoundError
     )
   },
-  'XRP 2 XRP - not enough': async (api) => {
+  'BRT 2 BRT - not enough': async (api) => {
     return assertRejects(
       api.getPaths(REQUEST_FIXTURES.XrpToXrpNotEnough),
       api.errors.NotFoundError

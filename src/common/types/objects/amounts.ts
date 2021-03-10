@@ -6,7 +6,7 @@ export type RippledAmount = string | Amount
 
 /**
  * Specification of which currency the account taking the offer would pay/
- * receive, as an object with currency and issuer fields (omit issuer for XRP).
+ * receive, as an object with currency and issuer fields (omit issuer for BRT).
  * Similar to currency amounts.
  */
 export interface TakerRequestAmount {
@@ -15,7 +15,7 @@ export interface TakerRequestAmount {
 }
 
 /**
- * A currency-counterparty pair, or just currency if it's XRP.
+ * A currency-counterparty pair, or just currency if it's BRT.
  */
 export interface Issue {
   currency: string

@@ -10,50 +10,50 @@ import {TestSuite} from '../../utils'
 export default <TestSuite>{
   'works with a typical amount': function (api) {
     const drops = api.xrpToDrops('2')
-    assert.strictEqual(drops, '2000000', '2 XRP equals 2 million drops')
+    assert.strictEqual(drops, '2000000', '2 BRT equals 2 million drops')
   },
   'works with fractions': function (api) {
     let drops = api.xrpToDrops('3.456789')
-    assert.strictEqual(drops, '3456789', '3.456789 XRP equals 3,456,789 drops')
+    assert.strictEqual(drops, '3456789', '3.456789 BRT equals 3,456,789 drops')
     drops = api.xrpToDrops('3.400000')
-    assert.strictEqual(drops, '3400000', '3.400000 XRP equals 3,400,000 drops')
+    assert.strictEqual(drops, '3400000', '3.400000 BRT equals 3,400,000 drops')
     drops = api.xrpToDrops('0.000001')
-    assert.strictEqual(drops, '1', '0.000001 XRP equals 1 drop')
+    assert.strictEqual(drops, '1', '0.000001 BRT equals 1 drop')
     drops = api.xrpToDrops('0.0000010')
-    assert.strictEqual(drops, '1', '0.0000010 XRP equals 1 drop')
+    assert.strictEqual(drops, '1', '0.0000010 BRT equals 1 drop')
   },
   'works with zero': function (api) {
     let drops = api.xrpToDrops('0')
-    assert.strictEqual(drops, '0', '0 XRP equals 0 drops')
+    assert.strictEqual(drops, '0', '0 BRT equals 0 drops')
     drops = api.xrpToDrops('-0') // negative zero is equivalent to zero
-    assert.strictEqual(drops, '0', '-0 XRP equals 0 drops')
+    assert.strictEqual(drops, '0', '-0 BRT equals 0 drops')
     drops = api.xrpToDrops('0.000000')
-    assert.strictEqual(drops, '0', '0.000000 XRP equals 0 drops')
+    assert.strictEqual(drops, '0', '0.000000 BRT equals 0 drops')
     drops = api.xrpToDrops('0.0000000')
-    assert.strictEqual(drops, '0', '0.0000000 XRP equals 0 drops')
+    assert.strictEqual(drops, '0', '0.0000000 BRT equals 0 drops')
   },
   'works with a negative value': function (api) {
     const drops = api.xrpToDrops('-2')
-    assert.strictEqual(drops, '-2000000', '-2 XRP equals -2 million drops')
+    assert.strictEqual(drops, '-2000000', '-2 BRT equals -2 million drops')
   },
   'works with a value ending with a decimal point': function (api) {
     let drops = api.xrpToDrops('2.')
-    assert.strictEqual(drops, '2000000', '2. XRP equals 2000000 drops')
+    assert.strictEqual(drops, '2000000', '2. BRT equals 2000000 drops')
     drops = api.xrpToDrops('-2.')
-    assert.strictEqual(drops, '-2000000', '-2. XRP equals -2000000 drops')
+    assert.strictEqual(drops, '-2000000', '-2. BRT equals -2000000 drops')
   },
   'works with BigNumber objects': function (api) {
     let drops = api.xrpToDrops(new BigNumber(2))
     assert.strictEqual(
       drops,
       '2000000',
-      '(BigNumber) 2 XRP equals 2 million drops'
+      '(BigNumber) 2 BRT equals 2 million drops'
     )
     drops = api.xrpToDrops(new BigNumber(-2))
     assert.strictEqual(
       drops,
       '-2000000',
-      '(BigNumber) -2 XRP equals -2 million drops'
+      '(BigNumber) -2 BRT equals -2 million drops'
     )
   },
   'works with a number': function (api) {
@@ -62,13 +62,13 @@ export default <TestSuite>{
     assert.strictEqual(
       drops,
       '2000000',
-      '(number) 2 XRP equals 2 million drops'
+      '(number) 2 BRT equals 2 million drops'
     )
     drops = api.xrpToDrops(-2)
     assert.strictEqual(
       drops,
       '-2000000',
-      '(number) -2 XRP equals -2 million drops'
+      '(number) -2 BRT equals -2 million drops'
     )
   },
   'throws with an amount with too many decimal places': function (api) {

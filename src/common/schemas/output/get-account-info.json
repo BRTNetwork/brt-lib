@@ -9,7 +9,7 @@
     },
     "xrpBalance": {
       "$ref": "value",
-      "description": "The XRP balance owned by the account."
+      "description": "The BRT balance owned by the account."
     },
     "ownerCount": {
       "type": "integer",

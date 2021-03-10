@@ -19,7 +19,7 @@
         "source": {
           "address": "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
           "maxAmount": {
-            "currency": "XRP",
+            "currency": "BRT",
             "value": "10000"
           }
         },
@@ -31,19 +31,19 @@
         "result": "tesSUCCESS",
         "fee": "0.00001",
         "deliveredAmount": {
-          "currency": "XRP",
+          "currency": "BRT",
           "value": "10000"
         },
         "balanceChanges": {
           "rLQBHVhFnaC5gLEkgr6HgBJJ3bgeZHg9cj": [
             {
-              "currency": "XRP",
+              "currency": "BRT",
               "value": "10000"
             }
           ],
           "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV": [
             {
-              "currency": "XRP",
+              "currency": "BRT",
               "value": "-10000.00001"
             }
           ]

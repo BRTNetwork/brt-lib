@@ -735,7 +735,7 @@ export function createMockRippled(port) {
             issuer: 'rGpGaj4sxEZGenW1prqER25EUi7x4fqK9u',
             value: '-1'
           },
-          destination_currencies: ['EUR', 'XRP'],
+          destination_currencies: ['EUR', 'BRT'],
           full_reply: true,
           id: 2,
           source_account: 'rB2NTuTTS3eNCsWxZYzJ4wqRqxNLZqA9Vx',

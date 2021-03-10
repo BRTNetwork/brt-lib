@@ -770,7 +770,7 @@ module.exports.requestBookOffersAsksResponse = function(request) {
   })
 }
 
-module.exports.requestBookOffersXRPBaseResponse = function(request) {
+module.exports.requestBookOffersBRTBaseResponse = function(request) {
   return JSON.stringify({
     id: request.id,
     status: 'success',
@@ -1042,7 +1042,7 @@ module.exports.requestBookOffersXRPBaseResponse = function(request) {
   })
 }
 
-module.exports.requestBookOffersXRPCounterResponse = function(request) {
+module.exports.requestBookOffersBRTCounterResponse = function(request) {
   return JSON.stringify({
     id: request.id,
     status: 'success',

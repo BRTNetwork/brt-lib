@@ -24,10 +24,10 @@ function getTrustlineBalanceAmount(trustline: FormattedTrustline) {
 function formatBalances(options, balances) {
   const result = balances.trustlines.map(getTrustlineBalanceAmount)
   if (
-    !(options.counterparty || (options.currency && options.currency !== 'XRP'))
+    !(options.counterparty || (options.currency && options.currency !== 'BRT'))
   ) {
     const xrpBalance = {
-      currency: 'XRP',
+      currency: 'BRT',
       value: balances.xrp
     }
     result.unshift(xrpBalance)
@@ -59,8 +59,8 @@ function getBalances(
   // Only support retrieving balances without a tag,
   // since we currently do not calculate balances
   // on a per-tag basis. Apps must interpret and
-  // use tags independent of the XRP Ledger, comparing
-  // with the XRP Ledger's balance as an accounting check.
+  // use tags independent of the BRT Ledger, comparing
+  // with the BRT Ledger's balance as an accounting check.
   address = ensureClassicAddress(address)
 
   return Promise.all([
@@ -68,7 +68,7 @@ function getBalances(
       this.connection,
       options.ledgerVersion
     ).then((ledgerVersion) =>
-      utils.getXRPBalance(this.connection, address, ledgerVersion)
+      utils.getBRTBalance(this.connection, address, ledgerVersion)
     ),
     this.getTrustlines(address, options)
   ]).then((results) =>

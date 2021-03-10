@@ -10,76 +10,76 @@ import BigNumber from 'bignumber.js'
 export default <TestSuite>{
   'works with a typical amount': async (api) => {
     const xrp = api.dropsToXrp('2000000')
-    assert.strictEqual(xrp, '2', '2 million drops equals 2 XRP')
+    assert.strictEqual(xrp, '2', '2 million drops equals 2 BRT')
   },
   'works with fractions': async (api) => {
     let xrp = api.dropsToXrp('3456789')
-    assert.strictEqual(xrp, '3.456789', '3,456,789 drops equals 3.456789 XRP')
+    assert.strictEqual(xrp, '3.456789', '3,456,789 drops equals 3.456789 BRT')
 
     xrp = api.dropsToXrp('3400000')
-    assert.strictEqual(xrp, '3.4', '3,400,000 drops equals 3.4 XRP')
+    assert.strictEqual(xrp, '3.4', '3,400,000 drops equals 3.4 BRT')
 
     xrp = api.dropsToXrp('1')
-    assert.strictEqual(xrp, '0.000001', '1 drop equals 0.000001 XRP')
+    assert.strictEqual(xrp, '0.000001', '1 drop equals 0.000001 BRT')
 
     xrp = api.dropsToXrp('1.0')
-    assert.strictEqual(xrp, '0.000001', '1.0 drops equals 0.000001 XRP')
+    assert.strictEqual(xrp, '0.000001', '1.0 drops equals 0.000001 BRT')
 
     xrp = api.dropsToXrp('1.00')
-    assert.strictEqual(xrp, '0.000001', '1.00 drops equals 0.000001 XRP')
+    assert.strictEqual(xrp, '0.000001', '1.00 drops equals 0.000001 BRT')
   },
   'works with zero': async (api) => {
     let xrp = api.dropsToXrp('0')
-    assert.strictEqual(xrp, '0', '0 drops equals 0 XRP')
+    assert.strictEqual(xrp, '0', '0 drops equals 0 BRT')
 
     // negative zero is equivalent to zero
     xrp = api.dropsToXrp('-0')
-    assert.strictEqual(xrp, '0', '-0 drops equals 0 XRP')
+    assert.strictEqual(xrp, '0', '-0 drops equals 0 BRT')
 
     xrp = api.dropsToXrp('0.00')
-    assert.strictEqual(xrp, '0', '0.00 drops equals 0 XRP')
+    assert.strictEqual(xrp, '0', '0.00 drops equals 0 BRT')
 
     xrp = api.dropsToXrp('000000000')
-    assert.strictEqual(xrp, '0', '000000000 drops equals 0 XRP')
+    assert.strictEqual(xrp, '0', '000000000 drops equals 0 BRT')
   },
   'works with a negative value': async (api) => {
     const xrp = api.dropsToXrp('-2000000')
-    assert.strictEqual(xrp, '-2', '-2 million drops equals -2 XRP')
+    assert.strictEqual(xrp, '-2', '-2 million drops equals -2 BRT')
   },
   'works with a value ending with a decimal point': async (api) => {
     let xrp = api.dropsToXrp('2000000.')
-    assert.strictEqual(xrp, '2', '2000000. drops equals 2 XRP')
+    assert.strictEqual(xrp, '2', '2000000. drops equals 2 BRT')
 
     xrp = api.dropsToXrp('-2000000.')
-    assert.strictEqual(xrp, '-2', '-2000000. drops equals -2 XRP')
+    assert.strictEqual(xrp, '-2', '-2000000. drops equals -2 BRT')
   },
   'works with BigNumber objects': async (api) => {
     let xrp = api.dropsToXrp(new BigNumber(2000000))
-    assert.strictEqual(xrp, '2', '(BigNumber) 2 million drops equals 2 XRP')
+    assert.strictEqual(xrp, '2', '(BigNumber) 2 million drops equals 2 BRT')
 
     xrp = api.dropsToXrp(new BigNumber(-2000000))
-    assert.strictEqual(xrp, '-2', '(BigNumber) -2 million drops equals -2 XRP')
+    assert.strictEqual(xrp, '-2', '(BigNumber) -2 million drops equals -2 BRT')
 
     xrp = api.dropsToXrp(new BigNumber(2345678))
     assert.strictEqual(
       xrp,
       '2.345678',
-      '(BigNumber) 2,345,678 drops equals 2.345678 XRP'
+      '(BigNumber) 2,345,678 drops equals 2.345678 BRT'
     )
 
     xrp = api.dropsToXrp(new BigNumber(-2345678))
     assert.strictEqual(
       xrp,
       '-2.345678',
-      '(BigNumber) -2,345,678 drops equals -2.345678 XRP'
+      '(BigNumber) -2,345,678 drops equals -2.345678 BRT'
     )
   },
   'works with a number': async (api) => {
     // This is not recommended. Use strings or BigNumber objects to avoid precision errors.
     let xrp = api.dropsToXrp(2000000)
-    assert.strictEqual(xrp, '2', '(number) 2 million drops equals 2 XRP')
+    assert.strictEqual(xrp, '2', '(number) 2 million drops equals 2 BRT')
     xrp = api.dropsToXrp(-2000000)
-    assert.strictEqual(xrp, '-2', '(number) -2 million drops equals -2 XRP')
+    assert.strictEqual(xrp, '-2', '(number) -2 million drops equals -2 BRT')
   },
   'throws with an amount with too many decimal places': async (api) => {
     assert.throws(() => {
