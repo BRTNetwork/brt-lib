@@ -2,7 +2,7 @@ import BigNumber from 'bignumber.js'
 import * as common from '../common'
 import {Memo} from '../common/types/objects'
 import {Instructions, Prepare, TransactionJSON} from './types'
-import {RippleAPI} from '..'
+import {BRTAPI} from '..'
 import {ValidationError} from '../common/errors'
 import {xAddressToClassicAddress, isValidXAddress} from '@brtnetwork/brt-address-codec'
 
@@ -109,7 +109,7 @@ function getClassicAccountAndTag(
 
 function prepareTransaction(
   txJSON: TransactionJSON,
-  api: RippleAPI,
+  api: BRTAPI,
   instructions: Instructions
 ): Promise<Prepare> {
   common.validate.instructions(instructions)
@@ -280,12 +280,12 @@ function prepareTransaction(
           new ValidationError(
             `Fee of ${fee.toString(10)} BRT exceeds ` +
               `max of ${api._maxFeeBRT} BRT. To use this fee, increase ` +
-              '`maxFeeBRT` in the RippleAPI constructor.'
+              '`maxFeeBRT` in the BRTAPI constructor.'
           )
         )
       }
       newTxJSON.Fee = scaleValue(
-        common.xrpToDrops(instructions.fee),
+        common.brtToDrops(instructions.fee),
         multiplier
       )
       return Promise.resolve()
@@ -303,11 +303,11 @@ function prepareTransaction(
                 Math.floor(
                   Buffer.from(newTxJSON.Fulfillment, 'hex').length / 16
                 ))
-        const feeDrops = common.xrpToDrops(fee)
+        const feeDrops = common.brtToDrops(fee)
         const maxFeeBRT = instructions.maxFee
           ? BigNumber.min(api._maxFeeBRT, instructions.maxFee)
           : api._maxFeeBRT
-        const maxFeeDrops = common.xrpToDrops(maxFeeBRT)
+        const maxFeeDrops = common.brtToDrops(maxFeeBRT)
         const normalFee = scaleValue(feeDrops, multiplier, extraFee)
         newTxJSON.Fee = BigNumber.min(normalFee, maxFeeDrops).toString(10)
 

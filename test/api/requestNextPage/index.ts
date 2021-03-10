@@ -1,5 +1,5 @@
 import assert from 'assert-diff'
-import {LedgerData} from '@brtnetwork/brt-api/common/types/objects'
+import {LedgerData} from '../../../src/common/types/objects'
 import {assertRejects, TestSuite} from '../../utils'
 
 /**

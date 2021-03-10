@@ -54,16 +54,16 @@ function dropsToXrp(drops: BigNumber.Value): string {
   return new BigNumber(drops).dividedBy(1000000.0).toString(10)
 }
 
-function xrpToDrops(xrp: BigNumber.Value): string {
+function brtToDrops(xrp: BigNumber.Value): string {
   if (typeof xrp === 'string') {
     if (!xrp.match(/^-?[0-9]*\.?[0-9]*$/)) {
       throw new ValidationError(
-        `xrpToDrops: invalid value '${xrp}',` +
+        `brtToDrops: invalid value '${xrp}',` +
           ` should be a number matching (^-?[0-9]*\\.?[0-9]*$).`
       )
     } else if (xrp === '.') {
       throw new ValidationError(
-        `xrpToDrops: invalid value '${xrp}',` +
+        `brtToDrops: invalid value '${xrp}',` +
           ` should be a BigNumber or string-encoded number.`
       )
     }
@@ -77,7 +77,7 @@ function xrpToDrops(xrp: BigNumber.Value): string {
   // something unexpected.
   if (!xrp.match(/^-?[0-9.]+$/)) {
     throw new ValidationError(
-      `xrpToDrops: failed sanity check -` +
+      `brtToDrops: failed sanity check -` +
         ` value '${xrp}',` +
         ` does not match (^-?[0-9.]+$).`
     )
@@ -86,7 +86,7 @@ function xrpToDrops(xrp: BigNumber.Value): string {
   const components = xrp.split('.')
   if (components.length > 2) {
     throw new ValidationError(
-      `xrpToDrops: failed sanity check -` +
+      `brtToDrops: failed sanity check -` +
         ` value '${xrp}' has` +
         ` too many decimal points.`
     )
@@ -95,7 +95,7 @@ function xrpToDrops(xrp: BigNumber.Value): string {
   const fraction = components[1] || '0'
   if (fraction.length > 6) {
     throw new ValidationError(
-      `xrpToDrops: value '${xrp}' has` + ` too many decimal places.`
+      `brtToDrops: value '${xrp}' has` + ` too many decimal places.`
     )
   }
 
@@ -107,7 +107,7 @@ function xrpToDrops(xrp: BigNumber.Value): string {
 
 function toRippledAmount(amount: Amount): RippledAmount {
   if (amount.currency === 'BRT') {
-    return xrpToDrops(amount.value)
+    return brtToDrops(amount.value)
   }
   if (amount.currency === 'drops') {
     return amount.value
@@ -179,7 +179,7 @@ function iso8601ToRippleTime(iso8601: string): number {
 
 export {
   dropsToXrp,
-  xrpToDrops,
+  brtToDrops,
   toRippledAmount,
   convertKeysFromSnakeCaseToCamelCase,
   removeUndefined,

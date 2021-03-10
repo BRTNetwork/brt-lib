@@ -1,7 +1,7 @@
 import * as common from '../common'
 import keypairs from '@brtnetwork/brt-keypairs'
 import binary from '@brtnetwork/brt-binary-codec'
-const {validate, xrpToDrops} = common
+const {validate, brtToDrops} = common
 
 function signPaymentChannelClaim(
   channel: string,
@@ -12,7 +12,7 @@ function signPaymentChannelClaim(
 
   const signingData = binary.encodeForSigningClaim({
     channel: channel,
-    amount: xrpToDrops(amount)
+    amount: brtToDrops(amount)
   })
   return keypairs.sign(signingData, privateKey)
 }

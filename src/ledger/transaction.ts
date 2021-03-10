@@ -5,7 +5,7 @@ import {validate, errors} from '../common'
 import {Connection} from '../common'
 import {FormattedTransactionType} from '../transaction/types'
 import {RippledError} from '../common/errors'
-import {RippleAPI} from '..'
+import {BRTAPI} from '..'
 
 export type TransactionOptions = {
   minLedgerVersion?: number
@@ -122,7 +122,7 @@ function formatResponse(
 }
 
 async function getTransaction(
-  this: RippleAPI,
+  this: BRTAPI,
   id: string,
   options: TransactionOptions = {}
 ): Promise<FormattedTransactionType> {

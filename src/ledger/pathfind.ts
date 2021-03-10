@@ -5,7 +5,7 @@ import {
   validate,
   toRippledAmount,
   errors,
-  xrpToDrops,
+  brtToDrops,
   dropsToXrp
 } from '../common'
 import {Connection} from '../common'
@@ -17,7 +17,7 @@ import {
   RippledPathsResponse,
   PathFindRequest
 } from './pathfind-types'
-import {RippleAPI} from '..'
+import {BRTAPI} from '..'
 const NotFoundError = errors.NotFoundError
 const ValidationError = errors.ValidationError
 
@@ -136,7 +136,7 @@ function filterSourceFundsLowPaths(
       }
       const pathfindSourceAmountValue = new BigNumber(
         pathfind.source.amount.currency === 'BRT'
-          ? xrpToDrops(pathfind.source.amount.value)
+          ? brtToDrops(pathfind.source.amount.value)
           : pathfind.source.amount.value
       )
       const altSourceAmountValue = new BigNumber(
@@ -186,7 +186,7 @@ function formatResponse(pathfind: PathFind, paths: RippledPathsResponse) {
   }
 }
 
-function getPaths(this: RippleAPI, pathfind: PathFind): Promise<GetPaths> {
+function getPaths(this: BRTAPI, pathfind: PathFind): Promise<GetPaths> {
   validate.getPaths({pathfind})
 
   const address = pathfind.source.address

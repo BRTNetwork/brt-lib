@@ -1,6 +1,6 @@
-import {RippleAPI} from '../../dist/npm'
+import {BRTAPI} from '../../dist/npm'
 
-const api = new RippleAPI({
+const api = new BRTAPI({
   server: 'wss://s.altnet.rippletest.net:51233'
 })
 

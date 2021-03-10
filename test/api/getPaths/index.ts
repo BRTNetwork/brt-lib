@@ -29,7 +29,7 @@ export default <TestSuite>{
   // @TODO
   // need decide what to do with currencies/BRT:
   // if add 'BRT' in currencies, then there will be exception in
-  // xrpToDrops function (called from toRippledAmount)
+  // brtToDrops function (called from toRippledAmount)
   'getPaths USD 2 USD': async (api) => {
     const response = await api.getPaths(REQUEST_FIXTURES.UsdToUsd)
     assertResultMatch(response, RESPONSE_FIXTURES.UsdToUsd, 'getPaths')

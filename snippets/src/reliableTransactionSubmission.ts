@@ -1,5 +1,5 @@
 import {
-  RippleAPI,
+  BRTAPI,
   AccountInfoResponse,
   LedgerClosedEvent
 } from '../../dist/npm'
@@ -68,7 +68,7 @@ async function reliableTransactionSubmissionExample() {
 async function performPayments(payments) {
   const finalResults = []
   const txFinalizedPromises = []
-  const api = new RippleAPI({server: 'wss://s.altnet.rippletest.net:51233'})
+  const api = new BRTAPI({server: 'wss://s.altnet.rippletest.net:51233'})
   await api.connect()
 
   for (let i = 0; i < payments.length; i++) {

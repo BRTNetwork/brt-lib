@@ -1,6 +1,6 @@
-## xrpToDrops
+## brtToDrops
 
-`xrpToDrops(xrp: string | BigNumber): string`
+`brtToDrops(xrp: string | BigNumber): string`
 
 Converts an BRT amount to drops. 1 BRT = 1,000,000 drops, so 1 drop = 0.000001 BRT. This method is useful when converting amounts for use with the brtd API, which requires BRT amounts to be specified in drops.
 
@@ -15,7 +15,7 @@ A string representing an equivalent amount of drops.
 ### Example
 
 ```javascript
-return api.xrpToDrops('1');
+return api.brtToDrops('1');
 ```
 
 ```json

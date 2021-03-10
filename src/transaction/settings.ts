@@ -11,7 +11,7 @@ import {
   TransactionJSON
 } from './types'
 import {FormattedSettings, WeightedSigner} from '../common/types/objects'
-import {RippleAPI} from '..'
+import {BRTAPI} from '..'
 
 function setTransactionFlags(
   txJSON: TransactionJSON,
@@ -149,7 +149,7 @@ function createSettingsTransaction(
 }
 
 function prepareSettings(
-  this: RippleAPI,
+  this: BRTAPI,
   address: string,
   settings: FormattedSettings,
   instructions: Instructions = {}

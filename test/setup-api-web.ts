@@ -1,11 +1,11 @@
-import {RippleAPI, RippleAPIBroadcast} from '@brtnetwork/brt-api'
+import {BRTAPI, BRTAPIBroadcast} from '../src'
 import ledgerClosed from './fixtures/brtd/ledger-close.json'
 
 const port = 34371
 const baseUrl = 'ws://testripple.circleci.com:'
 
 function setup(this: any, port_ = port) {
-  const tapi = new RippleAPI({server: baseUrl + port_})
+  const tapi = new BRTAPI({server: baseUrl + port_})
   return tapi
     .connect()
     .then(() => {
@@ -16,7 +16,7 @@ function setup(this: any, port_ = port) {
     })
     .then((got) => {
       return new Promise((resolve, reject) => {
-        this.api = new RippleAPI({server: baseUrl + got.port})
+        this.api = new BRTAPI({server: baseUrl + got.port})
         this.api
           .connect()
           .then(() => {
@@ -36,7 +36,7 @@ function setup(this: any, port_ = port) {
 
 function setupBroadcast(this: any) {
   const servers = [port, port + 1].map((port_) => baseUrl + port_)
-  this.api = new RippleAPIBroadcast(servers)
+  this.api = new BRTAPIBroadcast(servers)
   return new Promise((resolve, reject) => {
     this.api
       .connect()

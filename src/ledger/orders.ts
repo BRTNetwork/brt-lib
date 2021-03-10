@@ -1,7 +1,7 @@
 import * as _ from 'lodash'
 import {validate} from '../common'
 import {FormattedAccountOrder, parseAccountOrder} from './parse/account-order'
-import {RippleAPI} from '..'
+import {BRTAPI} from '..'
 import {AccountOffersResponse} from '../common/types/commands'
 
 export type GetOrdersOptions = {
@@ -24,7 +24,7 @@ function formatResponse(
 }
 
 export default async function getOrders(
-  this: RippleAPI,
+  this: BRTAPI,
   address: string,
   options: GetOrdersOptions = {}
 ): Promise<FormattedAccountOrder[]> {

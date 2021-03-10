@@ -1,6 +1,6 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-# RippleAPI Reference
+# BRTAPI Reference
 
 - [Introduction](#introduction)
   - [Boilerplate](#boilerplate)
@@ -94,7 +94,7 @@
   - [signPaymentChannelClaim](#signpaymentchannelclaim)
   - [verifyPaymentChannelClaim](#verifypaymentchannelclaim)
   - [computeLedgerHash](#computeledgerhash)
-  - [xrpToDrops](#xrptodrops)
+  - [brtToDrops](#xrptodrops)
   - [dropsToXrp](#dropstoxrp)
   - [iso8601ToRippleTime](#iso8601torippletime)
   - [rippleTimeToISO8601](#rippletimetoiso8601)
@@ -111,9 +111,9 @@
 
 # Introduction
 
-RippleAPI (brt-lib) is the official client library to the BRT Ledger. Currently, RippleAPI is only available in JavaScript/TypeScript.
+BRTAPI (brt-lib) is the official client library to the BRT Ledger. Currently, BRTAPI is only available in JavaScript/TypeScript.
 
-Using RippleAPI, you can:
+Using BRTAPI, you can:
 
 * [Query transactions from the BRT Ledger history](#gettransaction)
 * [Sign](#sign) transactions securely without connecting to any server
@@ -127,12 +127,12 @@ This page contains documentation for brt-lib. To use brt-lib with npm/yarn, begi
 
 ## Boilerplate
 
-Use the following [boilerplate code](https://en.wikipedia.org/wiki/Boilerplate_code) to wrap your custom code using RippleAPI.
+Use the following [boilerplate code](https://en.wikipedia.org/wiki/Boilerplate_code) to wrap your custom code using BRTAPI.
 
 ```javascript
-const RippleAPI = require('@brtnetwork/brt-lib').RippleAPI;
+const BRTAPI = require('@brtnetwork/brt-lib').BRTAPI;
 
-const api = new RippleAPI({
+const api = new BRTAPI({
   server: 'wss://s1.ripple.com' // Public brtd server hosted by Ripple, Inc.
 });
 api.on('error', (errorCode, errorMessage) => {
@@ -153,9 +153,9 @@ api.connect().then(() => {
 }).catch(console.error);
 ```
 
-RippleAPI is designed to work in [Node.js](https://nodejs.org) version 6 or higher. Ripple recommends Node.js v10 LTS.
+BRTAPI is designed to work in [Node.js](https://nodejs.org) version 6 or higher. Ripple recommends Node.js v10 LTS.
 
-The code samples in this documentation are written with ECMAScript 6 (ES6) features, but `RippleAPI` also works with ECMAScript 5 (ES5). Regardless of whether you use ES5 or ES6, the methods that return Promises return [ES6-style promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+The code samples in this documentation are written with ECMAScript 6 (ES6) features, but `BRTAPI` also works with ECMAScript 5 (ES5). Regardless of whether you use ES5 or ES6, the methods that return Promises return [ES6-style promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
 <aside class="notice">
 All the code snippets in this documentation assume that you have surrounded them with this boilerplate.
@@ -171,7 +171,7 @@ The "error" event is emitted whenever an error occurs that cannot be associated 
 
 ### Parameters
 
-The RippleAPI constructor optionally takes one argument, an object with the following options:
+The BRTAPI constructor optionally takes one argument, an object with the following options:
 
 Name | Type | Description
 ---- | ---- | -----------
@@ -189,13 +189,13 @@ timeout | integer | *Optional* Request timeout in milliseconds before considerin
 trace | boolean | *Optional* If true, log brtd requests and responses to stdout.
 trustedCertificates | array\<string\> | *Optional* Array of PEM-formatted SSL certificates to trust when connecting to a proxy. This is useful if you want to use a self-signed certificate on the proxy server. Note: Each element must contain a single certificate; concatenated certificates are not valid.
 
-If you omit the `server` parameter, RippleAPI operates [offline](#offline-functionality).
+If you omit the `server` parameter, BRTAPI operates [offline](#offline-functionality).
 
 
 ### Installation ###
 
 1. Install [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com/en/docs/install). Most Linux distros have a package for Node.js; check that it's the version you want.
-2. Use yarn to install RippleAPI:
+2. Use yarn to install BRTAPI:
       `yarn add brt-lib`
 
 After you have installed brt-lib, you can create scripts using the [boilerplate](#boilerplate) and run them using the Node.js executable, typically named `node`:
@@ -204,14 +204,14 @@ After you have installed brt-lib, you can create scripts using the [boilerplate]
 
 ## Offline functionality
 
-RippleAPI can also function without internet connectivity. This can be useful in order to generate secrets and sign transactions from a secure, isolated machine.
+BRTAPI can also function without internet connectivity. This can be useful in order to generate secrets and sign transactions from a secure, isolated machine.
 
-To instantiate RippleAPI in offline mode, use the following boilerplate code:
+To instantiate BRTAPI in offline mode, use the following boilerplate code:
 
 ```javascript
-const RippleAPI = require('@brtnetwork/brt-lib').RippleAPI;
+const BRTAPI = require('@brtnetwork/brt-lib').BRTAPI;
 
-const api = new RippleAPI();
+const api = new BRTAPI();
 /* insert code here */
 ```
 
@@ -263,7 +263,7 @@ Currencies are represented as either 3-character currency codes or 40-character 
 ## Value
 A *value* is a quantity of a currency represented as a decimal string. Be careful: JavaScript's native number format does not have sufficient precision to represent all values. BRT has different precision from other currencies.
 
-**BRT** has 6 significant digits past the decimal point. In other words, BRT cannot be divided into positive values smaller than `0.000001` (1e-6). This smallest unit is called a "drop". BRT has a maximum value of `100000000000` (1e11). Some RippleAPI methods accept BRT in order to maintain compatibility with older versions of the API. For consistency with the `brtd` APIs, we recommend formally specifying BRT values in *drops* in all API requests, and converting them to BRT for display. This is similar to Bitcoin's *satoshis* and Ethereum's *wei*. 1 BRT = 1,000,000 drops.
+**BRT** has 6 significant digits past the decimal point. In other words, BRT cannot be divided into positive values smaller than `0.000001` (1e-6). This smallest unit is called a "drop". BRT has a maximum value of `100000000000` (1e11). Some BRTAPI methods accept BRT in order to maintain compatibility with older versions of the API. For consistency with the `brtd` APIs, we recommend formally specifying BRT values in *drops* in all API requests, and converting them to BRT for display. This is similar to Bitcoin's *satoshis* and Ethereum's *wei*. 1 BRT = 1,000,000 drops.
 
 **Non-BRT values** have 16 decimal digits of precision, with a maximum value of `9999999999999999e80`. The smallest positive non-BRT value is `1e-81`.
 
@@ -328,7 +328,7 @@ Type | Description
 
 ## Transaction Flow
 
-Executing a transaction with `RippleAPI` requires the following four steps:
+Executing a transaction with `BRTAPI` requires the following four steps:
 
 1. Prepare - Create an unsigned transaction based on a [specification](#transaction-specifications) and [instructions](#transaction-instructions). There is a method to prepare each type of transaction:
     * [preparePayment](#preparepayment)
@@ -362,7 +362,7 @@ Transaction instructions indicate how to execute a transaction, complementary wi
 Name | Type | Description
 ---- | ---- | -----------
 fee | [value](#value) | *Optional* An exact fee to pay for the transaction, before multiplying for multi-signed transactions. See [Transaction Fees](#transaction-fees) for more information.
-maxFee | [value](#value) | *Optional* Deprecated: Use `maxFeeBRT` in the RippleAPI constructor instead. The maximum fee to pay for this transaction. If this exceeds `maxFeeBRT`, `maxFeeBRT` will be used instead. See [Transaction Fees](#transaction-fees) for more information.
+maxFee | [value](#value) | *Optional* Deprecated: Use `maxFeeBRT` in the BRTAPI constructor instead. The maximum fee to pay for this transaction. If this exceeds `maxFeeBRT`, `maxFeeBRT` will be used instead. See [Transaction Fees](#transaction-fees) for more information.
 maxLedgerVersion | integer,null | *Optional* The highest ledger version that the transaction can be included in. If this option and `maxLedgerVersionOffset` are both omitted, the `maxLedgerVersion` option will default to 3 greater than the current validated ledger version (equivalent to `maxLedgerVersionOffset=3`). Use `null` to not set a maximum ledger version. If not null, this must be an integer greater than 0, or one of the following strings: 'validated', 'closed', 'current'.
 maxLedgerVersion | string,null | *Optional* The highest ledger version that the transaction can be included in. If this option and `maxLedgerVersionOffset` are both omitted, the `maxLedgerVersion` option will default to 3 greater than the current validated ledger version (equivalent to `maxLedgerVersionOffset=3`). Use `null` to not set a maximum ledger version. If not null, this must be an integer greater than 0, or one of the following strings: 'validated', 'closed', 'current'.
 maxLedgerVersionOffset | integer | *Optional* Offset from current validated ledger version to highest ledger version that the transaction can be included in.
@@ -1037,7 +1037,7 @@ return api.request(command, params).then(response => {
 
 # Static Methods
 
-brt-lib features a number of static methods that you can access directly on the `RippleAPI` object. The most commonly-used one is `computeBinaryTransactionHash`, described below. For the full list, see the [BRT Ledger Hashes README](https://github.com/BRTNetwork/js-brt-lib/blob/develop/src/common/hashes/README.md).
+brt-lib features a number of static methods that you can access directly on the `BRTAPI` object. The most commonly-used one is `computeBinaryTransactionHash`, described below. For the full list, see the [BRT Ledger Hashes README](https://github.com/BRTNetwork/js-brt-lib/blob/develop/src/common/hashes/README.md).
 
 ## computeBinaryTransactionHash
 
@@ -1045,7 +1045,7 @@ brt-lib features a number of static methods that you can access directly on the 
 
 Returns the hash (id) of a binary transaction blob.
 
-This is a static method on the `RippleAPI` class.
+This is a static method on the `BRTAPI` class.
 
 ### Parameters
 
@@ -1060,7 +1060,7 @@ This method returns a string representing the transaction's id (hash).
 ```javascript
 const signed_blob = '120000228000000024000B2E5A201B0066374B61400000003B9ACA0068400000000000000C732102356E89059A75438887F9FEE2056A2890DB82A68353BE9C0C0C8F89C0018B37FC74473045022100B3721EEB1ED6DFF29FB8B209E2DE6B54A0A6E44D52D926342F3D334BE98F08640220367A74107AD5DEAEFA3AB2984C161FC23F30B2704BB5CC984358BA262177A4568114F667B0CA50CC7709A220B0561B85E53A48461FA883142B71D8B09B4EE8DAA68FB936C23E3A974713BDAC'
 if (typeof signed_blob === 'string' && signed_blob.match(/^[A-F0-9]+$/)) {
-  const id = RippleAPI.computeBinaryTransactionHash(signed_blob)
+  const id = BRTAPI.computeBinaryTransactionHash(signed_blob)
   console.log('Transaction hash:', id')
 }
 ```
@@ -1075,9 +1075,9 @@ Transaction hash: 80C5E11E1A21A626759D6CB944B33DBAAC66BD704A289C86E330B847904F5C
 
 `renameCounterpartyToIssuer(issue: {currency: string, counterparty: address}): {currency: string, issuer: address}`
 
-Returns an object with the `counterparty` field renamed to `issuer`. This is useful because RippleAPI generally uses the name `counterparty` while the brtd API generally uses the name `issuer`.
+Returns an object with the `counterparty` field renamed to `issuer`. This is useful because BRTAPI generally uses the name `counterparty` while the brtd API generally uses the name `issuer`.
 
-This is a static method on the `RippleAPI` class.
+This is a static method on the `BRTAPI` class.
 
 ### Parameters
 
@@ -1100,8 +1100,8 @@ const orderbookInfo = {
     "counterparty": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
   }
 };
-console.log(RippleAPI.renameCounterpartyToIssuer(orderbookInfo.base))
-console.log(RippleAPI.renameCounterpartyToIssuer(orderbookInfo.counter))
+console.log(BRTAPI.renameCounterpartyToIssuer(orderbookInfo.base))
+console.log(BRTAPI.renameCounterpartyToIssuer(orderbookInfo.counter))
 ```
 
 ```
@@ -1115,7 +1115,7 @@ console.log(RippleAPI.renameCounterpartyToIssuer(orderbookInfo.counter))
 
 Returns formatted bids and asks, which make up an orderbook.
 
-This is a static method on the `RippleAPI` class.
+This is a static method on the `BRTAPI` class.
 
 ### Parameters
 
@@ -1178,15 +1178,15 @@ const address = 'r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59';
 return Promise.all(
   [
     this.api.request('book_offers', {
-      taker_gets: RippleAPI.renameCounterpartyToIssuer(orderbookInfo.base),
-      taker_pays: RippleAPI.renameCounterpartyToIssuer(orderbookInfo.counter),
+      taker_gets: BRTAPI.renameCounterpartyToIssuer(orderbookInfo.base),
+      taker_pays: BRTAPI.renameCounterpartyToIssuer(orderbookInfo.counter),
       ledger_index: 'validated',
       limit: 20,
       taker: address
     }),
     this.api.request('book_offers', {
-      taker_gets: RippleAPI.renameCounterpartyToIssuer(orderbookInfo.counter),
-      taker_pays: RippleAPI.renameCounterpartyToIssuer(orderbookInfo.base),
+      taker_gets: BRTAPI.renameCounterpartyToIssuer(orderbookInfo.counter),
+      taker_pays: BRTAPI.renameCounterpartyToIssuer(orderbookInfo.base),
       ledger_index: 'validated',
       limit: 20,
       taker: address
@@ -1195,7 +1195,7 @@ return Promise.all(
 ).then((directOfferResults, reverseOfferResults) => {
   const directOffers = (directOfferResults ? directOfferResults : []).reduce((acc, res) => acc.concat(res.offers), [])
   const reverseOffers = (reverseOfferResults ? reverseOfferResults : []).reduce((acc, res) => acc.concat(res.offers), [])
-  const orderbook = RippleAPI.formatBidsAndAsks(orderbookInfo, [...directOffers, ...reverseOffers]);
+  const orderbook = BRTAPI.formatBidsAndAsks(orderbookInfo, [...directOffers, ...reverseOffers]);
   console.log(JSON.stringify(orderbook, null, 2));
 });
 ```
@@ -1394,7 +1394,7 @@ return Promise.all(
 
 `connect(): Promise<void>`
 
-Tells the RippleAPI instance to connect to its brtd server.
+Tells the BRTAPI instance to connect to its brtd server.
 
 ### Parameters
 
@@ -1412,7 +1412,7 @@ See [Boilerplate](#boilerplate) for code sample.
 
 `disconnect(): Promise<void>`
 
-Tells the RippleAPI instance to disconnect from its brtd server.
+Tells the BRTAPI instance to disconnect from its brtd server.
 
 ### Parameters
 
@@ -1430,7 +1430,7 @@ See [Boilerplate](#boilerplate) for code sample
 
 `isConnected(): boolean`
 
-Checks if the RippleAPI instance is connected to its brtd server.
+Checks if the BRTAPI instance is connected to its brtd server.
 
 ### Parameters
 
@@ -1454,7 +1454,7 @@ true
 
 `getServerInfo(): Promise<object>`
 
-Get status information about the server that the RippleAPI instance is connected to.
+Get status information about the server that the BRTAPI instance is connected to.
 
 ### Parameters
 
@@ -1528,15 +1528,15 @@ return api.getServerInfo().then(info => {/* ... */});
 
 `getFee(): Promise<string>`
 
-Returns the estimated transaction fee for the brtd server the RippleAPI instance is connected to.
+Returns the estimated transaction fee for the brtd server the BRTAPI instance is connected to.
 
-This will use the [feeCushion parameter](#parameters) provided to the RippleAPI constructor, or the default value of `1.2`.
+This will use the [feeCushion parameter](#parameters) provided to the BRTAPI constructor, or the default value of `1.2`.
 
 ### Parameters
 
 Name | Type | Description
 ---- | ---- | -----------
-cushion | number | *Optional* The fee is the product of the base fee, the `load_factor`, and this cushion. Default is provided by the `RippleAPI` constructor's `feeCushion`.
+cushion | number | *Optional* The fee is the product of the base fee, the `load_factor`, and this cushion. Default is provided by the `BRTAPI` constructor's `feeCushion`.
 
 ### Return Value
 
@@ -4570,7 +4570,7 @@ This method takes one parameter, the AccountRoot `Flags` number to parse. Note t
 
 ### Return Value
 
-This method returns an object with containing a key for each AccountRoot flag known to this version of RippleAPI. Each flag has a boolean value of `true` or `false`.
+This method returns an object with containing a key for each AccountRoot flag known to this version of BRTAPI. Each flag has a boolean value of `true` or `false`.
 
 ### Example
 
@@ -5628,7 +5628,7 @@ return api.sign(txJSON, secret); // or: api.sign(txJSON, keypair);
 ### Example (multisigning)
 
 ```javascript
-const RippleAPI = require('@brtnetwork/brt-lib').RippleAPI;
+const BRTAPI = require('@brtnetwork/brt-lib').BRTAPI;
 
 // jon's address will have a multi-signing setup with a quorum of 2
 const jon = {
@@ -5675,7 +5675,7 @@ const multiSignPaymentTransaction = {
     Amount: '88000000'
 };
 
-const api = new RippleAPI({
+const api = new BRTAPI({
     server: 'wss://s.altnet.rippletest.net:51233'
 });
 
@@ -6137,9 +6137,9 @@ return api.computeLedgerHash(ledger);
 "F4D865D83EB88C1A1911B9E90641919A1314F36E1B099F8E95FE3B7C77BE3349"
 ```
 
-## xrpToDrops
+## brtToDrops
 
-`xrpToDrops(xrp: string | BigNumber): string`
+`brtToDrops(xrp: string | BigNumber): string`
 
 Converts an BRT amount to drops. 1 BRT = 1,000,000 drops, so 1 drop = 0.000001 BRT. This method is useful when converting amounts for use with the brtd API, which requires BRT amounts to be specified in drops.
 
@@ -6154,7 +6154,7 @@ A string representing an equivalent amount of drops.
 ### Example
 
 ```javascript
-return api.xrpToDrops('1');
+return api.brtToDrops('1');
 ```
 
 ```json
@@ -6325,18 +6325,18 @@ The remaining transaction types do not have any flags at this time.
 
 ## schemaValidator
 
-Unlike the rest of the brt-lib API, schemaValidator is a static object on RippleAPI. It provides utility methods that do not use a server.
+Unlike the rest of the brt-lib API, schemaValidator is a static object on BRTAPI. It provides utility methods that do not use a server.
 
 ## schemaValidate
 
-`RippleAPI.schemaValidator.schemaValidate(schemaName: string, object: any): void`
+`BRTAPI.schemaValidator.schemaValidate(schemaName: string, object: any): void`
 
 This method checks an object for conformance to a specified schema. It does not return anything, but will throw a `ValidationError` if the object does not conform to the schema.
 
 ### Example
 
 ```javascript
-RippleAPI.schemaValidator.schemaValidate('sign', {
+BRTAPI.schemaValidator.schemaValidate('sign', {
     signedTransaction: '12000322800000002400000017201B0086955368400000000000000C732102F89EAEC7667B30F33D0687BBA86C3FE2A08CCA40A9186C5BDE2DAA6FA97A37D874473045022100BDE09A1F6670403F341C21A77CF35BA47E45CDE974096E1AA5FC39811D8269E702203D60291B9A27F1DCABA9CF5DED307B4F23223E0B6F156991DB601DFB9C41CE1C770A726970706C652E636F6D81145E7B112523F68D2F5E879DB4EAC51C6698A69304',
     id: '02ACE87F1996E3A23690A5BB7F1774BF71CCBA68F79805831B42ABAD5913D6F4'
 })
@@ -6349,7 +6349,7 @@ undefined
 If the object is valid (conforms to the schema), nothing is returned. Otherwise, `schemaValidate` throws an error:
 
 ```javascript
-RippleAPI.schemaValidator.schemaValidate('sign', {
+BRTAPI.schemaValidator.schemaValidate('sign', {
     signedTransaction: '12000322800000002400000017201B0086955368400000000000000C732102F89EAEC7667B30F33D0687BBA86C3FE2A08CCA40A9186C5BDE2DAA6FA97A37D874473045022100BDE09A1F6670403F341C21A77CF35BA47E45CDE974096E1AA5FC39811D8269E702203D60291B9A27F1DCABA9CF5DED307B4F23223E0B6F156991DB601DFB9C41CE1C770A726970706C652E636F6D81145E7B112523F68D2F5E879DB4EAC51C6698A69304',
     id: '123'
 })

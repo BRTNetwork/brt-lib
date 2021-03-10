@@ -27,7 +27,7 @@ export function ensureClassicAddress(account: string): string {
 export {constants, errors, validate, serverInfo}
 export {
   dropsToXrp,
-  xrpToDrops,
+  brtToDrops,
   toRippledAmount,
   removeUndefined,
   convertKeysFromSnakeCaseToCamelCase,

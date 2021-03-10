@@ -3,7 +3,7 @@ import {
   Connection,
   errors,
   validate,
-  xrpToDrops,
+  brtToDrops,
   dropsToXrp,
   rippleTimeToISO8601,
   iso8601ToRippleTime,
@@ -129,7 +129,7 @@ function getCollectKeyFromCommand(command: string): string | undefined {
   }
 }
 
-class RippleAPI extends EventEmitter {
+class BRTAPI extends EventEmitter {
   _feeCushion: number
   _maxFeeBRT: string
 
@@ -412,7 +412,7 @@ class RippleAPI extends EventEmitter {
 
   static deriveXAddress = deriveXAddress
 
-  // RippleAPI.deriveClassicAddress (static) is a new name for api.deriveAddress
+  // BRTAPI.deriveClassicAddress (static) is a new name for api.deriveAddress
   static deriveClassicAddress = deriveAddress
 
   static isValidXAddress = isValidXAddress
@@ -443,7 +443,7 @@ class RippleAPI extends EventEmitter {
   // Compute the hash of a payment channel, given the owner's classic address (starting with `r`), the classic address of the destination, and the account sequence number of the `PaymentChannelCreate` payment channel transaction.
   static computePaymentChannelHash = computePaymentChannelHash // (address, dstAddress, sequence): string
 
-  xrpToDrops = xrpToDrops
+  brtToDrops = brtToDrops
   dropsToXrp = dropsToXrp
   rippleTimeToISO8601 = rippleTimeToISO8601
   iso8601ToRippleTime = iso8601ToRippleTime
@@ -454,7 +454,7 @@ class RippleAPI extends EventEmitter {
 }
 
 export {
-  RippleAPI
+  BRTAPI
 }
 
 export type {

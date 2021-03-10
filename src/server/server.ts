@@ -1,19 +1,19 @@
 import * as common from '../common'
-import {RippleAPI} from '..'
+import {BRTAPI} from '..'
 
-function isConnected(this: RippleAPI): boolean {
+function isConnected(this: BRTAPI): boolean {
   return this.connection.isConnected()
 }
 
-function getLedgerVersion(this: RippleAPI): Promise<number> {
+function getLedgerVersion(this: BRTAPI): Promise<number> {
   return this.connection.getLedgerVersion()
 }
 
-async function connect(this: RippleAPI): Promise<void> {
+async function connect(this: BRTAPI): Promise<void> {
   return this.connection.connect()
 }
 
-async function disconnect(this: RippleAPI): Promise<void> {
+async function disconnect(this: BRTAPI): Promise<void> {
   // backwards compatibility: connection.disconnect() can return a number, but
   // this method returns nothing. SO we await but don't return any result.
   await this.connection.disconnect()

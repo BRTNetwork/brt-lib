@@ -1,12 +1,12 @@
 import {assertResultMatch, TestSuite, assertRejects} from '../../utils'
 import responses from '../../fixtures/responses'
 import requests from '../../fixtures/requests'
-import {ValidationError} from '@brtnetwork/brt-api/common/errors'
+import {ValidationError} from '../../../src/common/errors'
 import binary from '@brtnetwork/brt-binary-codec'
 import assert from 'assert-diff'
-import {RippleAPI} from '@brtnetwork/brt-api'
+import {BRTAPI} from '../../../src'
 
-const {schemaValidator} = RippleAPI._PRIVATE
+const {schemaValidator} = BRTAPI._PRIVATE
 const instructionsWithMaxLedgerVersionOffset = {maxLedgerVersionOffset: 100}
 const {preparePayment: REQUEST_FIXTURES} = requests
 const {preparePayment: RESPONSE_FIXTURES} = responses
@@ -226,7 +226,7 @@ export default <TestSuite>{
     return assertRejects(
       api.preparePayment(address, payment, {fee: '3'}),
       ValidationError,
-      'Fee of 3 BRT exceeds max of 2 BRT. To use this fee, increase `maxFeeBRT` in the RippleAPI constructor.'
+      'Fee of 3 BRT exceeds max of 2 BRT. To use this fee, increase `maxFeeBRT` in the BRTAPI constructor.'
     )
   },
 
@@ -262,7 +262,7 @@ export default <TestSuite>{
     return assertRejects(
       api.preparePayment(address, REQUEST_FIXTURES.normal, localInstructions),
       ValidationError,
-      'Fee of 2.1 BRT exceeds max of 2 BRT. To use this fee, increase `maxFeeBRT` in the RippleAPI constructor.'
+      'Fee of 2.1 BRT exceeds max of 2 BRT. To use this fee, increase `maxFeeBRT` in the BRTAPI constructor.'
     )
   },
 

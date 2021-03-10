@@ -1,10 +1,10 @@
 'use strict';
-const RippleAPI = require('../../src').RippleAPI; // require('@brtnetwork/brt-lib')
+const BRTAPI = require('../../src').BRTAPI; // require('@brtnetwork/brt-lib')
 
 const address = 'INSERT ADDRESS HERE';
 const secret = 'INSERT SECRET HERE';
 
-const api = new RippleAPI({server: 'wss://s1.ripple.com:443'});
+const api = new BRTAPI({server: 'wss://s1.ripple.com:443'});
 const instructions = {
   maxLedgerVersionOffset: 5
 };

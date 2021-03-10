@@ -7,7 +7,7 @@
 import * as _ from 'lodash'
 import * as utils from './utils'
 import {validate} from '../common'
-import {RippleAPI} from '..'
+import {BRTAPI} from '..'
 
 export interface FormattedSubmitResponse {
   resultCode: string
@@ -44,7 +44,7 @@ function formatSubmitResponse(response): FormattedSubmitResponse {
 
 // @deprecated Use api.request('submit', { tx_blob: signedTransaction }) instead
 async function submit(
-  this: RippleAPI,
+  this: BRTAPI,
   signedTransaction: string,
   failHard?: boolean
 ): Promise<FormattedSubmitResponse> {

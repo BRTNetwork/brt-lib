@@ -1,4 +1,4 @@
-# Applications using brt-lib (RippleAPI)
+# Applications using brt-lib (BRTAPI)
 
 A curated list of some of the projects and apps that leverage `brt-lib` in some way.
 

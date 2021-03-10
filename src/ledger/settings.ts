@@ -3,7 +3,7 @@ import parseFields from './parse/fields'
 import {validate, constants, ensureClassicAddress} from '../common'
 import {FormattedSettings} from '../common/types/objects'
 import {AccountInfoResponse} from '../common/types/commands'
-import {RippleAPI} from '..'
+import {BRTAPI} from '..'
 import {Settings} from '../common/constants'
 
 const AccountFlags = constants.AccountFlags
@@ -37,7 +37,7 @@ function formatSettings(response: AccountInfoResponse) {
 }
 
 export async function getSettings(
-  this: RippleAPI,
+  this: BRTAPI,
   address: string,
   options: SettingsOptions = {}
 ): Promise<FormattedSettings> {

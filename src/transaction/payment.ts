@@ -12,8 +12,8 @@ import {
   MinAdjustment,
   Memo
 } from '../common/types/objects'
-import {xrpToDrops} from '../common'
-import {RippleAPI} from '..'
+import {brtToDrops} from '../common'
+import {BRTAPI} from '..'
 import {getClassicAccountAndTag, ClassicAccountAndTag} from './utils'
 
 export interface Payment {
@@ -98,7 +98,7 @@ function createMaximalAmount(amount: Amount): Amount {
   if (amount.currency === 'BRT') {
     maxValue = maxBRTValue
   } else if (amount.currency === 'drops') {
-    maxValue = xrpToDrops(maxBRTValue)
+    maxValue = brtToDrops(maxBRTValue)
   } else {
     maxValue = maxIOUValue
   }
@@ -245,7 +245,7 @@ function createPaymentTransaction(
 }
 
 function preparePayment(
-  this: RippleAPI,
+  this: BRTAPI,
   address: string,
   payment: Payment,
   instructions: Instructions = {}

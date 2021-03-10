@@ -1,15 +1,15 @@
 import * as _ from 'lodash'
-import {RippleAPI, APIOptions} from './api'
+import {BRTAPI, APIOptions} from './api'
 
-class RippleAPIBroadcast extends RippleAPI {
+class BRTAPIBroadcast extends BRTAPI {
   ledgerVersion: number | undefined = undefined
-  private _apis: RippleAPI[]
+  private _apis: BRTAPI[]
 
   constructor(servers, options: APIOptions = {}) {
     super(options)
 
-    const apis: RippleAPI[] = servers.map(
-      (server) => new RippleAPI(_.assign({}, options, {server}))
+    const apis: BRTAPI[] = servers.map(
+      (server) => new BRTAPI(_.assign({}, options, {server}))
     )
 
     // exposed for testing
@@ -70,4 +70,4 @@ class RippleAPIBroadcast extends RippleAPI {
   }
 }
 
-export {RippleAPIBroadcast}
+export {BRTAPIBroadcast}

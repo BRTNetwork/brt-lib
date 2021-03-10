@@ -3,9 +3,9 @@ import assert from 'assert-diff'
 import setupAPI from './setup-api'
 import responses from './fixtures/responses'
 import ledgerClosed from './fixtures/brtd/ledger-close.json'
-import {RippleAPI} from '@brtnetwork/brt-api'
+import {BRTAPI} from '../src'
 import {ignoreWebSocketDisconnect} from './utils'
-const schemaValidator = RippleAPI._PRIVATE.schemaValidator
+const schemaValidator = BRTAPI._PRIVATE.schemaValidator
 
 const TIMEOUT = 20000
 
@@ -21,7 +21,7 @@ function checkResult(expected, schemaName, response) {
   return response
 }
 
-describe('RippleAPIBroadcast', function () {
+describe('BRTAPIBroadcast', function () {
   this.timeout(TIMEOUT)
   beforeEach(setupAPI.setupBroadcast)
   afterEach(setupAPI.teardown)

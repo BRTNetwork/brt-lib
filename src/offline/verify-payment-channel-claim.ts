@@ -1,6 +1,6 @@
 import keypairs from '@brtnetwork/brt-keypairs'
 import binary from '@brtnetwork/brt-binary-codec'
-import {validate, xrpToDrops} from '../common'
+import {validate, brtToDrops} from '../common'
 
 function verifyPaymentChannelClaim(
   channel: string,
@@ -12,7 +12,7 @@ function verifyPaymentChannelClaim(
 
   const signingData = binary.encodeForSigningClaim({
     channel: channel,
-    amount: xrpToDrops(amount)
+    amount: brtToDrops(amount)
   })
   return keypairs.verify(signingData, signature, publicKey)
 }

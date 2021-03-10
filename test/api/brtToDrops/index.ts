@@ -9,47 +9,47 @@ import {TestSuite} from '../../utils'
  */
 export default <TestSuite>{
   'works with a typical amount': function (api) {
-    const drops = api.xrpToDrops('2')
+    const drops = api.brtToDrops('2')
     assert.strictEqual(drops, '2000000', '2 BRT equals 2 million drops')
   },
   'works with fractions': function (api) {
-    let drops = api.xrpToDrops('3.456789')
+    let drops = api.brtToDrops('3.456789')
     assert.strictEqual(drops, '3456789', '3.456789 BRT equals 3,456,789 drops')
-    drops = api.xrpToDrops('3.400000')
+    drops = api.brtToDrops('3.400000')
     assert.strictEqual(drops, '3400000', '3.400000 BRT equals 3,400,000 drops')
-    drops = api.xrpToDrops('0.000001')
+    drops = api.brtToDrops('0.000001')
     assert.strictEqual(drops, '1', '0.000001 BRT equals 1 drop')
-    drops = api.xrpToDrops('0.0000010')
+    drops = api.brtToDrops('0.0000010')
     assert.strictEqual(drops, '1', '0.0000010 BRT equals 1 drop')
   },
   'works with zero': function (api) {
-    let drops = api.xrpToDrops('0')
+    let drops = api.brtToDrops('0')
     assert.strictEqual(drops, '0', '0 BRT equals 0 drops')
-    drops = api.xrpToDrops('-0') // negative zero is equivalent to zero
+    drops = api.brtToDrops('-0') // negative zero is equivalent to zero
     assert.strictEqual(drops, '0', '-0 BRT equals 0 drops')
-    drops = api.xrpToDrops('0.000000')
+    drops = api.brtToDrops('0.000000')
     assert.strictEqual(drops, '0', '0.000000 BRT equals 0 drops')
-    drops = api.xrpToDrops('0.0000000')
+    drops = api.brtToDrops('0.0000000')
     assert.strictEqual(drops, '0', '0.0000000 BRT equals 0 drops')
   },
   'works with a negative value': function (api) {
-    const drops = api.xrpToDrops('-2')
+    const drops = api.brtToDrops('-2')
     assert.strictEqual(drops, '-2000000', '-2 BRT equals -2 million drops')
   },
   'works with a value ending with a decimal point': function (api) {
-    let drops = api.xrpToDrops('2.')
+    let drops = api.brtToDrops('2.')
     assert.strictEqual(drops, '2000000', '2. BRT equals 2000000 drops')
-    drops = api.xrpToDrops('-2.')
+    drops = api.brtToDrops('-2.')
     assert.strictEqual(drops, '-2000000', '-2. BRT equals -2000000 drops')
   },
   'works with BigNumber objects': function (api) {
-    let drops = api.xrpToDrops(new BigNumber(2))
+    let drops = api.brtToDrops(new BigNumber(2))
     assert.strictEqual(
       drops,
       '2000000',
       '(BigNumber) 2 BRT equals 2 million drops'
     )
-    drops = api.xrpToDrops(new BigNumber(-2))
+    drops = api.brtToDrops(new BigNumber(-2))
     assert.strictEqual(
       drops,
       '-2000000',
@@ -58,13 +58,13 @@ export default <TestSuite>{
   },
   'works with a number': function (api) {
     // This is not recommended. Use strings or BigNumber objects to avoid precision errors.
-    let drops = api.xrpToDrops(2)
+    let drops = api.brtToDrops(2)
     assert.strictEqual(
       drops,
       '2000000',
       '(number) 2 BRT equals 2 million drops'
     )
-    drops = api.xrpToDrops(-2)
+    drops = api.brtToDrops(-2)
     assert.strictEqual(
       drops,
       '-2000000',
@@ -73,32 +73,32 @@ export default <TestSuite>{
   },
   'throws with an amount with too many decimal places': function (api) {
     assert.throws(() => {
-      api.xrpToDrops('1.1234567')
+      api.brtToDrops('1.1234567')
     }, /has too many decimal places/)
     assert.throws(() => {
-      api.xrpToDrops('0.0000001')
+      api.brtToDrops('0.0000001')
     }, /has too many decimal places/)
   },
   'throws with an invalid value': function (api) {
     assert.throws(() => {
-      api.xrpToDrops('FOO')
+      api.brtToDrops('FOO')
     }, /invalid value/)
     assert.throws(() => {
-      api.xrpToDrops('1e-7')
+      api.brtToDrops('1e-7')
     }, /invalid value/)
     assert.throws(() => {
-      api.xrpToDrops('2,0')
+      api.brtToDrops('2,0')
     }, /invalid value/)
     assert.throws(() => {
-      api.xrpToDrops('.')
-    }, /xrpToDrops: invalid value '\.', should be a BigNumber or string-encoded number\./)
+      api.brtToDrops('.')
+    }, /brtToDrops: invalid value '\.', should be a BigNumber or string-encoded number\./)
   },
   'throws with an amount more than one decimal point': function (api) {
     assert.throws(() => {
-      api.xrpToDrops('1.0.0')
-    }, /xrpToDrops: invalid value '1\.0\.0'/)
+      api.brtToDrops('1.0.0')
+    }, /brtToDrops: invalid value '1\.0\.0'/)
     assert.throws(() => {
-      api.xrpToDrops('...')
-    }, /xrpToDrops: invalid value '\.\.\.'/)
+      api.brtToDrops('...')
+    }, /brtToDrops: invalid value '\.\.\.'/)
   }
 }

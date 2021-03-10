@@ -1,4 +1,4 @@
-# brt-lib (RippleAPI)
+# brt-lib (BRTAPI)
 
 A JavaScript/TypeScript API for interacting with the BRT Ledger
 
@@ -29,7 +29,7 @@ What is brt-lib used for? The applications on the list linked above use `brt-lib
 
 ## Getting Started
 
-See also: [RippleAPI Beginners Guide](https://xrpl.org/get-started-with-rippleapi-for-javascript.html)
+See also: [BRTAPI Beginners Guide](https://xrpl.org/get-started-with-rippleapi-for-javascript.html)
 
 In an existing project (with `package.json`), install `brt-lib`:
 ```
@@ -40,8 +40,8 @@ Then see the documentation:
 
 ## Documentation
 
-+ [RippleAPI Beginners Guide](https://xrpl.org/get-started-with-rippleapi-for-javascript.html)
-+ [RippleAPI Full Reference Documentation](https://xrpl.org/rippleapi-reference.html) ([in this repo](https://github.com/BRTNetwork/js-brt-lib/blob/develop/docs/index.md))
++ [BRTAPI Beginners Guide](https://xrpl.org/get-started-with-rippleapi-for-javascript.html)
++ [BRTAPI Full Reference Documentation](https://xrpl.org/rippleapi-reference.html) ([in this repo](https://github.com/BRTNetwork/js-brt-lib/blob/develop/docs/index.md))
 + [Code Samples](https://github.com/BRTNetwork/js-brt-lib/tree/develop/docs/samples)
 
 ### Mailing Lists
@@ -90,7 +90,7 @@ If you make changes to the JSON schemas, fixtures, or documentation sources, upd
 ## More Information
 
 + [brt-lib-announce mailing list](https://groups.google.com/forum/#!forum/brt-lib-announce) - subscribe for release announcements
-+ [RippleAPI Reference](https://xrpl.org/rippleapi-reference.html) - BRT Ledger Dev Portal
++ [BRTAPI Reference](https://xrpl.org/rippleapi-reference.html) - BRT Ledger Dev Portal
 + [BRT Ledger Dev Portal](https://xrpl.org/)
 
  [![Build Status](https://travis-ci.org/ripple/brt-lib.svg?branch=master)](https://travis-ci.org/ripple/brt-lib)

@@ -2,11 +2,11 @@ import _ from 'lodash'
 import assert from 'assert'
 import wallet from './wallet'
 import requests from '../fixtures/requests'
-import {RippleAPI} from '@brtnetwork/brt-api'
+import {BRTAPI} from '../src'
 import {isValidAddress} from '@brtnetwork/brt-address-codec'
 import {payTo, ledgerAccept} from './utils'
-import {errors} from '@brtnetwork/brt-api/common'
-import {isValidSecret} from '@brtnetwork/brt-api/common/utils'
+import {errors} from '../src/common'
+import {isValidSecret} from '../src/common/utils'
 
 // how long before each test case times out
 const TIMEOUT = 20000
@@ -102,7 +102,7 @@ function testTransaction(
 }
 
 function setup(this: any, server = 'wss://s1.ripple.com') {
-  this.api = new RippleAPI({server})
+  this.api = new BRTAPI({server})
   console.log('CONNECTING...')
   return this.api.connect().then(
     () => {

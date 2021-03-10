@@ -580,7 +580,7 @@ bea4a889fb9ee4092324c6667490ea66469bdde869ddc1aaddf5e9d12b0cf091  brt-1.1.1.js
 + Add [DepositPreauth](https://developers.ripple.com/depositauth.html) ([#958](https://github.com/BRTNetwork/js-brt-lib/pull/958))
 + In `FormattedTransactionType`, the `Outcome`'s `balanceChanges` property had
   the wrong type. This is now fixed (#955)
-+ Add/fix docs for: xrpToDrops, dropsToXrp, iso8601ToRippleTime, schemaValidator, isValidAddress, isValidSecret, deriveKeypair, deriveAddress
++ Add/fix docs for: brtToDrops, dropsToXrp, iso8601ToRippleTime, schemaValidator, isValidAddress, isValidSecret, deriveKeypair, deriveAddress
 
 The SHA-256 checksums for the browser version of this release can be found
 below.
@@ -650,7 +650,7 @@ the last non-beta version.
 + [Add `request()`, `hasNextPage()`, and `requestNextPage()` for accessing `brtd`
   APIs](https://github.com/BRTNetwork/js-brt-lib/blob/09541dae86bc859bf5928ac65b2645dfaaf7f8b1/docs/index.md#brtd-apis).
 + Add `prepareTransaction()` for preparing raw `txJSON`.
-+ BRT amounts can be specified in drops. Also, `xrpToDrops()` and `dropsToXrp()`
++ BRT amounts can be specified in drops. Also, `brtToDrops()` and `dropsToXrp()`
   are available to make conversions.
 + `getTransaction` responses can include a new `channelChanges` property that
   describes the details of a payment channel.
@@ -728,20 +728,20 @@ cccfd24973c6b7990d9e933a589175dae26249825737fff4f2f73d8558a3f186  brt-1.0.0-beta
 
 ### Breaking Changes
 
-+ During transaction preparation, there is now a maximum fee. Also, when a transaction is signed, its fee is checked and an error is thrown if the fee exceeds the maximum. The default `maxFeeBRT` is `'2'` (2 BRT). Override this value in the RippleAPI constructor.
++ During transaction preparation, there is now a maximum fee. Also, when a transaction is signed, its fee is checked and an error is thrown if the fee exceeds the maximum. The default `maxFeeBRT` is `'2'` (2 BRT). Override this value in the BRTAPI constructor.
 + Attempting to prepare a transaction with an exact `fee` higher than `maxFeeBRT` causes a `ValidationError` to be thrown.
 + Attempting to sign a transaction with a fee higher than `maxFeeBRT` causes a `ValidationError` to be thrown.
 + The value returned by `getFee()` is capped at `maxFeeBRT`.
 
 ### Other Changes
 
-+ In Transaction Instructions, the `maxFee` parameter is deprecated. Use the `maxFeeBRT` parameter in the RippleAPI constructor.
++ In Transaction Instructions, the `maxFee` parameter is deprecated. Use the `maxFeeBRT` parameter in the BRTAPI constructor.
 
 #### Overview of new fee limit
 
 Most users of brt-lib do not need to make any code changes to accommodate the new soft limit on fees. The limit is designed to protect against the most severe cases where an unintentionally high fee may be used.
 
-+ When having brt-lib provide the fee with a `prepare*` method, a maximum fee of `maxFeeBRT` (default 2 BRT) applies. You can prepare more economical transactions by setting a lower `maxFeeBRT`, or support high-priority transactions by setting a higher `maxFeeBRT` in the RippleAPI constructor.
++ When having brt-lib provide the fee with a `prepare*` method, a maximum fee of `maxFeeBRT` (default 2 BRT) applies. You can prepare more economical transactions by setting a lower `maxFeeBRT`, or support high-priority transactions by setting a higher `maxFeeBRT` in the BRTAPI constructor.
 + When using `sign` with a Fee higher than `maxFeeBRT`, a `ValidationError` is thrown.
 
 If you have any questions or concerns, please open an issue on GitHub.
@@ -770,7 +770,7 @@ fe5cc6e97c9b8a1470dacb34f16a64255cd639a25381abe9db1ba79e102456f2  brt-1.0.0-beta
 
 + Allow specifying amounts in drops for consistency with the `brtd`
   APIs.
-+ Export `xrpToDrops()` and `dropsToXrp()` functions.
++ Export `brtToDrops()` and `dropsToXrp()` functions.
 + Potentially breaking change: Improve errors. For example, `RippledError` now includes the full response from
   the `brtd` server ([#687](https://github.com/BRTNetwork/js-brt-lib/issues/687)). `NotConnectedError`
   may be thrown with a different message than before.
@@ -999,7 +999,7 @@ __OTHER CHANGES__
 
 + [Fix `babel-polyfill` require](https://github.com/BRTNetwork/js-brt-lib/commit/062148674c3b1293ab82c28e25615ddd530339fa)
 + [Fix samples](https://github.com/BRTNetwork/js-brt-lib/commit/5d5cf868a2ddb1b1cd40e4a4f0a782d0066c2055)
-+ [Add unit tests for `RippleAPIBroadcast`](https://github.com/BRTNetwork/js-brt-lib/commit/ddf8fe5b1a9c750490dca98fb9ffaaf8017f87e0)
++ [Add unit tests for `BRTAPIBroadcast`](https://github.com/BRTNetwork/js-brt-lib/commit/ddf8fe5b1a9c750490dca98fb9ffaaf8017f87e0)
 
 ## 0.15.0
 
@@ -1021,7 +1021,7 @@ __OTHER CHANGES__
 + [Fix proxy support and add support for proxy authorization](https://github.com/BRTNetwork/js-brt-lib/commit/14b840f3feca758e0384b746c94e36d8bf59b8c2)
 + [Fix trace option](https://github.com/BRTNetwork/js-brt-lib/commit/af620755c53556c55eed12de4b0013ef5a349ce2)
 + [Allow memos on all transaction types](https://github.com/BRTNetwork/js-brt-lib/commit/b5081344da8e66fbd3a5113cc3313325ef72a494)
-+ [Add documentation for RippleAPI options](https://github.com/BRTNetwork/js-brt-lib/commit/a76b554cadb9f9f918b06f8386bc29355682a1a4)
++ [Add documentation for BRTAPI options](https://github.com/BRTNetwork/js-brt-lib/commit/a76b554cadb9f9f918b06f8386bc29355682a1a4)
 + [Docs: more on basic types, tx types](https://github.com/BRTNetwork/js-brt-lib/commit/fdbac63f466b4fd3be701d4878800d856692e26e)
 + [Docs: revised introductory material](https://github.com/BRTNetwork/js-brt-lib/commit/ef2515507dbd3c6a426ab5b31332a1bdf72d5b2d)
 + [boost coverage to almost 100%](https://github.com/BRTNetwork/js-brt-lib/commit/995606b1e6f3643af34d9fd442ccd31f320b03eb)
@@ -1039,8 +1039,8 @@ __OTHER CHANGES__
 ## 0.13.0
 
 __BREAKING CHANGES__
-+ Add new RippleAPI interface and delete old API
-    - [RippleAPI README and samples](https://github.com/BRTNetwork/js-brt-lib/tree/develop/docs/samples)
++ Add new BRTAPI interface and delete old API
+    - [BRTAPI README and samples](https://github.com/BRTNetwork/js-brt-lib/tree/develop/docs/samples)
 
 __OTHER CHANGES__
 + [Removed timeout method of Request and added default timeout](https://github.com/BRTNetwork/js-brt-lib/commit/634fe5683a9082e57682ff7d5c4fb9483b4af818)

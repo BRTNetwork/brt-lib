@@ -1,11 +1,11 @@
 import assert from 'assert-diff'
-import {RippleAPI} from '@brtnetwork/brt-api'
+import {BRTAPI} from '../../../src'
 import binary from '@brtnetwork/brt-binary-codec'
 import requests from '../../fixtures/requests'
 import responses from '../../fixtures/responses'
 import {TestSuite} from '../../utils'
 
-const {schemaValidator} = RippleAPI._PRIVATE
+const {schemaValidator} = BRTAPI._PRIVATE
 const {sign: REQUEST_FIXTURES} = requests
 const {sign: RESPONSE_FIXTURES} = responses
 
@@ -284,7 +284,7 @@ export default <TestSuite>{
 
     assert.throws(() => {
       api.sign(request.txJSON, secret)
-    }, /Fee" should not exceed "2000000"\. To use a higher fee, set `maxFeeBRT` in the RippleAPI constructor\./)
+    }, /Fee" should not exceed "2000000"\. To use a higher fee, set `maxFeeBRT` in the BRTAPI constructor\./)
   },
 
   'throws when Fee exceeds maxFeeBRT (in drops) - custom maxFeeBRT': async (
@@ -304,7 +304,7 @@ export default <TestSuite>{
 
     assert.throws(() => {
       api.sign(request.txJSON, secret)
-    }, /Fee" should not exceed "1900000"\. To use a higher fee, set `maxFeeBRT` in the RippleAPI constructor\./)
+    }, /Fee" should not exceed "1900000"\. To use a higher fee, set `maxFeeBRT` in the BRTAPI constructor\./)
   },
 
   'permits fee exceeding 2000000 drops when maxFeeBRT is higher than 2 BRT': async (

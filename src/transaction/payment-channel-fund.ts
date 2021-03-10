@@ -1,7 +1,7 @@
 import * as utils from './utils'
-import {validate, iso8601ToRippleTime, xrpToDrops} from '../common'
+import {validate, iso8601ToRippleTime, brtToDrops} from '../common'
 import {Instructions, Prepare, TransactionJSON} from './types'
-import {RippleAPI} from '..'
+import {BRTAPI} from '..'
 
 export type PaymentChannelFund = {
   channel: string
@@ -17,7 +17,7 @@ function createPaymentChannelFundTransaction(
     Account: account,
     TransactionType: 'PaymentChannelFund',
     Channel: fund.channel,
-    Amount: xrpToDrops(fund.amount)
+    Amount: brtToDrops(fund.amount)
   }
 
   if (fund.expiration !== undefined) {
@@ -28,7 +28,7 @@ function createPaymentChannelFundTransaction(
 }
 
 function preparePaymentChannelFund(
-  this: RippleAPI,
+  this: BRTAPI,
   address: string,
   paymentChannelFund: PaymentChannelFund,
   instructions: Instructions = {}

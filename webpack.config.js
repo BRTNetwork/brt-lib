@@ -13,7 +13,7 @@ function getDefaultConfiguration() {
   }],
   entry: './dist/npm/index.js',
   output: {
-    library: 'ripple',
+    library: 'brt',
     path: path.join(__dirname, 'build/'),
     filename: `brt-lib.default.js`,
   },

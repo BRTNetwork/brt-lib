@@ -1,4 +1,4 @@
-import {RippleAPI, RippleAPIBroadcast} from '@brtnetwork/brt-api'
+import {BRTAPI, BRTAPIBroadcast} from '../src'
 import ledgerClosed from './fixtures/brtd/ledger-close.json'
 import {createMockRippled} from './mock-brtd'
 import {getFreePort} from './utils'
@@ -7,7 +7,7 @@ function setupMockRippledConnection(testcase, port) {
   return new Promise((resolve, reject) => {
     testcase.mockRippled = createMockRippled(port)
     testcase._mockedServerPort = port
-    testcase.api = new RippleAPI({server: 'ws://localhost:' + port})
+    testcase.api = new BRTAPI({server: 'ws://localhost:' + port})
     testcase.api
       .connect()
       .then(() => {
@@ -25,7 +25,7 @@ function setupMockRippledConnectionForBroadcast(testcase, ports) {
   return new Promise((resolve, reject) => {
     const servers = ports.map((port) => 'ws://localhost:' + port)
     testcase.mocks = ports.map((port) => createMockRippled(port))
-    testcase.api = new RippleAPIBroadcast(servers)
+    testcase.api = new BRTAPIBroadcast(servers)
     testcase.api
       .connect()
       .then(() => {
