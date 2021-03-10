@@ -1,5 +1,5 @@
 import assert from 'assert'
-import {RippleAPI} from 'ripple-api'
+import {RippleAPI} from 'brt-api'
 const RangeSet = RippleAPI._PRIVATE.RangeSet
 
 describe('RangeSet', function () {

@@ -1,5 +1,5 @@
-import {classicAddressToXAddress} from 'ripple-address-codec'
-import keypairs from 'ripple-keypairs'
+import {classicAddressToXAddress} from 'brt-address-codec'
+import keypairs from 'brt-keypairs'
 import {errors, validate} from '../common'
 
 export type GeneratedAddress = {

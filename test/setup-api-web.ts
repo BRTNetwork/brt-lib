@@ -1,4 +1,4 @@
-import {RippleAPI, RippleAPIBroadcast} from 'ripple-api'
+import {RippleAPI, RippleAPIBroadcast} from 'brt-api'
 import ledgerClosed from './fixtures/rippled/ledger-close.json'
 
 const port = 34371

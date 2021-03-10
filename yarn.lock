@@ -3318,17 +3318,17 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-ripple-address-codec@^4.0.0, ripple-address-codec@^4.1.1:
+brt-address-codec@^4.0.0, brt-address-codec@^4.1.1:
   version "4.1.1"
-  resolved "https://registry.yarnpkg.com/ripple-address-codec/-/ripple-address-codec-4.1.1.tgz#48e5d76b00b6b9752b1d376646d5abbcd3c8bd67"
+  resolved "https://registry.yarnpkg.com/brt-address-codec/-/brt-address-codec-4.1.1.tgz#48e5d76b00b6b9752b1d376646d5abbcd3c8bd67"
   integrity sha512-mcVD8f7+CH6XaBnLkRcmw4KyHMufa0HTJE3TYeaecwleIQASLYVenjQmVJLgmJQcDUS2Ldh/EltqktmiFMFgkg==
   dependencies:
     base-x "3.0.7"
     create-hash "^1.1.2"
 
-ripple-binary-codec@^1.1.0:
+brt-binary-codec@^1.1.0:
   version "1.1.0"
-  resolved "https://registry.yarnpkg.com/ripple-binary-codec/-/ripple-binary-codec-1.1.0.tgz#829c8ecb4c5d1b6808372f2959dc912ab16efb44"
+  resolved "https://registry.yarnpkg.com/brt-binary-codec/-/brt-binary-codec-1.1.0.tgz#829c8ecb4c5d1b6808372f2959dc912ab16efb44"
   integrity sha512-kziWFi6TjE0TB3uNbIWU4QPkht8FiOUqDO6v5cEA4l1OEY/MnTvQS0WSN+vib3oRO72mVfhDCSHtfnUDqDYBkA==
   dependencies:
     assert "^2.0.0"
@@ -3336,18 +3336,18 @@ ripple-binary-codec@^1.1.0:
     buffer "5.6.0"
     create-hash "^1.2.0"
     decimal.js "^10.2.0"
-    ripple-address-codec "^4.1.1"
+    brt-address-codec "^4.1.1"
 
-ripple-keypairs@^1.0.3:
+brt-keypairs@^1.0.3:
   version "1.0.3"
-  resolved "https://registry.yarnpkg.com/ripple-keypairs/-/ripple-keypairs-1.0.3.tgz#346f15fa25e020e0afaa7f6e31fe398e119344b2"
+  resolved "https://registry.yarnpkg.com/brt-keypairs/-/brt-keypairs-1.0.3.tgz#346f15fa25e020e0afaa7f6e31fe398e119344b2"
   integrity sha512-Na5q8sUdxjd5DXBM88ocJgL2Ig0I1USyO3bvI0SMxJPp7F9DHvqLdPX45PVXs7HUq0Dj691Z9Uz9NeD/K7/eOA==
   dependencies:
     bn.js "^5.1.1"
     brorand "^1.0.5"
     elliptic "^6.5.2"
     hash.js "^1.0.3"
-    ripple-address-codec "^4.0.0"
+    brt-address-codec "^4.0.0"
 
 brt-lib-transactionparser@0.8.2:
   version "0.8.2"

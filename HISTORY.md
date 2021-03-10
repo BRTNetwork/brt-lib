@@ -13,15 +13,15 @@ Subscribe to [the **brt-lib-announce** mailing list](https://groups.google.com/f
 * Bug fixes
   * Allow connectionTimeout option to be customized (#1355)
 * Dependencies
-  * Bump ripple-keypairs to 1.0.3
-  * Bump elliptic to 6.5.4 (this patches a potential security issue, although we do not believe that the issue affects brt-lib: [details](https://github.com/ripple/ripple-keypairs/security/advisories/GHSA-w6x3-9ph2-7x54))
+  * Bump brt-keypairs to 1.0.3
+  * Bump elliptic to 6.5.4 (this patches a potential security issue, although we do not believe that the issue affects brt-lib: [details](https://github.com/ripple/brt-keypairs/security/advisories/GHSA-w6x3-9ph2-7x54))
 
 The SHA-256 checksums for the browser version of this release can be found below.
 ```
 % shasum -a 256 build/*
-f59e0221a7218460eea59b0441a0ee2d2a14484dd473ed5373283852798516c7  build/ripple-latest-min.js
-fc17a5572001d814ea6b81aa701fcb66882ec031c68afb769a8ea8b71c6529a6  build/ripple-latest-min.js.LICENSE.txt
-731ed44cbff8db26bcf256e0e3f3ac3fe90a10b6c227701d67918a5d643c5b29  build/ripple-latest.js
+f59e0221a7218460eea59b0441a0ee2d2a14484dd473ed5373283852798516c7  build/brt-latest-min.js
+fc17a5572001d814ea6b81aa701fcb66882ec031c68afb769a8ea8b71c6529a6  build/brt-latest-min.js.LICENSE.txt
+731ed44cbff8db26bcf256e0e3f3ac3fe90a10b6c227701d67918a5d643c5b29  build/brt-latest.js
 ```
 
 ## 1.9.0 (2020-12-07)
@@ -38,20 +38,20 @@ fc17a5572001d814ea6b81aa701fcb66882ec031c68afb769a8ea8b71c6529a6  build/ripple-l
 * Node.js
   * Require Node.js version 10.13.0+
 * Internal
-  * Update webpack, webpack-cli, mocha, nyc, ripple-binary-codec
+  * Update webpack, webpack-cli, mocha, nyc, brt-binary-codec
   * Run prettier to format code
 
 The SHA-256 checksums for the browser version of this release can be found below.
 ```
 % shasum -a 256 build/*
-2d3ae057ad637df272f98cfe940ea9e1317588e5bbf4fee47c8b16d6e6e71d85  build/ripple-latest-min.js
-8cbbc7bb482f68bcc8d411bae2e42effdb14ddfa562fcbc329a373910b85cf8c  build/ripple-latest.js
+2d3ae057ad637df272f98cfe940ea9e1317588e5bbf4fee47c8b16d6e6e71d85  build/brt-latest-min.js
+8cbbc7bb482f68bcc8d411bae2e42effdb14ddfa562fcbc329a373910b85cf8c  build/brt-latest.js
 ```
 
 ## 1.8.2 (2020-10-23)
 
 * Bug fixes
-  * Browser compatibility: Use ripple-binary-codec 0.2.x to prevent browser issues (#1321)
+  * Browser compatibility: Use brt-binary-codec 0.2.x to prevent browser issues (#1321)
   * Memory leak: Clear awaiting response promises to prevent memory leak (#1302)
 * Feature: getSettings() - allow ledgerVersion to be 'validated', 'closed', or 'current' (#1298)
 * Docs: Update APPLICATIONS.md
@@ -59,22 +59,22 @@ The SHA-256 checksums for the browser version of this release can be found below
 The SHA-256 checksums for the browser version of this release can be found below.
 ```
 % shasum -a 256 *
-ba760c36028b8a3ce267386e188a422890dfb1b03bc87c852a4c2034ea9bac2e  ripple-latest-min.js
-7e5281eb9623602284b9f11564f0f3a36cfde305f2c2f7a32e0d29a04913c817  ripple-latest.js
+ba760c36028b8a3ce267386e188a422890dfb1b03bc87c852a4c2034ea9bac2e  brt-latest-min.js
+7e5281eb9623602284b9f11564f0f3a36cfde305f2c2f7a32e0d29a04913c817  brt-latest.js
 ```
 
 ## 1.8.1 (2020-09-25)
 
 * Internal
   * Bump elliptic to 6.5.3 (this patches a potential security issue, although we do not believe that the issue affects brt-lib)
-  * Bump ripple-binary-codec to 1.0.2
+  * Bump brt-binary-codec to 1.0.2
   * Bump lodash to 4.17.19
 
 The SHA-256 checksums for the browser version of this release can be found below.
 ```
 % shasum -a 256 *
-0895f349944fa11bb1976b2c350c0eb143dfd09abbfc7c2be33aed5c2a4b9ee8  ripple-latest-min.js
-7c00188a28f9d295d8e66aa08b340294d2fe49f635d154fb0df049ae8572c195  ripple-latest.js
+0895f349944fa11bb1976b2c350c0eb143dfd09abbfc7c2be33aed5c2a4b9ee8  brt-latest-min.js
+7c00188a28f9d295d8e66aa08b340294d2fe49f635d154fb0df049ae8572c195  brt-latest.js
 ```
 
 ## 1.8.0 (2020-07-06)
@@ -99,7 +99,7 @@ The SHA-256 checksums for the browser version of this release can be found below
 * Add api.connection.getReserveBase() (#1259)
 * Travis: remove node 8 (#1257)
 * Dependencies
-  * Update ripple-address-codec, @types/ws, @types/lodash, https-proxy-agent
+  * Update brt-address-codec, @types/ws, @types/lodash, https-proxy-agent
   * Update devDependencies: eventemitter2, nyc, ejs, @types/node, webpack, ts-node, prettier, @typescript-eslint/eslint-plugin
 
 ## 1.6.5 (2020-03-23)
@@ -117,18 +117,18 @@ The SHA-256 checksums for the browser version of this release can be found below
   * Improve unit tests
 * Dependencies
   * Update webpack-cli, @types/node, webpack, @typescript-eslint/eslint-plugin,
-    typescript, ripple-keypairs
+    typescript, brt-keypairs
 
 ## 1.6.3 (2020-02-05)
 
-* Update ripple-keypairs to 1.0.0
+* Update brt-keypairs to 1.0.0
 * Bug fix: Assign event listener to socket close event on open before attempting post-open logic (#1186)
   * Protects against possible unhandled rejection in disconnect
   * Adds the Connection `_ws.close` event listener post `_ws.open` before executing any post `_ws.open` logic, i.e. `Connection._subscribeToLedger`
   * This prevents a reconnection error loop that occurs if `Connection._ws` is never cleaned up by the unreachable `_ws.close` event listener
   * Also ensures that a possible disconnect() promise rejection is not unhandled if any `_ws.open` logic in `Connection.connect()` throws
 * Dependencies
-  * Update mocha-junit-reporter, @types/node, mocha, @typescript-eslint/eslint-plugin, ripple-address-codec
+  * Update mocha-junit-reporter, @types/node, mocha, @typescript-eslint/eslint-plugin, brt-address-codec
 
 ## 1.6.2 (2020-01-17)
 
@@ -150,7 +150,7 @@ The SHA-256 checksums for the browser version of this release can be found below
   * In some cases, brt-lib would fail to wait for the connection to be ready (#1119)
 * Dependencies
   * Update docs dependencies, ejs and doctoc (#1153)
-  * Update eslint, brt-lib-transactionparser, typescript, nyc, ws, @types/node, ripple-binary-codec, mocha, mocha-junit-reporter
+  * Update eslint, brt-lib-transactionparser, typescript, nyc, ws, @types/node, brt-binary-codec, mocha, mocha-junit-reporter
 * Internal
   * Add LedgerHistory to Connection (#1119): Moved ledger logic into its own Ledger class
 
@@ -183,7 +183,7 @@ The SHA-256 checksums for the browser version of this release can be found below
 * Dependencies
   * Update TypeScript version (#1096)
   * Update brt-lib-transactionparser to 0.8.1 (#1097)
-  * Update ripple-binary-codec to 0.2.5
+  * Update brt-binary-codec to 0.2.5
   * Update webpack (#1112)
   * Require node 8 and yarn (#1107)
 * Testing: Refactor and add unit tests
@@ -214,7 +214,7 @@ The SHA-256 checksums for the browser version of this release can be found below
 * Docs: `getAccountObjects` doc fix
 * Dependencies:
   * Update `bignumber.js`
-  * Update `ripple-keypairs`
+  * Update `brt-keypairs`
   * Update `ws`
 * Build process: Update `webpack` flow
 
@@ -241,13 +241,13 @@ The SHA-256 checksums for the browser version of this release can be found below
 
 * Update brt-lib-transactionparser
 * Improve error message when signing fails (e.g. due to trailing zeros)
-* Integrate ripple-hashes (in TypeScript with improved naming and docs)
+* Integrate brt-hashes (in TypeScript with improved naming and docs)
 * Add multi-signing example to sign() method docs
 * Update TypeScript
 
 ## 1.3.3 (2019-09-10)
 
-* Expand node version compatibility to support Node.js 12 ([ripple-binary-codec#32](https://github.com/ripple/ripple-binary-codec/issues/32))
+* Expand node version compatibility to support Node.js 12 ([brt-binary-codec#32](https://github.com/ripple/brt-binary-codec/issues/32))
 
 ## 1.3.2 (2019-09-03)
 
@@ -358,9 +358,9 @@ The SHA-256 checksums for the browser version of this release can be found
 below.
 ```
 % shasum -a 256 *
-4f09c056ccc51bc6cf17b128b559112e9c5adf19cc96ac8f9a06faee185697a7  ripple-1.2.4-debug.js
-5da1c75a02d76b0b105d98355ee4561f5d5036e8d5d0237efd5960812dcaa1fd  ripple-1.2.4-min.js
-e147f303e880a65db149d2a5b9183b75814bd8145cd00740bcc4679d867192c8  ripple-1.2.4.js
+4f09c056ccc51bc6cf17b128b559112e9c5adf19cc96ac8f9a06faee185697a7  brt-1.2.4-debug.js
+5da1c75a02d76b0b105d98355ee4561f5d5036e8d5d0237efd5960812dcaa1fd  brt-1.2.4-min.js
+e147f303e880a65db149d2a5b9183b75814bd8145cd00740bcc4679d867192c8  brt-1.2.4.js
 ```
 
 ## 1.2.3 (2019-04-30)
@@ -371,9 +371,9 @@ The SHA-256 checksums for the browser version of this release can be found
 below.
 ```
 % shasum -a 256 *
-efb0f29cde94534a015d8a2171abb11b9a4345ba01418bf5b6ab6042a6d51dde  ripple-1.2.3-debug.js
-b86145c0e30099b966ed8d3830ba25988d72877f1f87044d9954d6707be098ac  ripple-1.2.3-min.js
-e027d91c7321d41ba94bb1bdc77dcff0107a5fd9eb833c6dbd06f1bbedef3900  ripple-1.2.3.js
+efb0f29cde94534a015d8a2171abb11b9a4345ba01418bf5b6ab6042a6d51dde  brt-1.2.3-debug.js
+b86145c0e30099b966ed8d3830ba25988d72877f1f87044d9954d6707be098ac  brt-1.2.3-min.js
+e027d91c7321d41ba94bb1bdc77dcff0107a5fd9eb833c6dbd06f1bbedef3900  brt-1.2.3.js
 ```
 
 ## 1.2.2 (2019-04-15)
@@ -392,16 +392,16 @@ Note: There is no browser version of this release.
 
 ## 1.2.1 (2019-03-23)
 
-* Update `ripple-binary-codec` to 0.2.1 to support `tecKILLED`
+* Update `brt-binary-codec` to 0.2.1 to support `tecKILLED`
 
 The SHA-256 checksums for the browser version of this release can be found
 below.
 
 ```
 % shasum -a 256 *
-531c2a8f4bf6d6b5bd4afe6a40b6a68a77179a343902cfa4210d7e35b5697af0  ripple-1.2.1-debug.js
-201ee99922b16b7e32afb5317ef4bb9facc23b20c272bb5c4ed7010f5d996cab  ripple-1.2.1-min.js
-c1b984581299bf00e0e3c8ac4e62eadfc9b190bd78a2458a76e59ceb56046148  ripple-1.2.1.js
+531c2a8f4bf6d6b5bd4afe6a40b6a68a77179a343902cfa4210d7e35b5697af0  brt-1.2.1-debug.js
+201ee99922b16b7e32afb5317ef4bb9facc23b20c272bb5c4ed7010f5d996cab  brt-1.2.1-min.js
+c1b984581299bf00e0e3c8ac4e62eadfc9b190bd78a2458a76e59ceb56046148  brt-1.2.1.js
 ```
 
 ## 1.2.0 (2019-03-19)
@@ -523,9 +523,9 @@ The SHA-256 checksums for the browser version of this release can be found
 below.
 ```
 % shasum -a 256 *
-13021fe3efbdd59faf68597b0b18204b39847b285cca82f84c737e3d19922cc2  ripple-1.2.0-debug.js
-0070225e731afd8c2c0a0976111ebf326c19a96ee1549368de9f016abdd53d2f  ripple-1.2.0-min.js
-d440268397c03ad5137a3294e53a07b959ef93cd23b1990d6f82621c4776ba9f  ripple-1.2.0.js
+13021fe3efbdd59faf68597b0b18204b39847b285cca82f84c737e3d19922cc2  brt-1.2.0-debug.js
+0070225e731afd8c2c0a0976111ebf326c19a96ee1549368de9f016abdd53d2f  brt-1.2.0-min.js
+d440268397c03ad5137a3294e53a07b959ef93cd23b1990d6f82621c4776ba9f  brt-1.2.0.js
 ```
 
 ## 1.1.2 (2018-12-12)
@@ -545,9 +545,9 @@ The SHA-256 checksums for the browser version of this release can be found
 below.
 ```
 % shasum -a 256 *
-e6cc52395d0c3e205263777ba2e528e50f4d1f84bb4b16763a3bf7f5fcc290f5  ripple-1.1.2-debug.js
-82df879bc2970e0e4fd161975a99448b4859b0cde751d8ea34e9f51d672090b9  ripple-1.1.2-min.js
-12f56330dc71bba8ac3004025cbc9698413a0c619df302dda105b31228a67319  ripple-1.1.2.js
+e6cc52395d0c3e205263777ba2e528e50f4d1f84bb4b16763a3bf7f5fcc290f5  brt-1.1.2-debug.js
+82df879bc2970e0e4fd161975a99448b4859b0cde751d8ea34e9f51d672090b9  brt-1.1.2-min.js
+12f56330dc71bba8ac3004025cbc9698413a0c619df302dda105b31228a67319  brt-1.1.2.js
 ```
 
 ## 1.1.1 (2018-11-27)
@@ -569,9 +569,9 @@ The SHA-256 checksums for the browser version of this release can be found
 below.
 ```
 % shasum -a 256 *
-e151900e49bb5482b02bef5b0b1542ea586076363b072ae616f6d4d2f7f5b8a1  ripple-1.1.1-debug.js
-6aee3757b29de285f361e20862261090033c07a13fd09f4a3cc4c097b6e84b55  ripple-1.1.1-min.js
-bea4a889fb9ee4092324c6667490ea66469bdde869ddc1aaddf5e9d12b0cf091  ripple-1.1.1.js
+e151900e49bb5482b02bef5b0b1542ea586076363b072ae616f6d4d2f7f5b8a1  brt-1.1.1-debug.js
+6aee3757b29de285f361e20862261090033c07a13fd09f4a3cc4c097b6e84b55  brt-1.1.1-min.js
+bea4a889fb9ee4092324c6667490ea66469bdde869ddc1aaddf5e9d12b0cf091  brt-1.1.1.js
 ```
 
 ## 1.1.0 (2018-10-31)
@@ -586,9 +586,9 @@ The SHA-256 checksums for the browser version of this release can be found
 below.
 ```
 % shasum -a 256 *
-e1d742092b3c0fcee97a875e18db4baeab3bbc82f08b96e883ee188c5f0cfb37  ripple-1.1.0-debug.js
-f28921f57a133678dcb3cb54c497626bd76b1f953d22d61f3ddca31c8947d552  ripple-1.1.0-min.js
-3696871a80c1102635699994adcaf00cdfdfcff5014fc2eba3d8f8d8437c8f91  ripple-1.1.0.js
+e1d742092b3c0fcee97a875e18db4baeab3bbc82f08b96e883ee188c5f0cfb37  brt-1.1.0-debug.js
+f28921f57a133678dcb3cb54c497626bd76b1f953d22d61f3ddca31c8947d552  brt-1.1.0-min.js
+3696871a80c1102635699994adcaf00cdfdfcff5014fc2eba3d8f8d8437c8f91  brt-1.1.0.js
 ```
 
 ## 1.0.2 (2018-10-16)
@@ -602,9 +602,9 @@ The SHA-256 checksums for the browser version of this release can be found
 below.
 ```
 % shasum -a 256 *
-2556fe17296e127ed44e7066e90a6175e2b164f00ca3c1aa7b1c554f31c688dd  ripple-1.0.2-debug.js
-e0342ea21eac32a1024c62034fba09c6f26dd3e7371b23ea1e153e03135cd590  ripple-1.0.2-min.js
-c7286c517497d018d02d09257e81172b61d36c8b9885a077af68e8133c3b3b9b  ripple-1.0.2.js
+2556fe17296e127ed44e7066e90a6175e2b164f00ca3c1aa7b1c554f31c688dd  brt-1.0.2-debug.js
+e0342ea21eac32a1024c62034fba09c6f26dd3e7371b23ea1e153e03135cd590  brt-1.0.2-min.js
+c7286c517497d018d02d09257e81172b61d36c8b9885a077af68e8133c3b3b9b  brt-1.0.2.js
 ```
 
 ## 1.0.1 (2018-09-27)
@@ -626,9 +626,9 @@ The SHA-256 checksums for the browser version of this release can be found
 below.
 ```
 % shasum -a 256 *
-9b6408641ce83659afcd5765c256c35829a4fcb4c3244dc9ca6bf27c871a45c4  ripple-1.0.1-debug.js
-7ab2b69fe59c2d4a74638116e2ba3b387155eb2d23e48a01bbf7beb72911f898  ripple-1.0.1-min.js
-8bb4dcad9ce25a27003b1d73d71ddf41b8a5af02ece4ebbfeaff4aeb91f3b8c4  ripple-1.0.1.js
+9b6408641ce83659afcd5765c256c35829a4fcb4c3244dc9ca6bf27c871a45c4  brt-1.0.1-debug.js
+7ab2b69fe59c2d4a74638116e2ba3b387155eb2d23e48a01bbf7beb72911f898  brt-1.0.1-min.js
+8bb4dcad9ce25a27003b1d73d71ddf41b8a5af02ece4ebbfeaff4aeb91f3b8c4  brt-1.0.1.js
 ```
 
 ## 1.0.0 (2018-08-30)
@@ -687,9 +687,9 @@ The SHA-256 checksums for the browser version of this release can be found
 below.
 ```
 % shasum -a 256 *
-06e5efcb6846ad45dedfd85cfa2ef4bdeb608b15ccbfb60b872c995d97342426  ripple-1.0.0-debug.js
-cdb26b928a89ce228c727d1ff966df266eb46b2f76bd94f81cbeb0a9d75febf0  ripple-1.0.0-min.js
-f74ee804e8a945a994e4e3901a0a3eb52292fbdcbff61ed30cefb8ffbcba50c3  ripple-1.0.0.js
+06e5efcb6846ad45dedfd85cfa2ef4bdeb608b15ccbfb60b872c995d97342426  brt-1.0.0-debug.js
+cdb26b928a89ce228c727d1ff966df266eb46b2f76bd94f81cbeb0a9d75febf0  brt-1.0.0-min.js
+f74ee804e8a945a994e4e3901a0a3eb52292fbdcbff61ed30cefb8ffbcba50c3  brt-1.0.0.js
 ```
 
 ## 1.0.0-beta.5 (2018-08-11)
@@ -719,9 +719,9 @@ The SHA-256 checksums for the browser version of this release can be found
 below.
 ```
 % shasum -a 256 *
-460dbb521e24c44cb53dabc1a74feeca33d031b44d889dd5b51103ca92d51de6  ripple-1.0.0-beta.3-debug.js
-cccfd24973c6b7990d9e933a589175dae26249825737fff4f2f73d8558a3f186  ripple-1.0.0-beta.3-min.js
-0dc456a58fb078347d9920310621595905085595d73c2b8fe96bea73bcf35450  ripple-1.0.0-beta.3.js
+460dbb521e24c44cb53dabc1a74feeca33d031b44d889dd5b51103ca92d51de6  brt-1.0.0-beta.3-debug.js
+cccfd24973c6b7990d9e933a589175dae26249825737fff4f2f73d8558a3f186  brt-1.0.0-beta.3-min.js
+0dc456a58fb078347d9920310621595905085595d73c2b8fe96bea73bcf35450  brt-1.0.0-beta.3.js
 ```
 
 ## 1.0.0-beta.2 (2018-06-08)
@@ -750,9 +750,9 @@ The SHA-256 checksums for the browser version of this release can be found
 below.
 ```
 % shasum -a 256 *
-ef348a2805098e61395b689b410cbf4bfd35e4d72e38c89f4ab74ec5e19793f5  ripple-1.0.0-beta.2-debug.js
-ea33fd53df8c7176d5fbf52dae0b64aade7180860f26449062cdbefaf8bd4d9b  ripple-1.0.0-beta.2-min.js
-fe5cc6e97c9b8a1470dacb34f16a64255cd639a25381abe9db1ba79e102456f2  ripple-1.0.0-beta.2.js
+ef348a2805098e61395b689b410cbf4bfd35e4d72e38c89f4ab74ec5e19793f5  brt-1.0.0-beta.2-debug.js
+ea33fd53df8c7176d5fbf52dae0b64aade7180860f26449062cdbefaf8bd4d9b  brt-1.0.0-beta.2-min.js
+fe5cc6e97c9b8a1470dacb34f16a64255cd639a25381abe9db1ba79e102456f2  brt-1.0.0-beta.2.js
 ```
 
 ## 1.0.0-beta.1 (2018-05-24)
@@ -779,9 +779,9 @@ The SHA-256 checksums for the browser version of this release can be found
 below.
 ```
 % shasum -a 256 *
-a80ebb39e186640246306eadb2879147458c8271fd3c6cb32e6ef78d0b4b01a5  ripple-1.0.0-beta.1-debug.js
-81bcc4b5fd6fd52220ed151242eaddd63eb29c4078845edc68f65b769557d126  ripple-1.0.0-beta.1-min.js
-738b4d65b58cf4e3542fa396f8d319a24cd7d0b7aff5ff629a900e244f735ff4  ripple-1.0.0-beta.1.js
+a80ebb39e186640246306eadb2879147458c8271fd3c6cb32e6ef78d0b4b01a5  brt-1.0.0-beta.1-debug.js
+81bcc4b5fd6fd52220ed151242eaddd63eb29c4078845edc68f65b769557d126  brt-1.0.0-beta.1-min.js
+738b4d65b58cf4e3542fa396f8d319a24cd7d0b7aff5ff629a900e244f735ff4  brt-1.0.0-beta.1.js
 ```
 
 ## 1.0.0-beta.0 (2018-05-10)
@@ -798,9 +798,9 @@ The SHA-256 checksums for the browser version of this release can be found
 below.
 ```
 % shasum -a 256 *
-ab2094979a3d6b320c7bc22bc5946c50fa5e29af0976d352e7689b0a4d840c55  ripple-1.0.0-beta.0-debug.js
-0e7f7d740606c2866ebf63776b13b41a555848e1a1419e2c8058d2e6c562d7fd  ripple-1.0.0-beta.0-min.js
-bd05e8806832ca4192aea7ba2d0362baa9f44605f8e8e6676acd25eb0b94b778  ripple-1.0.0-beta.0.js
+ab2094979a3d6b320c7bc22bc5946c50fa5e29af0976d352e7689b0a4d840c55  brt-1.0.0-beta.0-debug.js
+0e7f7d740606c2866ebf63776b13b41a555848e1a1419e2c8058d2e6c562d7fd  brt-1.0.0-beta.0-min.js
+bd05e8806832ca4192aea7ba2d0362baa9f44605f8e8e6676acd25eb0b94b778  brt-1.0.0-beta.0.js
 ```
 
 ## 0.22.0 (2018-05-10)
@@ -811,9 +811,9 @@ The SHA-256 checksums for the browser version of this release can be found
 below.
 ```
 % shasum -a 256 *
-33f71b55c4adec4452826e44fe7809377364df04222b60f0fce01e7de2daff33  ripple-0.22.0-debug.js
-63232888a4ea77065e8e8eb8fdaa8ebfe3a785428fe935e2667c1ea54c837f29  ripple-0.22.0-min.js
-ab98026fabe296bd938297c48cb58e01dfdbe90f3c66c9617d6a3e1efd4c6b93  ripple-0.22.0.js
+33f71b55c4adec4452826e44fe7809377364df04222b60f0fce01e7de2daff33  brt-0.22.0-debug.js
+63232888a4ea77065e8e8eb8fdaa8ebfe3a785428fe935e2667c1ea54c837f29  brt-0.22.0-min.js
+ab98026fabe296bd938297c48cb58e01dfdbe90f3c66c9617d6a3e1efd4c6b93  brt-0.22.0.js
 ```
 
 ## 0.21.0 (2018-04-11)
@@ -825,9 +825,9 @@ The SHA-256 checksums for the browser version of this release can be found
 below.
 ```
 % shasum -a 256 *
-3ab52209ad4a80393c8c08ef3f4aa9cfb47bc76c0ede2ee9fa7f5ca180ba4d67  ripple-0.21.0-debug.js
-3b1efccded347bed5f64757098a1ea6a513bb8932d922d00af47cd24e001dc14  ripple-0.21.0-min.js
-db08e5a3eab1f659b4c803543374398004d950ba720adc4b9a7658817cb5c94b  ripple-0.21.0.js
+3ab52209ad4a80393c8c08ef3f4aa9cfb47bc76c0ede2ee9fa7f5ca180ba4d67  brt-0.21.0-debug.js
+3b1efccded347bed5f64757098a1ea6a513bb8932d922d00af47cd24e001dc14  brt-0.21.0-min.js
+db08e5a3eab1f659b4c803543374398004d950ba720adc4b9a7658817cb5c94b  brt-0.21.0.js
 ```
 
 ## 0.20.0 (2018-04-09)
@@ -840,9 +840,9 @@ The SHA-256 checksums for the browser version of this release can be found
 below.
 ```
 % shasum -a 256 *
-389811a9baa72f77e2a43d0b48045762d29a6f616ed5fd2660ba76fc12a3ecc5  ripple-0.20.0-debug.js
-c1746ea0dd55318cb4e1ef3955ef14759d9d70861437c69abafc10169916f068  ripple-0.20.0-min.js
-17958b0e46395d2b2a35a003693c0babdfb5382513d3cc58a62f8648ad710b0e  ripple-0.20.0.js
+389811a9baa72f77e2a43d0b48045762d29a6f616ed5fd2660ba76fc12a3ecc5  brt-0.20.0-debug.js
+c1746ea0dd55318cb4e1ef3955ef14759d9d70861437c69abafc10169916f068  brt-0.20.0-min.js
+17958b0e46395d2b2a35a003693c0babdfb5382513d3cc58a62f8648ad710b0e  brt-0.20.0.js
 ```
 
 ## 0.19.1 (2018-03-22)
@@ -856,9 +856,9 @@ The SHA-256 checksums for the browser version of this release can be found
 below.
 ```
 % shasum -a 256 *
-3ed5332aa035c07bae6c1abfdfc8ca77cdbb05cc4b88878f544f1ea4cb793f4d  ripple-0.19.1-debug.js
-2f5507aa00a40ab6a94de1822af87db5e927edef3885aef5d9b39ccb623ccb54  ripple-0.19.1-min.js
-1e439aee1b220242d56ea687a9b55a67b8614212c1ddbd70a4fcf34503fc487a  ripple-0.19.1.js
+3ed5332aa035c07bae6c1abfdfc8ca77cdbb05cc4b88878f544f1ea4cb793f4d  brt-0.19.1-debug.js
+2f5507aa00a40ab6a94de1822af87db5e927edef3885aef5d9b39ccb623ccb54  brt-0.19.1-min.js
+1e439aee1b220242d56ea687a9b55a67b8614212c1ddbd70a4fcf34503fc487a  brt-0.19.1.js
 ```
 
 ## 0.19.0 (2018-03-02)
@@ -876,9 +876,9 @@ The SHA-256 checksums for the browser version of this release can be found
 below.
 ```
 % shasum -a 256 *
-0e7ce4594b7e455fbc57ad81f6fddc391d1e1f349a49c96ad783be50f80fdc14  ripple-0.19.0-debug.js
-6d716a0357929e51e476f22136880f7a0e5458fd396ac145ce9308f278ff7cc1  ripple-0.19.0-min.js
-6715db1af638f99226ab7f8f244103306aa6e04d1b8c1da47a63431053bacb84  ripple-0.19.0.js
+0e7ce4594b7e455fbc57ad81f6fddc391d1e1f349a49c96ad783be50f80fdc14  brt-0.19.0-debug.js
+6d716a0357929e51e476f22136880f7a0e5458fd396ac145ce9308f278ff7cc1  brt-0.19.0-min.js
+6715db1af638f99226ab7f8f244103306aa6e04d1b8c1da47a63431053bacb84  brt-0.19.0.js
 ```
 
 ## 0.18.2 (2018-02-13)
@@ -895,9 +895,9 @@ The SHA-256 checksums for the browser version of this release can be found
 below.
 ```
 % shasum -a 256 *
-f08ab61137255be3639e9d210ded2a182b6e0388f257a70d9b372ce7e7e518a6  ripple-0.18.2-debug.js
-0604835b8421391167b4314ce93a76b5994780a08bd7edf36d91eb5e8f2643a2  ripple-0.18.2-min.js
-fda56ab5c8256e04355e20064877ef4053f26c87f37cfcf861340f22bf89ee40  ripple-0.18.2.js
+f08ab61137255be3639e9d210ded2a182b6e0388f257a70d9b372ce7e7e518a6  brt-0.18.2-debug.js
+0604835b8421391167b4314ce93a76b5994780a08bd7edf36d91eb5e8f2643a2  brt-0.18.2-min.js
+fda56ab5c8256e04355e20064877ef4053f26c87f37cfcf861340f22bf89ee40  brt-0.18.2.js
 ```
 
 ## 0.18.1 (2018-01-27)
@@ -911,9 +911,9 @@ later.
 The SHA-256 checksums for the browser version of this release can be found below.
 ```
 % shasum -a 256 *
-6871855a2af1dc591ef557d442c11e8c60e01c5932054e13e8cbb84a182f45e0  ripple-0.18.1-debug.js
-331f0baff46af44933a8fa31f128132945ff82a147acfff0a7315adb446e3de0  ripple-0.18.1-min.js
-26324bb0725d2d484fe3b6086335d49734f45dc647b07c60746e0d8619f1ed3e  ripple-0.18.1.js
+6871855a2af1dc591ef557d442c11e8c60e01c5932054e13e8cbb84a182f45e0  brt-0.18.1-debug.js
+331f0baff46af44933a8fa31f128132945ff82a147acfff0a7315adb446e3de0  brt-0.18.1-min.js
+26324bb0725d2d484fe3b6086335d49734f45dc647b07c60746e0d8619f1ed3e  brt-0.18.1.js
 ```
 
 ## 0.18.0 (2018-01-25)
@@ -930,22 +930,22 @@ The SHA-256 checksums for the browser version of this release can be found below
 + [Update ws dependency to 3.3.1](https://github.com/ripple/brt-lib/pull/804)
 + [Remove unnecessary polyfills](https://github.com/ripple/brt-lib/pull/807)
 + Fix lint errors ([#786](https://github.com/ripple/brt-lib/pull/786), [#808](https://github.com/ripple/brt-lib/pull/808))
-+ [Update ripple-keypairs dependency to 0.10.1](https://github.com/ripple/brt-lib/pull/805)
++ [Update brt-keypairs dependency to 0.10.1](https://github.com/ripple/brt-lib/pull/805)
 
 The SHA-256 checksums for the browser version of this release can be found below.
 ```
 % shasum -a 256 *
-b52f251eedac2509d72093eab1e8dba0d0f4a9fe6a28ec1cc90853cfb0fd7110  ripple-0.17.9-debug.js
-d577a2bbdbdf7535c5365a1c52a2a31989d1b966e30abcba65c87133a536b9dc  ripple-0.17.9-min.js
-ff4c3002842fac72ec2ebbd081e9594b0de6050d4d051a8fd6c06adb9a351488  ripple-0.17.9.js
+b52f251eedac2509d72093eab1e8dba0d0f4a9fe6a28ec1cc90853cfb0fd7110  brt-0.17.9-debug.js
+d577a2bbdbdf7535c5365a1c52a2a31989d1b966e30abcba65c87133a536b9dc  brt-0.17.9-min.js
+ff4c3002842fac72ec2ebbd081e9594b0de6050d4d051a8fd6c06adb9a351488  brt-0.17.9.js
 ```
 
 The SHA-1 checksums for the browser version of this release can be found below.
 ```
 % shasum *
-e1995afc34aef6accd269cfccc55a45619618a41  ripple-0.17.9-debug.js
-e6ad9a9c111ab696f5637bfa372d80999e5ae362  ripple-0.17.9-min.js
-4866494ec5f9095cc34bea142f1e2b8ac5f7fbf8  ripple-0.17.9.js
+e1995afc34aef6accd269cfccc55a45619618a41  brt-0.17.9-debug.js
+e6ad9a9c111ab696f5637bfa372d80999e5ae362  brt-0.17.9-min.js
+4866494ec5f9095cc34bea142f1e2b8ac5f7fbf8  brt-0.17.9.js
 ```
 
 ## 0.17.8 (2017-11-06)
@@ -970,7 +970,7 @@ e6ad9a9c111ab696f5637bfa372d80999e5ae362  ripple-0.17.9-min.js
 
 ## 0.16.2
 
-+ Bump `ripple-binary-codec` dependency version to 0.1.1 to fix issue with `computeLedgerHash` for transactions with `DeliverMin`
++ Bump `brt-binary-codec` dependency version to 0.1.1 to fix issue with `computeLedgerHash` for transactions with `DeliverMin`
 
 ## 0.16.1
 
@@ -1034,7 +1034,7 @@ __OTHER CHANGES__
 
 + [Add documentation for API events](https://github.com/ripple/brt-lib/commit/25d1ac0c5f95cad32ea4ceebb)
 + [Fix: Add babel-polyfill](https://github.com/ripple/brt-lib/commit/8a53abc32f6ec6c7d50cd182492d6fb511b86704)
-+ [Fix: Bump version on ripple-hashes](https://github.com/ripple/brt-lib/commit/12e5765c64aea31b3c2fb65ff989cf01e6368f58)
++ [Fix: Bump version on brt-hashes](https://github.com/ripple/brt-lib/commit/12e5765c64aea31b3c2fb65ff989cf01e6368f58)
 
 ## 0.13.0
 
@@ -1147,7 +1147,7 @@ __OTHER CHANGES__
 ## 0.11.0
 
 + [Track the funded status of an order based on cumulative account orders](https://github.com/ripple/brt-lib/commit/67d39737a4d5e0fcd9d9b47b9083ee00e5a9e652) and [67d3973](https://github.com/ripple/brt-lib/commit/b6b99dde022e1e14c4797e454b1d7fca50e49482)
-+ Remove blobvault client from brt-lib, use the [`ripple-vault-client`](https://github.com/ripple/ripple-vault-client) instead [9b3d62b7](https://github.com/ripple/brt-lib/commit/9b3d62b765c4c25beae6eb0fa57ef3a07f2581b1)
++ Remove blobvault client from brt-lib, use the [`brt-vault-client`](https://github.com/ripple/brt-vault-client) instead [9b3d62b7](https://github.com/ripple/brt-lib/commit/9b3d62b765c4c25beae6eb0fa57ef3a07f2581b1)
 + [Add support for `ledger` option in requestBookOffers](https://github.com/ripple/brt-lib/commit/34c0677c453c409ef0a5b351959abdc176d3bacb)
 + [Add support for `limit` option in requestBookOffers](https://github.com/ripple/brt-lib/commit/d1d4452217c878d0b377d24830b4cd8b3162f6e0)
 + [Add `ledgerSelect` request constructor in `Remote`](https://github.com/ripple/brt-lib/commit/98f40abfc3aa74dec5067a2d90002756cc8acd01)
@@ -1311,7 +1311,7 @@ __OTHER CHANGES__
 + Added full currency name support, e.g. `Currency.from_json('XRP').to_human({full_name:'Ripples'})` will return `XRP - Ripples`
 + Improved interest bearing currency support, e.g. `Currency.from_human('USD - US Dollar (2.5%pa)')`
 + Improve test coverage
-+ Added blob vault client.  The vault client facilitates interaction with ripple's namespace and blob vault or 3rd party blob vaults using ripple's blob vault software (https://github.com/ripple/ripple-blobvault). A list of the available functions can be found at [docs/VAULTCLIENT.md](docs/VAULTCLIENT.md)
++ Added blob vault client.  The vault client facilitates interaction with ripple's namespace and blob vault or 3rd party blob vaults using ripple's blob vault software (https://github.com/ripple/brt-blobvault). A list of the available functions can be found at [docs/VAULTCLIENT.md](docs/VAULTCLIENT.md)
 
 
 ## 0.7.35

@@ -89,7 +89,7 @@ import {getServerInfo, getFee} from './common/serverinfo'
 import {clamp, renameCounterpartyToIssuer} from './ledger/utils'
 import {TransactionJSON, Instructions, Prepare} from './transaction/types'
 import {ConnectionUserOptions} from './common/connection'
-import {isValidXAddress, isValidClassicAddress} from 'ripple-address-codec'
+import {isValidXAddress, isValidClassicAddress} from 'brt-address-codec'
 import {
   computeBinaryTransactionHash,
   computeTransactionHash,
@@ -419,7 +419,7 @@ class RippleAPI extends EventEmitter {
   static isValidClassicAddress = isValidClassicAddress
 
   /**
-   * Static methods that replace functionality from the now-deprecated ripple-hashes library
+   * Static methods that replace functionality from the now-deprecated brt-hashes library
    */
   // Compute the hash of a binary transaction blob.
   static computeBinaryTransactionHash = computeBinaryTransactionHash // (txBlobHex: string): string

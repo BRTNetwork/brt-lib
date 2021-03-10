@@ -1,4 +1,4 @@
-import {RippledError, ValidationError} from 'ripple-api/common/errors'
+import {RippledError, ValidationError} from 'brt-api/common/errors'
 import requests from '../../fixtures/requests'
 import responses from '../../fixtures/responses'
 import {assertRejects, assertResultMatch, TestSuite} from '../../utils'
@@ -609,7 +609,7 @@ export default <TestSuite>{
   //
   //   Error: DepositPreXXXX is not a valid name or ordinal for TransactionType
   //
-  // at Function.from (ripple-binary-codec/distrib/npm/enums/index.js:43:15)
+  // at Function.from (brt-binary-codec/distrib/npm/enums/index.js:43:15)
   'prepares tx when TransactionType is invalid': async (api, address) => {
     const localInstructions = {
       ...instructionsWithMaxLedgerVersionOffset,

@@ -1,6 +1,6 @@
 import * as common from '../common'
-import keypairs from 'ripple-keypairs'
-import binary from 'ripple-binary-codec'
+import keypairs from 'brt-keypairs'
+import binary from 'brt-binary-codec'
 const {validate, xrpToDrops} = common
 
 function signPaymentChannelClaim(

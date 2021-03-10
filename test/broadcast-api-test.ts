@@ -3,7 +3,7 @@ import assert from 'assert-diff'
 import setupAPI from './setup-api'
 import responses from './fixtures/responses'
 import ledgerClosed from './fixtures/rippled/ledger-close.json'
-import {RippleAPI} from 'ripple-api'
+import {RippleAPI} from 'brt-api'
 import {ignoreWebSocketDisconnect} from './utils'
 const schemaValidator = RippleAPI._PRIVATE.schemaValidator
 

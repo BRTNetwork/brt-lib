@@ -2,7 +2,7 @@ import _ from 'lodash'
 import net from 'net'
 import assert from 'assert-diff'
 import setupAPI from './setup-api'
-import {RippleAPI} from 'ripple-api'
+import {RippleAPI} from 'brt-api'
 import ledgerClose from './fixtures/rippled/ledger-close.json'
 import {ignoreWebSocketDisconnect} from './utils'
 const utils = RippleAPI._PRIVATE.ledgerUtils

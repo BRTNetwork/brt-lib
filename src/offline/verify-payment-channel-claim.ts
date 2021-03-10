@@ -1,5 +1,5 @@
-import keypairs from 'ripple-keypairs'
-import binary from 'ripple-binary-codec'
+import keypairs from 'brt-keypairs'
+import binary from 'brt-binary-codec'
 import {validate, xrpToDrops} from '../common'
 
 function verifyPaymentChannelClaim(

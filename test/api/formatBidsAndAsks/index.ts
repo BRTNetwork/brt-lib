@@ -1,6 +1,6 @@
 import BigNumber from 'bignumber.js'
 import assert from 'assert-diff'
-import {RippleAPI} from 'ripple-api'
+import {RippleAPI} from 'brt-api'
 import requests from '../../fixtures/requests'
 import responses from '../../fixtures/responses'
 import {TestSuite} from '../../utils'

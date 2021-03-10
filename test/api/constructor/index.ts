@@ -1,6 +1,6 @@
 import assert from 'assert-diff'
 import {TestSuite} from '../../utils'
-import {RippleAPI} from 'ripple-api'
+import {RippleAPI} from 'brt-api'
 
 /**
  * Every test suite exports their tests in the default object.

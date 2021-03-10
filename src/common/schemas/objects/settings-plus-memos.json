@@ -5,7 +5,7 @@
   "properties": {
     "defaultRipple": {
       "type": "boolean",
-      "description": "Enable [rippling](https://ripple.com/build/understanding-the-noripple-flag/) on this account’s trust lines by default. (New in [rippled 0.27.3](https://github.com/ripple/rippled/releases/tag/0.27.3))"
+      "description": "Enable [rippling](https://ripple.com/build/understanding-the-nobrt-flag/) on this account’s trust lines by default. (New in [rippled 0.27.3](https://github.com/ripple/rippled/releases/tag/0.27.3))"
     },
     "depositAuth": {
       "type": "boolean",
