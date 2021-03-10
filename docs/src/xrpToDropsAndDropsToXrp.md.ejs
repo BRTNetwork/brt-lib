@@ -2,7 +2,7 @@
 
 `xrpToDrops(xrp: string | BigNumber): string`
 
-Converts an BRT amount to drops. 1 BRT = 1,000,000 drops, so 1 drop = 0.000001 BRT. This method is useful when converting amounts for use with the rippled API, which requires BRT amounts to be specified in drops.
+Converts an BRT amount to drops. 1 BRT = 1,000,000 drops, so 1 drop = 0.000001 BRT. This method is useful when converting amounts for use with the brtd API, which requires BRT amounts to be specified in drops.
 
 ### Parameters
 
@@ -26,7 +26,7 @@ return api.xrpToDrops('1');
 
 `dropsToXrp(drops: string | BigNumber): string`
 
-Converts an amount of drops to BRT. 1 drop = 0.000001 BRT, so 1 BRT = 1,000,000 drops. This method is useful when converting amounts from the rippled API, which describes BRT amounts in drops.
+Converts an amount of drops to BRT. 1 drop = 0.000001 BRT, so 1 BRT = 1,000,000 drops. This method is useful when converting amounts from the brtd API, which describes BRT amounts in drops.
 
 ### Parameters
 

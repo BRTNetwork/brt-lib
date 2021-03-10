@@ -99,7 +99,7 @@ function addDirectXrpPath(
 }
 
 function isRippledIOUAmount(amount: RippledAmount) {
-  // rippled BRT amounts are specified as decimal strings
+  // brtd BRT amounts are specified as decimal strings
   return (
     typeof amount === 'object' && amount.currency && amount.currency !== 'BRT'
   )

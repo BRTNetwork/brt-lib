@@ -16,8 +16,8 @@ What is brt-lib used for? The applications on the list linked above use `brt-lib
 
 ### Features
 
-+ Connect to a `rippled` server from Node.js or a web browser
-+ Helpers for creating requests and parsing responses for the [rippled API](https://developers.ripple.com/rippled-api.html)
++ Connect to a `brtd` server from Node.js or a web browser
++ Helpers for creating requests and parsing responses for the [brtd API](https://developers.ripple.com/brtd-api.html)
 + Listen to events on the BRT Ledger (transactions, ledger, validations, etc.)
 + Sign and submit transactions to the BRT Ledger
 + Type definitions for TypeScript
@@ -50,7 +50,7 @@ We have a low-traffic mailing list for announcements of new brt-lib releases. (A
 
 + [Subscribe to brt-lib-announce](https://groups.google.com/forum/#!forum/brt-lib-announce)
 
-If you're using the BRT Ledger in production, you should run a [rippled server](https://github.com/ripple/rippled) and subscribe to the brt-server mailing list as well.
+If you're using the BRT Ledger in production, you should run a [brtd server](https://github.com/ripple/brtd) and subscribe to the brt-server mailing list as well.
 
 + [Subscribe to brt-server](https://groups.google.com/forum/#!forum/brt-server)
 

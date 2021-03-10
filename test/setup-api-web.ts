@@ -1,5 +1,5 @@
 import {RippleAPI, RippleAPIBroadcast} from 'brt-api'
-import ledgerClosed from './fixtures/rippled/ledger-close.json'
+import ledgerClosed from './fixtures/brtd/ledger-close.json'
 
 const port = 34371
 const baseUrl = 'ws://testripple.circleci.com:'

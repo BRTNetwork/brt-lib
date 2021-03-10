@@ -117,7 +117,7 @@ async function performPayments(payments) {
 
           if (event.ledger_index > preparedPayment.instructions.maxLedgerVersion + 3) {
             // Assumptions:
-            // - We are still connected to the same rippled server
+            // - We are still connected to the same brtd server
             // - No ledger gaps occurred
             // - All ledgers between the time we submitted the tx and now have been checked for the tx
             status = {

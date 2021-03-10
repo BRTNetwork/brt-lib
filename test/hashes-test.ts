@@ -3,12 +3,12 @@ import fs from 'fs'
 import * as hashes from '../src/common/hashes'
 
 /**
- * Expects a corresponding ledger dump in $repo/test/fixtures/rippled folder
+ * Expects a corresponding ledger dump in $repo/test/fixtures/brtd folder
  */
 function createLedgerTest(ledgerIndex: number) {
   describe(String(ledgerIndex), function () {
     var path =
-      __dirname + '/fixtures/rippled/ledger-full-' + ledgerIndex + '.json'
+      __dirname + '/fixtures/brtd/ledger-full-' + ledgerIndex + '.json'
 
     var ledgerRaw = fs.readFileSync(path, {encoding: 'utf8'})
     var ledgerJSON = JSON.parse(ledgerRaw)

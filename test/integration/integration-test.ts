@@ -518,7 +518,7 @@ describe('integration tests', function () {
   })
 })
 
-describe('integration tests - standalone rippled', function () {
+describe('integration tests - standalone brtd', function () {
   const instructions = {maxLedgerVersionOffset: 10}
   this.timeout(TIMEOUT)
 

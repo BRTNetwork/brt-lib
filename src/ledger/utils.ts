@@ -82,7 +82,7 @@ function signum(num) {
 }
 
 /**
- *  Order two rippled transactions based on their ledger_index.
+ *  Order two brtd transactions based on their ledger_index.
  *  If two transactions took place in the same ledger, sort
  *  them based on TransactionIndex
  *  See: https://developers.ripple.com/transaction-metadata.html

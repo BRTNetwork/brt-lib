@@ -3,7 +3,7 @@ import net from 'net'
 import assert from 'assert-diff'
 import setupAPI from './setup-api'
 import {RippleAPI} from 'brt-api'
-import ledgerClose from './fixtures/rippled/ledger-close.json'
+import ledgerClose from './fixtures/brtd/ledger-close.json'
 import {ignoreWebSocketDisconnect} from './utils'
 const utils = RippleAPI._PRIVATE.ledgerUtils
 
@@ -549,7 +549,7 @@ describe('Connection', function () {
 
   it('unrecognized message type', function (done) {
     // This enables us to automatically support any
-    // new messages added by rippled in the future.
+    // new messages added by brtd in the future.
     this.api.connection.on('unknown', (event) => {
       assert.deepEqual(event, {type: 'unknown'})
       done()

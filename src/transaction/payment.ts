@@ -182,7 +182,7 @@ function createPaymentTransaction(
     ? payment.source.maxAmount
     : payment.source.amount
 
-  // when using destination.minAmount, rippled still requires that we set
+  // when using destination.minAmount, brtd still requires that we set
   // a destination amount in addition to DeliverMin. the destination amount
   // is interpreted as the maximum amount to send. we want to be sure to
   // send the whole source amount, so we set the destination amount to the
@@ -222,7 +222,7 @@ function createPaymentTransaction(
   if (!isBRTToBRTPayment(payment)) {
     // Don't set SendMax for BRT->BRT payment
     // temREDUNDANT_SEND_MAX removed in:
-    // https://github.com/ripple/rippled/commit/
+    // https://github.com/ripple/brtd/commit/
     //  c522ffa6db2648f1d8a987843e7feabf1a0b7de8/
     if (payment.allowPartialPayment || isMinAdjustment(payment.destination)) {
       txJSON.Flags |= paymentFlags.PartialPayment

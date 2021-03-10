@@ -157,7 +157,7 @@ class LedgerHistory {
 
   /**
    * Update LedgerHistory with a new ledger response object. The "responseData"
-   * format lets you pass in any valid rippled ledger response data, regardless
+   * format lets you pass in any valid brtd ledger response data, regardless
    * of whether ledger history data exists or not. If relevant ledger data
    * is found, we'll update our history (ex: from a "ledgerClosed" event).
    */
@@ -417,7 +417,7 @@ export class Connection extends EventEmitter {
       command: 'subscribe',
       streams: ['ledger']
     })
-    // If rippled instance doesn't have validated ledgers, disconnect and then reject.
+    // If brtd instance doesn't have validated ledgers, disconnect and then reject.
     if (_.isEmpty(data) || !data.ledger_index) {
       try {
         await this.disconnect()
@@ -488,7 +488,7 @@ export class Connection extends EventEmitter {
       this._onConnectionFailed(
         new ConnectionError(
           `Error: connect() timed out after ${this._config.connectionTimeout} ms. ` +
-            `If your internet connection is working, the rippled server may be blocked or inaccessible. ` +
+            `If your internet connection is working, the brtd server may be blocked or inaccessible. ` +
             `You can also try setting the 'connectionTimeout' option in the RippleAPI constructor.`
         )
       )

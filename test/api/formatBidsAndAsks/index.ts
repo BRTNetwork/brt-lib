@@ -151,14 +151,14 @@ export default <TestSuite>{
         taker_gets: RippleAPI.renameCounterpartyToIssuer(orderbookInfo.base),
         taker_pays: RippleAPI.renameCounterpartyToIssuer(orderbookInfo.counter),
         ledger_index: 'validated',
-        limit: 400, // must match `test/fixtures/rippled/requests/1-taker_gets-BRT-taker_pays-JPY.json`
+        limit: 400, // must match `test/fixtures/brtd/requests/1-taker_gets-BRT-taker_pays-JPY.json`
         taker: myAddress
       }),
       api.request('book_offers', {
         taker_gets: RippleAPI.renameCounterpartyToIssuer(orderbookInfo.counter),
         taker_pays: RippleAPI.renameCounterpartyToIssuer(orderbookInfo.base),
         ledger_index: 'validated',
-        limit: 400, // must match `test/fixtures/rippled/requests/2-taker_gets-JPY-taker_pays-BRT.json`
+        limit: 400, // must match `test/fixtures/brtd/requests/2-taker_gets-JPY-taker_pays-BRT.json`
         taker: myAddress
       })
     ]).then(([directOfferResults, reverseOfferResults]) => {
@@ -195,14 +195,14 @@ export default <TestSuite>{
         taker_gets: RippleAPI.renameCounterpartyToIssuer(orderbookInfo.base),
         taker_pays: RippleAPI.renameCounterpartyToIssuer(orderbookInfo.counter),
         ledger_index: 'validated',
-        limit: 400, // must match `test/fixtures/rippled/requests/1-taker_gets-BRT-taker_pays-JPY.json`
+        limit: 400, // must match `test/fixtures/brtd/requests/1-taker_gets-BRT-taker_pays-JPY.json`
         taker: myAddress
       }),
       api.request('book_offers', {
         taker_gets: RippleAPI.renameCounterpartyToIssuer(orderbookInfo.counter),
         taker_pays: RippleAPI.renameCounterpartyToIssuer(orderbookInfo.base),
         ledger_index: 'validated',
-        limit: 400, // must match `test/fixtures/rippled/requests/2-taker_gets-JPY-taker_pays-BRT.json`
+        limit: 400, // must match `test/fixtures/brtd/requests/2-taker_gets-JPY-taker_pays-BRT.json`
         taker: myAddress
       })
     ]).then(([directOfferResults, reverseOfferResults]) => {

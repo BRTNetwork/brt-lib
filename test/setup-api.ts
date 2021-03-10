@@ -1,6 +1,6 @@
 import {RippleAPI, RippleAPIBroadcast} from 'brt-api'
-import ledgerClosed from './fixtures/rippled/ledger-close.json'
-import {createMockRippled} from './mock-rippled'
+import ledgerClosed from './fixtures/brtd/ledger-close.json'
+import {createMockRippled} from './mock-brtd'
 import {getFreePort} from './utils'
 
 function setupMockRippledConnection(testcase, port) {

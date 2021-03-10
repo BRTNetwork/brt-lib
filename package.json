@@ -20,6 +20,10 @@
     "test": "test"
   },
   "dependencies": {
+    "@brtnetwork/brt-address-codec": "^4.1.1",
+    "@brtnetwork/brt-binary-codec": "^1.1.0",
+    "@brtnetwork/brt-keypairs": "^1.0.3",
+    "@brtnetwork/brt-lib-transactionparser": "0.8.2",
     "@types/lodash": "^4.14.136",
     "@types/ws": "^7.2.0",
     "bignumber.js": "^9.0.0",
@@ -27,10 +31,6 @@
     "jsonschema": "1.2.2",
     "lodash": "^4.17.4",
     "lodash.isequal": "^4.5.0",
-    "@brtnetwork/brt-address-codec": "^4.1.1",
-    "@brtnetwork/brt-binary-codec": "^1.1.0",
-    "@brtnetwork/brt-keypairs": "^1.0.3",
-    "@brtnetwork/brt-lib-transactionparser": "0.8.2",
     "ws": "^7.2.0"
   },
   "resolutions": {

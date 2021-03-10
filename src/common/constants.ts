@@ -20,7 +20,7 @@ const accountRootFlags = {
 
   // lsfDisallowBRT:
   // Disallow sending BRT.
-  // Not enforced by rippled; client applications should check.
+  // Not enforced by brtd; client applications should check.
   DisallowBRT: 0x00080000,
 
   // lsfGlobalFreeze:

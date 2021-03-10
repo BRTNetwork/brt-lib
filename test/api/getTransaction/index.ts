@@ -7,7 +7,7 @@ import {
 import {PendingLedgerVersionError} from '../../../src/common/errors'
 import hashes from '../../fixtures/hashes.json'
 import responses from '../../fixtures/responses'
-import ledgerClosed from '../../fixtures/rippled/ledger-close-newer.json'
+import ledgerClosed from '../../fixtures/brtd/ledger-close-newer.json'
 import {assertRejects, assertResultMatch, TestSuite} from '../../utils'
 const {getTransaction: RESPONSE_FIXTURES} = responses
 

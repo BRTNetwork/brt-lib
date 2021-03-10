@@ -36,7 +36,7 @@ Warning: Use at your own risk.
 
 - **[BRTL Dev. Dashboard](https://xrp.fans/)** (xrp.fans)
 
-  Debugging dashboard for `rippled-ws-client-pool`, transaction and query explorer, and transaction signing and submission tool.
+  Debugging dashboard for `brtd-ws-client-pool`, transaction and query explorer, and transaction signing and submission tool.
 
 - **[BRT Value](http://xrpvalue.com/)**
 
@@ -138,7 +138,7 @@ Warning: Use at your own risk.
 
   BRT Ledger code samples for Node.js and the web (mostly).
 
-- **[rippled-ws-client-sign](https://github.com/WietseWind/rippled-ws-client-sign)**
+- **[brtd-ws-client-sign](https://github.com/WietseWind/brtd-ws-client-sign)**
 
   Sign transactions, with support for MultiSign.
 

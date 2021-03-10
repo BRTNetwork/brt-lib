@@ -83,7 +83,7 @@ function convertError(
     shouldUseNotFoundError = true
   }
 
-  // In the future, we should deprecate this error, instead passing through the one from rippled.
+  // In the future, we should deprecate this error, instead passing through the one from brtd.
   const _error = shouldUseNotFoundError
     ? new errors.NotFoundError('Transaction not found')
     : error

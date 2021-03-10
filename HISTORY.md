@@ -255,7 +255,7 @@ The SHA-256 checksums for the browser version of this release can be found below
 * Add type for isValidAddress (fixes error TS7016, #1032)
 * Docs: update recommended Node.js version (#1031)
 
-When using this release with [rippled](https://github.com/ripple/rippled), we recommend using [rippled version 1.3.1](https://github.com/ripple/rippled/releases/tag/1.3.1) or later.
+When using this release with [brtd](https://github.com/ripple/brtd), we recommend using [brtd version 1.3.1](https://github.com/ripple/brtd/releases/tag/1.3.1) or later.
 
 ## 1.3.1 (2019-08-26)
 
@@ -265,7 +265,7 @@ When using this release with [rippled](https://github.com/ripple/rippled), we re
 
 There are no changes in the browser version with this release. The npm package for Node.js should be slightly smaller.
 
-When using this release with [rippled](https://github.com/ripple/rippled), we recommend using [rippled version 1.3.1](https://github.com/ripple/rippled/releases/tag/1.3.1).
+When using this release with [brtd](https://github.com/ripple/brtd), we recommend using [brtd version 1.3.1](https://github.com/ripple/brtd/releases/tag/1.3.1).
 
 ## 1.3.0 (2019-08-16)
 
@@ -345,7 +345,7 @@ After:
 
 Since this release fixes a bug that could cause transactions to be serialized incorrectly during the signing process, it has also been simultaneously released as version 1.2.5 (patch release).
 
-When using this release with [rippled](https://github.com/ripple/rippled), we recommend using [rippled version 1.3.1](https://github.com/ripple/rippled/releases/tag/1.3.1).
+When using this release with [brtd](https://github.com/ripple/brtd), we recommend using [brtd version 1.3.1](https://github.com/ripple/brtd/releases/tag/1.3.1).
 
 ## 1.2.4 (2019-06-06)
 
@@ -463,7 +463,7 @@ This applies to:
 
 ### Improved `RippledError` `message`
 
-Previously, `RippledErrors` (errors from rippled) used rippled's `error` field as the `message`.
+Previously, `RippledErrors` (errors from brtd) used brtd's `error` field as the `message`.
 
 Now, the `error_message` field is used as the `message`.
 
@@ -503,9 +503,9 @@ The `prepareTransaction` method now allows `Sequence` to be set in the Transacti
 
 Previously, you had to use the `sequence` field in the `instructions` object to manually set a transaction's sequence number.
 
-### New in rippled 1.2.1
+### New in brtd 1.2.1
 
-As this is the first release of brt-lib following the release of rippled 1.2.1, we would like to highlight the following API improvements:
+As this is the first release of brt-lib following the release of brtd 1.2.1, we would like to highlight the following API improvements:
 
 1. The [`delivered_amount` field](https://developers.ripple.com/partial-payments.html#the-delivered-amount-field) has been added to the `ledger` method, and to transaction subscriptions.
 
@@ -515,9 +515,9 @@ As this is the first release of brt-lib following the release of rippled 1.2.1, 
 
         request('ledger', {...}).then(...)
 
-2. [Support for Ed25519 seeds encoded using brt-lib](https://github.com/ripple/rippled/pull/2734)
+2. [Support for Ed25519 seeds encoded using brt-lib](https://github.com/ripple/brtd/pull/2734)
 
-You have access to these improvements when you use a rippled server running version 1.2.1 or later. At the time of writing, we recommend using rippled version **1.2.2** or later.
+You have access to these improvements when you use a brtd server running version 1.2.1 or later. At the time of writing, we recommend using brtd version **1.2.2** or later.
 
 The SHA-256 checksums for the browser version of this release can be found
 below.
@@ -531,14 +531,14 @@ d440268397c03ad5137a3294e53a07b959ef93cd23b1990d6f82621c4776ba9f  brt-1.2.0.js
 ## 1.1.2 (2018-12-12)
 
 + Update `submit` response (#978)
-  + Includes the full object returned by rippled, while keeping the existing
+  + Includes the full object returned by brtd, while keeping the existing
     fields for backward compatibility
 + Add `getLedger` option for ledger hash (#980)
   + Use the `ledgerHash` option to get a specific ledger by hash
 
 Thanks to @alexchiriac for the contributions in this release.
 
-When using `brt-lib` with `rippled`, we recommend using `rippled` version
+When using `brt-lib` with `brtd`, we recommend using `brtd` version
 1.1.2 or later.
 
 The SHA-256 checksums for the browser version of this release can be found
@@ -555,14 +555,14 @@ e6cc52395d0c3e205263777ba2e528e50f4d1f84bb4b16763a3bf7f5fcc290f5  brt-1.1.2-debu
 + Fix `getOrderbook` offer sorting (#970)
   + **BREAKING CHANGE:** The ordering of offers returned by `getOrderbook` has
     been changed so that offers with the best quality are sorted first
-+ Add new helper methods for working with the `rippled` APIs:
++ Add new helper methods for working with the `brtd` APIs:
   + `formatBidsAndAsks`: Takes offers and returns a formatted order book object
     with bids and asks
   + `renameCounterpartyToIssuer`: Takes an object and renames the `counterparty`
     field to `issuer`
 + TypeScript: Add return type for `generateAddress` (#968)
 
-When using `brt-lib` with `rippled`, we recommend using `rippled` version 1.1.1 or
+When using `brt-lib` with `brtd`, we recommend using `brtd` version 1.1.1 or
 later.
 
 The SHA-256 checksums for the browser version of this release can be found
@@ -636,19 +636,19 @@ below.
 We are pleased to announce the release of `brt-lib` version 1.0.0.
 
 This version features a range of changes and improvements that make the library
-more capable and flexible. It includes new methods for accessing rippled APIs,
+more capable and flexible. It includes new methods for accessing brtd APIs,
 including subscriptions.
 
-When using this version with `rippled` for online functionality, we recommend
-using `rippled` version 1.0.1 or later.
+When using this version with `brtd` for online functionality, we recommend
+using `brtd` version 1.0.1 or later.
 
 Here is a summary of the changes since `brt-lib` version 0.22.0, which was
 the last non-beta version.
 
 ### New Features
 
-+ [Add `request()`, `hasNextPage()`, and `requestNextPage()` for accessing `rippled`
-  APIs](https://github.com/BRTNetwork/js-brt-lib/blob/09541dae86bc859bf5928ac65b2645dfaaf7f8b1/docs/index.md#rippled-apis).
++ [Add `request()`, `hasNextPage()`, and `requestNextPage()` for accessing `brtd`
+  APIs](https://github.com/BRTNetwork/js-brt-lib/blob/09541dae86bc859bf5928ac65b2645dfaaf7f8b1/docs/index.md#brtd-apis).
 + Add `prepareTransaction()` for preparing raw `txJSON`.
 + BRT amounts can be specified in drops. Also, `xrpToDrops()` and `dropsToXrp()`
   are available to make conversions.
@@ -676,11 +676,11 @@ The following changes were introduced in 1.0.0.
   + If you require the provisional requested `Amount` from the original transaction:
     + Use `getTransaction`'s `includeRawTransaction` option, or
     + Use `getTransactions`'s `includeRawTransactions` option, or
-    + Use the rippled APIs directly with `request`. For example, call the API methods `tx`, `account_tx`, etc.
+    + Use the brtd APIs directly with `request`. For example, call the API methods `tx`, `account_tx`, etc.
 + `getLedger()` response object
   + The `rawTransactions` field has been removed (for consistency with `getTransaction()` and `getTransactions()`).
   + Instead, within each `transaction`, use the new `rawTransaction` JSON string.
-  + The `metaData` field has been renamed to `meta` for consistency with rippled's `tx` method.
+  + The `metaData` field has been renamed to `meta` for consistency with brtd's `tx` method.
   + `ledger_index` has been added to each raw transaction.
 
 The SHA-256 checksums for the browser version of this release can be found
@@ -763,16 +763,16 @@ fe5cc6e97c9b8a1470dacb34f16a64255cd639a25381abe9db1ba79e102456f2  brt-1.0.0-beta
   methods may now throw a `BigNumber Error` or `ValidationError` if the amount
   is invalid. This may include methods that previously did not throw.
 + Note that 1 drop is equivalent to 0.000001 BRT and 1 BRT is equivalent to 1,000,000 drops.
-+ Using drops is recommended. All rippled APIs require BRT amounts to be
++ Using drops is recommended. All brtd APIs require BRT amounts to be
   expressed in drops.
 
 ### Other Changes
 
-+ Allow specifying amounts in drops for consistency with the `rippled`
++ Allow specifying amounts in drops for consistency with the `brtd`
   APIs.
 + Export `xrpToDrops()` and `dropsToXrp()` functions.
 + Potentially breaking change: Improve errors. For example, `RippledError` now includes the full response from
-  the `rippled` server ([#687](https://github.com/BRTNetwork/js-brt-lib/issues/687)). `NotConnectedError`
+  the `brtd` server ([#687](https://github.com/BRTNetwork/js-brt-lib/issues/687)). `NotConnectedError`
   may be thrown with a different message than before.
 
 The SHA-256 checksums for the browser version of this release can be found
@@ -788,9 +788,9 @@ a80ebb39e186640246306eadb2879147458c8271fd3c6cb32e6ef78d0b4b01a5  brt-1.0.0-beta
 
 + [Add `request`, `hasNextPage`, and
   `requestNextPage`](https://github.com/BRTNetwork/js-brt-lib/pull/887).
-  + This provides support for all rippled APIs, including subscriptions.
+  + This provides support for all brtd APIs, including subscriptions.
 
-When using rippled APIs, you must:
+When using brtd APIs, you must:
 + For all BRT amounts, use drops (1 drop = 0.000001 BRT).
 + Instead of `counterparty`, use `issuer`.
 
@@ -1047,7 +1047,7 @@ __OTHER CHANGES__
 + [Add Remote.closeCurrentPathFind function, so current pathfind can be properly closed](https://github.com/BRTNetwork/js-brt-lib/commit/e99010f363fc7cbe7fd547d3ca5b32ea083c44e6)
 + [Implement Balance Sheet API](https://github.com/BRTNetwork/js-brt-lib/pull/579)
 + [Fix bugs in orderbook subscription](https://github.com/BRTNetwork/js-brt-lib/commit/7404795dc64a85216148de7bc3ca7da7b33f4490)
-+ [Fix crash due to rippled slowDown error](https://github.com/BRTNetwork/js-brt-lib/commit/84838b2e9f6969b593b8462a62a6b8f516ada937)
++ [Fix crash due to brtd slowDown error](https://github.com/BRTNetwork/js-brt-lib/commit/84838b2e9f6969b593b8462a62a6b8f516ada937)
 + [Fix: Emit error events and return error on pathfind](https://github.com/BRTNetwork/js-brt-lib/commit/1ccbaf677631a1944eb05d90f7afc5f3690a03dd)
 + [Deprecate core and remove snake case method copying](https://github.com/BRTNetwork/js-brt-lib/commit/fb8dc44ec1d49bb05cd0cdbe6dd4ab211195868a)
 + [Fix RangeSet for validated_ledger as single ledger](https://github.com/BRTNetwork/js-brt-lib/commit/9f9e76f8b933201651af59307135f67cfa7d60e8)
@@ -1189,7 +1189,7 @@ are locally determined to have expired: `tejMaxLedger`.
 
 + [Change `presubmit` to emit immediately before transaction submit](https://github.com/BRTNetwork/js-brt-lib/commit/7a1feaa89701bf861ab31ebd8ffdc8d8d1474e29)
 + [Add a "core" browser build of brt-lib which has a subset of features and smaller file size](https://github.com/BRTNetwork/js-brt-lib/pull/205)
-+ [Update binformat with missing fields from rippled](https://github.com/BRTNetwork/js-brt-lib/commit/cae980788efb00191bfd0988ed836d60cdf7a9a2)
++ [Update binformat with missing fields from brtd](https://github.com/BRTNetwork/js-brt-lib/commit/cae980788efb00191bfd0988ed836d60cdf7a9a2)
 + [Wait for transaction validation before returning `tec` error](https://github.com/BRTNetwork/js-brt-lib/commit/6bdd4b2670906588852fc4dda457607b4aac08e4)
 + [Change default `max_fee` on `Remote` to `1 BRT`](https://github.com/BRTNetwork/js-brt-lib/commit/d6b1728c23ff85c3cc791bed6982a750641fd95f)
 + [Fix: Request ledger_accept should return the Remote](https://github.com/BRTNetwork/js-brt-lib/pull/209)
@@ -1263,7 +1263,7 @@ __OTHER CHANGES__
 + Make npm test runnable in Windows.
 + Fix several stability issues, see merged PR's for details
 + Fix bug in Amount.to_human_full()
-+ Fix undefined fee states when connecting to a rippled that is syncing
++ Fix undefined fee states when connecting to a brtd that is syncing
 
 ## 0.8.0
 

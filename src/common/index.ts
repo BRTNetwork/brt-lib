@@ -17,7 +17,7 @@ export function ensureClassicAddress(account: string): string {
       )
     }
 
-    // For rippled requests that use an account, always use a classic address.
+    // For brtd requests that use an account, always use a classic address.
     return classicAddress
   } else {
     return account

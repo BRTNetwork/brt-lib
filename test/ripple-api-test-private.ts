@@ -5,7 +5,7 @@ import {RecursiveData} from 'brt-api/ledger/utils'
 import {assertRejects, assertResultMatch} from './utils'
 import addresses from './fixtures/addresses.json'
 import responses from './fixtures/responses'
-import ledgerClosed from './fixtures/rippled/ledger-close-newer.json'
+import ledgerClosed from './fixtures/brtd/ledger-close-newer.json'
 import setupAPI from './setup-api'
 
 const {validate, schemaValidator, ledgerUtils} = RippleAPI._PRIVATE

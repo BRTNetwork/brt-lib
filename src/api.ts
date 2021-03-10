@@ -134,7 +134,7 @@ class RippleAPI extends EventEmitter {
   _maxFeeBRT: string
 
   // New in > 0.21.0
-  // non-validated ledger versions are allowed, and passed to rippled as-is.
+  // non-validated ledger versions are allowed, and passed to brtd as-is.
   connection: Connection
 
   // these are exposed only for use by unit tests; they are not part of the API.
@@ -241,7 +241,7 @@ class RippleAPI extends EventEmitter {
    * When there are more results than contained in the response, the response
    * includes a `marker` field.
    *
-   * See https://ripple.com/build/rippled-apis/#markers-and-pagination
+   * See https://ripple.com/build/brtd-apis/#markers-and-pagination
    */
   hasNextPage<T extends {marker?: string}>(currentResponse: T): boolean {
     return !!currentResponse.marker
@@ -296,7 +296,7 @@ class RippleAPI extends EventEmitter {
    * know which response key contains the array of resources.
    *
    * NOTE: This command is used by existing methods and is not recommended for
-   * general use. Instead, use rippled's built-in pagination and make multiple
+   * general use. Instead, use brtd's built-in pagination and make multiple
    * requests as needed.
    */
   async _requestAll(

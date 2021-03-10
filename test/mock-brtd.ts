@@ -3,13 +3,13 @@ import fs from 'fs'
 import assert from 'assert'
 import {Server as WebSocketServer} from 'ws'
 import {EventEmitter2} from 'eventemitter2'
-import fixtures from './fixtures/rippled'
+import fixtures from './fixtures/brtd'
 import addresses from './fixtures/addresses.json'
 import hashes from './fixtures/hashes.json'
-import transactionsResponse from './fixtures/rippled/account-tx'
-import accountLinesResponse from './fixtures/rippled/account-lines'
-import accountObjectsResponse from './fixtures/rippled/account-objects'
-import fullLedger from './fixtures/rippled/ledger-full-38129.json'
+import transactionsResponse from './fixtures/brtd/account-tx'
+import accountLinesResponse from './fixtures/brtd/account-lines'
+import accountObjectsResponse from './fixtures/brtd/account-objects'
+import fullLedger from './fixtures/brtd/ledger-full-38129.json'
 import {getFreePort} from './utils'
 
 function isUSD(json) {
@@ -305,7 +305,7 @@ export function createMockRippled(port) {
           id: 2,
           ledger_current_index: 17714714,
           request:
-            // This will be inaccurate, but that's OK because this is just a mock rippled
+            // This will be inaccurate, but that's OK because this is just a mock brtd
             {
               account: 'rogvkYnY8SWjxkJNgU4ZRVfLeRyt5DR9i',
               command: 'account_info',
@@ -660,19 +660,19 @@ export function createMockRippled(port) {
         fixtures.book_offers.fabric.requestBookOffersAsksResponse(request)
       )
     } else {
-      const rippledDir = 'test/fixtures/rippled'
+      const brtdDir = 'test/fixtures/brtd'
       if (!requestsCache) {
-        requestsCache = fs.readdirSync(rippledDir + '/requests')
+        requestsCache = fs.readdirSync(brtdDir + '/requests')
       }
       for (var i = 0; i < requestsCache.length; i++) {
         const file = requestsCache[i]
-        const json = fs.readFileSync(rippledDir + '/requests/' + file, 'utf8')
+        const json = fs.readFileSync(brtdDir + '/requests/' + file, 'utf8')
         const r = JSON.parse(json)
         const requestWithoutId = Object.assign({}, request)
         delete requestWithoutId.id
         if (JSON.stringify(requestWithoutId) === JSON.stringify(r)) {
           const responseFile =
-            rippledDir + '/responses/' + file.split('.')[0] + '-res.json'
+            brtdDir + '/responses/' + file.split('.')[0] + '-res.json'
           const res = fs.readFileSync(responseFile, 'utf8')
           const response = createResponse(request, {
             id: 0,
