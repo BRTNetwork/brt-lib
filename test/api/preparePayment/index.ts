@@ -327,7 +327,7 @@ export default <TestSuite>{
     )
 
     // Important: check that the prepared transaction can actually be signed
-    // https://github.com/ripple/brt-lib/issues/1237#issuecomment-631670946
+    // https://github.com/BRTNetwork/js-brt-lib/issues/1237#issuecomment-631670946
 
     const secret = 'shotKgaEotpcYsshSE39vmSnBDRim'
     const result = api.sign(response.txJSON, secret)

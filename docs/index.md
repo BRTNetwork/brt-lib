@@ -121,9 +121,9 @@ Using RippleAPI, you can:
 * [Generate a new XRP Ledger Address](#generateaddress)
 * ... and [much more](#api-methods).
 
-This page contains documentation for brt-lib. To use brt-lib with npm/yarn, begin with the [Getting Started](https://github.com/ripple/brt-lib#getting-started) steps.
+This page contains documentation for brt-lib. To use brt-lib with npm/yarn, begin with the [Getting Started](https://github.com/BRTNetwork/js-brt-lib#getting-started) steps.
 
-**What is brt-lib used for?** Here's a [list of applications that use `brt-lib`](https://github.com/ripple/brt-lib/blob/develop/APPLICATIONS.md). Open a PR to add your app or project to the list!
+**What is brt-lib used for?** Here's a [list of applications that use `brt-lib`](https://github.com/BRTNetwork/js-brt-lib/blob/develop/APPLICATIONS.md). Open a PR to add your app or project to the list!
 
 ## Boilerplate
 
@@ -1037,7 +1037,7 @@ return api.request(command, params).then(response => {
 
 # Static Methods
 
-brt-lib features a number of static methods that you can access directly on the `RippleAPI` object. The most commonly-used one is `computeBinaryTransactionHash`, described below. For the full list, see the [XRP Ledger Hashes README](https://github.com/ripple/brt-lib/blob/develop/src/common/hashes/README.md).
+brt-lib features a number of static methods that you can access directly on the `RippleAPI` object. The most commonly-used one is `computeBinaryTransactionHash`, described below. For the full list, see the [XRP Ledger Hashes README](https://github.com/BRTNetwork/js-brt-lib/blob/develop/src/common/hashes/README.md).
 
 ## computeBinaryTransactionHash
 
@@ -5833,7 +5833,7 @@ const result = await api.request('submit', {
 }
 ```
 
-(In brt-lib 1.8.0, [the old `submit` method](https://github.com/ripple/brt-lib/blob/1.7.0/docs/index.md#submit) was deprecated.)
+(In brt-lib 1.8.0, [the old `submit` method](https://github.com/BRTNetwork/js-brt-lib/blob/1.7.0/docs/index.md#submit) was deprecated.)
 
 ## generateXAddress
 

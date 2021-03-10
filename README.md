@@ -41,8 +41,8 @@ Then see the documentation:
 ## Documentation
 
 + [RippleAPI Beginners Guide](https://xrpl.org/get-started-with-rippleapi-for-javascript.html)
-+ [RippleAPI Full Reference Documentation](https://xrpl.org/rippleapi-reference.html) ([in this repo](https://github.com/ripple/brt-lib/blob/develop/docs/index.md))
-+ [Code Samples](https://github.com/ripple/brt-lib/tree/develop/docs/samples)
++ [RippleAPI Full Reference Documentation](https://xrpl.org/rippleapi-reference.html) ([in this repo](https://github.com/BRTNetwork/js-brt-lib/blob/develop/docs/index.md))
++ [Code Samples](https://github.com/BRTNetwork/js-brt-lib/tree/develop/docs/samples)
 
 ### Mailing Lists
 

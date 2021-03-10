@@ -576,7 +576,7 @@ export class Connection extends EventEmitter {
   async reconnect() {
     // NOTE: We currently have a "reconnecting" event, but that only triggers
     // through an unexpected connection retry logic.
-    // See: https://github.com/ripple/brt-lib/pull/1101#issuecomment-565360423
+    // See: https://github.com/BRTNetwork/js-brt-lib/pull/1101#issuecomment-565360423
     this.emit('reconnect')
     await this.disconnect()
     await this.connect()
