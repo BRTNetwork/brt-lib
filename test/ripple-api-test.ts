@@ -1,5 +1,5 @@
 import setupAPI from './setup-api'
-import {RippleAPI} from 'brt-api'
+import {RippleAPI} from '@brtnetwork/brt-api'
 import addresses from './fixtures/addresses.json'
 import {getAllPublicMethods, loadTestSuites} from './utils'
 

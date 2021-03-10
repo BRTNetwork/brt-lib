@@ -2,7 +2,7 @@ import net from 'net'
 import _ from 'lodash'
 import fs from 'fs'
 import path from 'path'
-import {RippleAPI} from 'brt-api'
+import {RippleAPI} from '@brtnetwork/brt-api'
 import assert from 'assert-diff'
 const {schemaValidator} = RippleAPI._PRIVATE
 

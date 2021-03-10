@@ -1,4 +1,4 @@
-import {RippleAPI, RippleAPIBroadcast} from 'brt-api'
+import {RippleAPI, RippleAPIBroadcast} from '@brtnetwork/brt-api'
 import ledgerClosed from './fixtures/brtd/ledger-close.json'
 import {createMockRippled} from './mock-brtd'
 import {getFreePort} from './utils'

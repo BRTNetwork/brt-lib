@@ -1,6 +1,6 @@
 import * as _ from 'lodash'
 import BigNumber from 'bignumber.js'
-import {deriveKeypair} from 'brt-keypairs'
+import {deriveKeypair} from '@brtnetwork/brt-keypairs'
 import {Amount, RippledAmount} from './types/objects'
 import {ValidationError} from './errors'
 

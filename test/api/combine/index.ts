@@ -1,5 +1,5 @@
 import assert from 'assert-diff'
-import binary from 'brt-binary-codec'
+import binary from '@brtnetwork/brt-binary-codec'
 import requests from '../../fixtures/requests'
 import responses from '../../fixtures/responses'
 import {assertResultMatch, TestSuite} from '../../utils'

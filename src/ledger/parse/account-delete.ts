@@ -1,6 +1,6 @@
 import * as assert from 'assert'
 import {removeUndefined} from '../../common'
-import {classicAddressToXAddress} from 'brt-address-codec'
+import {classicAddressToXAddress} from '@brtnetwork/brt-address-codec'
 
 export type FormattedAccountDelete = {
   // account (address) of an account to receive any leftover BRT after deleting the sending account.

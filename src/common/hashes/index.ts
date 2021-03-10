@@ -1,9 +1,9 @@
 import BigNumber from 'bignumber.js'
-import {decodeAccountID} from 'brt-address-codec'
+import {decodeAccountID} from '@brtnetwork/brt-address-codec'
 import sha512Half from './sha512Half'
 import HashPrefix from './hash-prefix'
 import {SHAMap, NodeType} from './shamap'
-import {encode} from 'brt-binary-codec'
+import {encode} from '@brtnetwork/brt-binary-codec'
 import ledgerspaces from './ledgerspaces'
 
 const padLeftZero = (string: string, length: number): string => {

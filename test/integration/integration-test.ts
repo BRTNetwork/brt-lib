@@ -2,11 +2,11 @@ import _ from 'lodash'
 import assert from 'assert'
 import wallet from './wallet'
 import requests from '../fixtures/requests'
-import {RippleAPI} from 'brt-api'
-import {isValidAddress} from 'brt-address-codec'
+import {RippleAPI} from '@brtnetwork/brt-api'
+import {isValidAddress} from '@brtnetwork/brt-address-codec'
 import {payTo, ledgerAccept} from './utils'
-import {errors} from 'brt-api/common'
-import {isValidSecret} from 'brt-api/common/utils'
+import {errors} from '@brtnetwork/brt-api/common'
+import {isValidSecret} from '@brtnetwork/brt-api/common/utils'
 
 // how long before each test case times out
 const TIMEOUT = 20000

@@ -1,10 +1,10 @@
 import {assertResultMatch, TestSuite} from '../../utils'
 // import responses from '../../fixtures/responses'
 // import requests from '../../fixtures/requests'
-// import {ValidationError} from 'brt-api/common/errors'
-// import binary from 'brt-binary-codec'
+// import {ValidationError} from '@brtnetwork/brt-api/common/errors'
+// import binary from '@brtnetwork/brt-binary-codec'
 // import assert from 'assert-diff'
-// import {RippleAPI} from 'brt-api'
+// import {RippleAPI} from '@brtnetwork/brt-api'
 
 // const {schemaValidator} = RippleAPI._PRIVATE
 // const instructionsWithMaxLedgerVersionOffset = {maxLedgerVersionOffset: 100}

@@ -1,5 +1,5 @@
-import {classicAddressToXAddress} from 'brt-address-codec'
-import keypairs from 'brt-keypairs'
+import {classicAddressToXAddress} from '@brtnetwork/brt-address-codec'
+import keypairs from '@brtnetwork/brt-keypairs'
 import {errors, validate} from '../common'
 
 export type GeneratedAddress = {

@@ -1,5 +1,5 @@
 'use strict';
-const RippleAPI = require('../../src').RippleAPI; // require('brt-lib')
+const RippleAPI = require('../../src').RippleAPI; // require('@brtnetwork/brt-lib')
 
 const address = 'INSERT ADDRESS HERE';
 const secret = 'INSERT SECRET HERE';

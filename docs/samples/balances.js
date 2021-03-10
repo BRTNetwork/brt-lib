@@ -1,5 +1,5 @@
 'use strict';
-const RippleAPI = require('../../src').RippleAPI; // require('brt-lib')
+const RippleAPI = require('../../src').RippleAPI; // require('@brtnetwork/brt-lib')
 
 const api = new RippleAPI({server: 'wss://s1.ripple.com:443'});
 const address = 'r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV';

@@ -130,7 +130,7 @@ This page contains documentation for brt-lib. To use brt-lib with npm/yarn, begi
 Use the following [boilerplate code](https://en.wikipedia.org/wiki/Boilerplate_code) to wrap your custom code using RippleAPI.
 
 ```javascript
-const RippleAPI = require('brt-lib').RippleAPI;
+const RippleAPI = require('@brtnetwork/brt-lib').RippleAPI;
 
 const api = new RippleAPI({
   server: 'wss://s1.ripple.com' // Public brtd server hosted by Ripple, Inc.
@@ -209,7 +209,7 @@ RippleAPI can also function without internet connectivity. This can be useful in
 To instantiate RippleAPI in offline mode, use the following boilerplate code:
 
 ```javascript
-const RippleAPI = require('brt-lib').RippleAPI;
+const RippleAPI = require('@brtnetwork/brt-lib').RippleAPI;
 
 const api = new RippleAPI();
 /* insert code here */
@@ -5628,7 +5628,7 @@ return api.sign(txJSON, secret); // or: api.sign(txJSON, keypair);
 ### Example (multisigning)
 
 ```javascript
-const RippleAPI = require('brt-lib').RippleAPI;
+const RippleAPI = require('@brtnetwork/brt-lib').RippleAPI;
 
 // jon's address will have a multi-signing setup with a quorum of 2
 const jon = {

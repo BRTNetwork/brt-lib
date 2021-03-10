@@ -1,5 +1,5 @@
 import * as _ from 'lodash'
-import binary from 'brt-binary-codec'
+import binary from '@brtnetwork/brt-binary-codec'
 import {computeTransactionHash} from '../common/hashes'
 import * as utils from './utils'
 import parseTransaction from './parse/transaction'

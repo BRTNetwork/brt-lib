@@ -89,7 +89,7 @@ import {getServerInfo, getFee} from './common/serverinfo'
 import {clamp, renameCounterpartyToIssuer} from './ledger/utils'
 import {TransactionJSON, Instructions, Prepare} from './transaction/types'
 import {ConnectionUserOptions} from './common/connection'
-import {isValidXAddress, isValidClassicAddress} from 'brt-address-codec'
+import {isValidXAddress, isValidClassicAddress} from '@brtnetwork/brt-address-codec'
 import {
   computeBinaryTransactionHash,
   computeTransactionHash,

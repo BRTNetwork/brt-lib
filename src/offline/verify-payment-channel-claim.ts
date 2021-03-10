@@ -1,5 +1,5 @@
-import keypairs from 'brt-keypairs'
-import binary from 'brt-binary-codec'
+import keypairs from '@brtnetwork/brt-keypairs'
+import binary from '@brtnetwork/brt-binary-codec'
 import {validate, xrpToDrops} from '../common'
 
 function verifyPaymentChannelClaim(

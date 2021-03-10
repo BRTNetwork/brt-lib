@@ -1,4 +1,4 @@
-import {RippleAPI} from 'brt-api'
+import {RippleAPI} from '@brtnetwork/brt-api'
 import assert from 'assert-diff'
 import {assertResultMatch, TestSuite, assertRejects} from '../../utils'
 import responses from '../../fixtures/responses'

@@ -1,5 +1,5 @@
-import {deriveKeypair, deriveAddress} from 'brt-keypairs'
-import {classicAddressToXAddress} from 'brt-address-codec'
+import {deriveKeypair, deriveAddress} from '@brtnetwork/brt-keypairs'
+import {classicAddressToXAddress} from '@brtnetwork/brt-address-codec'
 
 function deriveXAddress(options: {
   publicKey: string

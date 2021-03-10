@@ -4,7 +4,7 @@ import {Memo} from '../common/types/objects'
 import {Instructions, Prepare, TransactionJSON} from './types'
 import {RippleAPI} from '..'
 import {ValidationError} from '../common/errors'
-import {xAddressToClassicAddress, isValidXAddress} from 'brt-address-codec'
+import {xAddressToClassicAddress, isValidXAddress} from '@brtnetwork/brt-address-codec'
 
 const txFlags = common.txFlags
 const TRANSACTION_TYPES_WITH_DESTINATION_TAG_FIELD = [

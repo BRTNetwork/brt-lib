@@ -1,4 +1,4 @@
-import {RippledError, ValidationError} from 'brt-api/common/errors'
+import {RippledError, ValidationError} from '@brtnetwork/brt-api/common/errors'
 import requests from '../../fixtures/requests'
 import responses from '../../fixtures/responses'
 import {assertRejects, assertResultMatch, TestSuite} from '../../utils'

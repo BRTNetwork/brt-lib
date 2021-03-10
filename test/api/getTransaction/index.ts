@@ -3,7 +3,7 @@ import {
   MissingLedgerHistoryError,
   NotFoundError,
   UnexpectedError
-} from 'brt-api/common/errors'
+} from '@brtnetwork/brt-api/common/errors'
 import {PendingLedgerVersionError} from '../../../src/common/errors'
 import hashes from '../../fixtures/hashes.json'
 import responses from '../../fixtures/responses'

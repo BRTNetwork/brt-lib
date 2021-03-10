@@ -1,8 +1,8 @@
 import * as _ from 'lodash'
-import binary from 'brt-binary-codec'
+import binary from '@brtnetwork/brt-binary-codec'
 import * as utils from './utils'
 import BigNumber from 'bignumber.js'
-import {decodeAccountID} from 'brt-address-codec'
+import {decodeAccountID} from '@brtnetwork/brt-address-codec'
 import {validate} from '../common'
 import {computeBinaryTransactionHash} from '../common/hashes'
 
