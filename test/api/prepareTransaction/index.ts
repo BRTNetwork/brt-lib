@@ -492,7 +492,7 @@ export default <TestSuite>{
     )
   },
 
-  // Paths: is not auto-filled by ripple-lib.
+  // Paths: is not auto-filled by brt-lib.
 
   // Other errors:
 

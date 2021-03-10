@@ -1,8 +1,8 @@
-# ripple-lib (RippleAPI)
+# brt-lib (RippleAPI)
 
 A JavaScript/TypeScript API for interacting with the XRP Ledger
 
-[![NPM](https://nodei.co/npm/ripple-lib.png)](https://www.npmjs.org/package/ripple-lib)
+[![NPM](https://nodei.co/npm/brt-lib.png)](https://www.npmjs.org/package/brt-lib)
 
 This is the recommended library for integrating a JavaScript/TypeScript app with the XRP Ledger, especially if you intend to use advanced functionality such as IOUs, payment paths, the decentralized exchange, account settings, payment channels, escrows, multi-signing, and more.
 
@@ -12,7 +12,7 @@ See the full reference documentation on the XRP Ledger Dev Portal.
 
 ## [➡️ Applications and Projects](APPLICATIONS.md)
 
-What is ripple-lib used for? The applications on the list linked above use `ripple-lib`. Open a PR to add your app or project to the list!
+What is brt-lib used for? The applications on the list linked above use `brt-lib`. Open a PR to add your app or project to the list!
 
 ### Features
 
@@ -31,9 +31,9 @@ What is ripple-lib used for? The applications on the list linked above use `ripp
 
 See also: [RippleAPI Beginners Guide](https://xrpl.org/get-started-with-rippleapi-for-javascript.html)
 
-In an existing project (with `package.json`), install `ripple-lib`:
+In an existing project (with `package.json`), install `brt-lib`:
 ```
-$ yarn add ripple-lib
+$ yarn add brt-lib
 ```
 
 Then see the documentation:
@@ -41,14 +41,14 @@ Then see the documentation:
 ## Documentation
 
 + [RippleAPI Beginners Guide](https://xrpl.org/get-started-with-rippleapi-for-javascript.html)
-+ [RippleAPI Full Reference Documentation](https://xrpl.org/rippleapi-reference.html) ([in this repo](https://github.com/ripple/ripple-lib/blob/develop/docs/index.md))
-+ [Code Samples](https://github.com/ripple/ripple-lib/tree/develop/docs/samples)
++ [RippleAPI Full Reference Documentation](https://xrpl.org/rippleapi-reference.html) ([in this repo](https://github.com/ripple/brt-lib/blob/develop/docs/index.md))
++ [Code Samples](https://github.com/ripple/brt-lib/tree/develop/docs/samples)
 
 ### Mailing Lists
 
-We have a low-traffic mailing list for announcements of new ripple-lib releases. (About 1 email per week)
+We have a low-traffic mailing list for announcements of new brt-lib releases. (About 1 email per week)
 
-+ [Subscribe to ripple-lib-announce](https://groups.google.com/forum/#!forum/ripple-lib-announce)
++ [Subscribe to brt-lib-announce](https://groups.google.com/forum/#!forum/brt-lib-announce)
 
 If you're using the XRP Ledger in production, you should run a [rippled server](https://github.com/ripple/rippled) and subscribe to the ripple-server mailing list as well.
 
@@ -89,8 +89,8 @@ If you make changes to the JSON schemas, fixtures, or documentation sources, upd
 
 ## More Information
 
-+ [ripple-lib-announce mailing list](https://groups.google.com/forum/#!forum/ripple-lib-announce) - subscribe for release announcements
++ [brt-lib-announce mailing list](https://groups.google.com/forum/#!forum/brt-lib-announce) - subscribe for release announcements
 + [RippleAPI Reference](https://xrpl.org/rippleapi-reference.html) - XRP Ledger Dev Portal
 + [XRP Ledger Dev Portal](https://xrpl.org/)
 
- [![Build Status](https://travis-ci.org/ripple/ripple-lib.svg?branch=master)](https://travis-ci.org/ripple/ripple-lib)
+ [![Build Status](https://travis-ci.org/ripple/brt-lib.svg?branch=master)](https://travis-ci.org/ripple/brt-lib)

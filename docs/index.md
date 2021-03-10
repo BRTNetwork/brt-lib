@@ -111,7 +111,7 @@
 
 # Introduction
 
-RippleAPI (ripple-lib) is the official client library to the XRP Ledger. Currently, RippleAPI is only available in JavaScript/TypeScript.
+RippleAPI (brt-lib) is the official client library to the XRP Ledger. Currently, RippleAPI is only available in JavaScript/TypeScript.
 
 Using RippleAPI, you can:
 
@@ -121,16 +121,16 @@ Using RippleAPI, you can:
 * [Generate a new XRP Ledger Address](#generateaddress)
 * ... and [much more](#api-methods).
 
-This page contains documentation for ripple-lib. To use ripple-lib with npm/yarn, begin with the [Getting Started](https://github.com/ripple/ripple-lib#getting-started) steps.
+This page contains documentation for brt-lib. To use brt-lib with npm/yarn, begin with the [Getting Started](https://github.com/ripple/brt-lib#getting-started) steps.
 
-**What is ripple-lib used for?** Here's a [list of applications that use `ripple-lib`](https://github.com/ripple/ripple-lib/blob/develop/APPLICATIONS.md). Open a PR to add your app or project to the list!
+**What is brt-lib used for?** Here's a [list of applications that use `brt-lib`](https://github.com/ripple/brt-lib/blob/develop/APPLICATIONS.md). Open a PR to add your app or project to the list!
 
 ## Boilerplate
 
 Use the following [boilerplate code](https://en.wikipedia.org/wiki/Boilerplate_code) to wrap your custom code using RippleAPI.
 
 ```javascript
-const RippleAPI = require('ripple-lib').RippleAPI;
+const RippleAPI = require('brt-lib').RippleAPI;
 
 const api = new RippleAPI({
   server: 'wss://s1.ripple.com' // Public rippled server hosted by Ripple, Inc.
@@ -196,9 +196,9 @@ If you omit the `server` parameter, RippleAPI operates [offline](#offline-functi
 
 1. Install [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com/en/docs/install). Most Linux distros have a package for Node.js; check that it's the version you want.
 2. Use yarn to install RippleAPI:
-      `yarn add ripple-lib`
+      `yarn add brt-lib`
 
-After you have installed ripple-lib, you can create scripts using the [boilerplate](#boilerplate) and run them using the Node.js executable, typically named `node`:
+After you have installed brt-lib, you can create scripts using the [boilerplate](#boilerplate) and run them using the Node.js executable, typically named `node`:
 
       `node script.js`
 
@@ -209,7 +209,7 @@ RippleAPI can also function without internet connectivity. This can be useful in
 To instantiate RippleAPI in offline mode, use the following boilerplate code:
 
 ```javascript
-const RippleAPI = require('ripple-lib').RippleAPI;
+const RippleAPI = require('brt-lib').RippleAPI;
 
 const api = new RippleAPI();
 /* insert code here */
@@ -286,7 +286,7 @@ Example 3.0 XRP amount, in drops:
   "value": "3000000"
 }
 ```
-(Requires `ripple-lib` version 1.0.0 or higher.)
+(Requires `brt-lib` version 1.0.0 or higher.)
 
 An *amount* is an object specifying a currency, a quantity of that currency, and the counterparty (issuer) on the trustline that holds the value. For XRP, there is no counterparty.
 
@@ -353,7 +353,7 @@ Every transaction must destroy a small amount of XRP as a cost to apply the tran
 
 You can choose the size of the fee you want to pay or let a default be used. You can get an estimate of the fee required to be included in the next ledger closing with the [getFee](#getfee) method.
 
-For a multi-signed transaction, ripple-lib automatically multiplies the `fee` by (1 + Number of Signatures Provided). For example, if you set `instructions.fee = '0.000020'` and `instructions.signersCount = 2`, the prepared transaction's `Fee` will be 20 drops × (1 + 2 Signatures) = 60 drops. See [Transaction Cost](https://developers.ripple.com/transaction-cost.html).
+For a multi-signed transaction, brt-lib automatically multiplies the `fee` by (1 + Number of Signatures Provided). For example, if you set `instructions.fee = '0.000020'` and `instructions.signersCount = 2`, the prepared transaction's `Fee` will be 20 drops × (1 + 2 Signatures) = 60 drops. See [Transaction Cost](https://developers.ripple.com/transaction-cost.html).
 
 ## Transaction Instructions
 
@@ -852,7 +852,7 @@ ripplingDisabled | boolean | *Optional* If true, payments cannot ripple through 
 
 # rippled APIs
 
-ripple-lib relies on [rippled APIs](https://ripple.com/build/rippled-apis/) for online functionality. In addition to ripple-lib's own methods, you can also access rippled APIs through ripple-lib. Use the `request()`, `hasNextPage()`, and `requestNextPage()` methods:
+brt-lib relies on [rippled APIs](https://ripple.com/build/rippled-apis/) for online functionality. In addition to brt-lib's own methods, you can also access rippled APIs through brt-lib. Use the `request()`, `hasNextPage()`, and `requestNextPage()` methods:
 
 * Use `request()` to issue any `rippled` command, including `account_currencies`, `subscribe`, and `unsubscribe`. [Full list of API Methods](https://ripple.com/build/rippled-apis/#api-methods).
 * Use `hasNextPage()` to determine whether a response has more pages. This is true when the response includes a [`marker` field](https://ripple.com/build/rippled-apis/#markers-and-pagination).
@@ -1037,7 +1037,7 @@ return api.request(command, params).then(response => {
 
 # Static Methods
 
-ripple-lib features a number of static methods that you can access directly on the `RippleAPI` object. The most commonly-used one is `computeBinaryTransactionHash`, described below. For the full list, see the [XRP Ledger Hashes README](https://github.com/ripple/ripple-lib/blob/develop/src/common/hashes/README.md).
+brt-lib features a number of static methods that you can access directly on the `RippleAPI` object. The most commonly-used one is `computeBinaryTransactionHash`, described below. For the full list, see the [XRP Ledger Hashes README](https://github.com/ripple/brt-lib/blob/develop/src/common/hashes/README.md).
 
 ## computeBinaryTransactionHash
 
@@ -2881,7 +2881,7 @@ return api.getOrders(address).then(orders =>
 
 Returns open orders for the specified account. Open orders are orders that have not yet been fully executed and are still in the order book.
 
-**Breaking change:** In ripple-lib 1.1.0 and earlier, orders returned by this method were not sorted correctly. Orders are now sorted correctly, from best to worst.
+**Breaking change:** In brt-lib 1.1.0 and earlier, orders returned by this method were not sorted correctly. Orders are now sorted correctly, from best to worst.
 
 **See also:** An alternative way to get orderbooks is with `request` and [`formatBidsAndAsks`](#formatbidsandasks).
 
@@ -5628,7 +5628,7 @@ return api.sign(txJSON, secret); // or: api.sign(txJSON, keypair);
 ### Example (multisigning)
 
 ```javascript
-const RippleAPI = require('ripple-lib').RippleAPI;
+const RippleAPI = require('brt-lib').RippleAPI;
 
 // jon's address will have a multi-signing setup with a quorum of 2
 const jon = {
@@ -5833,7 +5833,7 @@ const result = await api.request('submit', {
 }
 ```
 
-(In ripple-lib 1.8.0, [the old `submit` method](https://github.com/ripple/ripple-lib/blob/1.7.0/docs/index.md#submit) was deprecated.)
+(In brt-lib 1.8.0, [the old `submit` method](https://github.com/ripple/brt-lib/blob/1.7.0/docs/index.md#submit) was deprecated.)
 
 ## generateXAddress
 
@@ -5925,7 +5925,7 @@ return api.generateAddress();
 
 `isValidAddress(address: string): boolean`
 
-Checks if the specified string contains a valid address. X-addresses are considered valid with ripple-lib v1.4.0 and higher.
+Checks if the specified string contains a valid address. X-addresses are considered valid with brt-lib v1.4.0 and higher.
 
 ### Parameters
 
@@ -6255,7 +6255,7 @@ Bits that are not defined as flags MUST be 0.
 
 Applies globally to all transactions.
 
-`txFlags.Universal.FullyCanonicalSig`: Require a fully-canonical signature. When preparing transactions, ripple-lib enables this flag for you.
+`txFlags.Universal.FullyCanonicalSig`: Require a fully-canonical signature. When preparing transactions, brt-lib enables this flag for you.
 
 ### Payment Flags
 
@@ -6273,7 +6273,7 @@ Applies globally to all transactions.
 
 `txFlags.OfferCreate.FillOrKill`: Treat the offer as a Fill or Kill order.
 
-`txFlags.OfferCreate.Sell`: Treat the offer as a Sell order. With `order.direction = 'sell'`, exchange the entire `order.quantity`, even if it means obtaining more than the `order.totalPrice` amount in exchange. If using `prepareOrder`, ripple-lib sets this flag for you.
+`txFlags.OfferCreate.Sell`: Treat the offer as a Sell order. With `order.direction = 'sell'`, exchange the entire `order.quantity`, even if it means obtaining more than the `order.totalPrice` amount in exchange. If using `prepareOrder`, brt-lib sets this flag for you.
 
 ### TrustSet Flags
 
@@ -6325,7 +6325,7 @@ The remaining transaction types do not have any flags at this time.
 
 ## schemaValidator
 
-Unlike the rest of the ripple-lib API, schemaValidator is a static object on RippleAPI. It provides utility methods that do not use a server.
+Unlike the rest of the brt-lib API, schemaValidator is a static object on RippleAPI. It provides utility methods that do not use a server.
 
 ## schemaValidate
 

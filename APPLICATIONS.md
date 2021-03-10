@@ -1,6 +1,6 @@
-# Applications using ripple-lib (RippleAPI)
+# Applications using brt-lib (RippleAPI)
 
-A curated list of some of the projects and apps that leverage `ripple-lib` in some way.
+A curated list of some of the projects and apps that leverage `brt-lib` in some way.
 
 **Have one to add?** Please edit this file and open a PR!
 
@@ -122,7 +122,7 @@ Warning: Use at your own risk.
 
 - **[XRP Faucets for Testnet and Devnet](https://xrpl.org/xrp-testnet-faucet.html)**
 
-  Get some test funds for development on the test network. The faucet uses `ripple-lib`.
+  Get some test funds for development on the test network. The faucet uses `brt-lib`.
 
 ## Code samples and libraries
 
@@ -146,7 +146,7 @@ Warning: Use at your own risk.
 
   For about $30 in parts (Raspberry Pi, 3.3V Relay board and a few wires) you can build your own power switch that will switch on if a streaming ILP payment comes in. When the payment stream stops, the power turns off.
 
-## Related apps that do not appear to use ripple-lib
+## Related apps that do not appear to use brt-lib
 
 - **[XRP Stats](https://ledger.exposed/)** (ledger.exposed)
 
