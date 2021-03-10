@@ -14,7 +14,7 @@ Subscribe to [the **brt-lib-announce** mailing list](https://groups.google.com/f
   * Allow connectionTimeout option to be customized (#1355)
 * Dependencies
   * Bump brt-keypairs to 1.0.3
-  * Bump elliptic to 6.5.4 (this patches a potential security issue, although we do not believe that the issue affects brt-lib: [details](https://github.com/ripple/brt-keypairs/security/advisories/GHSA-w6x3-9ph2-7x54))
+  * Bump elliptic to 6.5.4 (this patches a potential security issue, although we do not believe that the issue affects brt-lib: [details](https://github.com/BRTNetwork/js-brt-keypairs/security/advisories/GHSA-w6x3-9ph2-7x54))
 
 The SHA-256 checksums for the browser version of this release can be found below.
 ```
@@ -247,7 +247,7 @@ The SHA-256 checksums for the browser version of this release can be found below
 
 ## 1.3.3 (2019-09-10)
 
-* Expand node version compatibility to support Node.js 12 ([brt-binary-codec#32](https://github.com/ripple/brt-binary-codec/issues/32))
+* Expand node version compatibility to support Node.js 12 ([brt-binary-codec#32](https://github.com/BRTNetwork/js-brt-binary-codec/issues/32))
 
 ## 1.3.2 (2019-09-03)
 
@@ -1147,7 +1147,7 @@ __OTHER CHANGES__
 ## 0.11.0
 
 + [Track the funded status of an order based on cumulative account orders](https://github.com/BRTNetwork/js-brt-lib/commit/67d39737a4d5e0fcd9d9b47b9083ee00e5a9e652) and [67d3973](https://github.com/BRTNetwork/js-brt-lib/commit/b6b99dde022e1e14c4797e454b1d7fca50e49482)
-+ Remove blobvault client from brt-lib, use the [`brt-vault-client`](https://github.com/ripple/brt-vault-client) instead [9b3d62b7](https://github.com/BRTNetwork/js-brt-lib/commit/9b3d62b765c4c25beae6eb0fa57ef3a07f2581b1)
++ Remove blobvault client from brt-lib, use the [`brt-vault-client`](https://github.com/BRTNetwork/js-brt-vault-client) instead [9b3d62b7](https://github.com/BRTNetwork/js-brt-lib/commit/9b3d62b765c4c25beae6eb0fa57ef3a07f2581b1)
 + [Add support for `ledger` option in requestBookOffers](https://github.com/BRTNetwork/js-brt-lib/commit/34c0677c453c409ef0a5b351959abdc176d3bacb)
 + [Add support for `limit` option in requestBookOffers](https://github.com/BRTNetwork/js-brt-lib/commit/d1d4452217c878d0b377d24830b4cd8b3162f6e0)
 + [Add `ledgerSelect` request constructor in `Remote`](https://github.com/BRTNetwork/js-brt-lib/commit/98f40abfc3aa74dec5067a2d90002756cc8acd01)
@@ -1311,7 +1311,7 @@ __OTHER CHANGES__
 + Added full currency name support, e.g. `Currency.from_json('BRT').to_human({full_name:'Ripples'})` will return `BRT - Ripples`
 + Improved interest bearing currency support, e.g. `Currency.from_human('USD - US Dollar (2.5%pa)')`
 + Improve test coverage
-+ Added blob vault client.  The vault client facilitates interaction with ripple's namespace and blob vault or 3rd party blob vaults using ripple's blob vault software (https://github.com/ripple/brt-blobvault). A list of the available functions can be found at [docs/VAULTCLIENT.md](docs/VAULTCLIENT.md)
++ Added blob vault client.  The vault client facilitates interaction with ripple's namespace and blob vault or 3rd party blob vaults using ripple's blob vault software (https://github.com/BRTNetwork/js-brt-blobvault). A list of the available functions can be found at [docs/VAULTCLIENT.md](docs/VAULTCLIENT.md)
 
 
 ## 0.7.35

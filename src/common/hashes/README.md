@@ -30,7 +30,7 @@ The `computeBinaryTransactionSigningHash` helps with step 2, automatically using
 
 For details, see [Serialization Format](https://xrpl.org/serialization.html).
 
-_Removed:_ `computeTransactionSigningHash`, which took txJSON as a parameter. It was part of the deprecated brt-hashes library. If you have txJSON, `encode` it with [brt-binary-codec](https://github.com/ripple/brt-binary-codec) first. Example: `return computeBinaryTransactionSigningHash(encode(txJSON))`
+_Removed:_ `computeTransactionSigningHash`, which took txJSON as a parameter. It was part of the deprecated brt-hashes library. If you have txJSON, `encode` it with [brt-binary-codec](https://github.com/BRTNetwork/js-brt-binary-codec) first. Example: `return computeBinaryTransactionSigningHash(encode(txJSON))`
 
 ### computeAccountLedgerObjectID = (address: string): string
 
